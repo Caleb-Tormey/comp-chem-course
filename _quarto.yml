@@ -5,21 +5,28 @@ book:
   title: "Introduction to Computational Chemistry"
   author: "Norah Jones"
   date: "4/30/2026"
+  
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - part: "Module 1: Foundations & 1D Quantum"
+      chapters: 
+        - notebooks/week_1_python_primer.ipynb
+    
+    - part: "Appendices"
+      chapters:
+        - notebooks/appendix_crash_course.ipynb
     - references.qmd
 
 bibliography: references.bib
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+    theme: cosmo
+    code-fold: true    # Hides long code blocks behind a toggle
+    code-tools: true   # Adds a "Copy Code" button for students
+    toc: true          # Adds a Table of Contents to the right sidebar
+  #pdf:
+  #  documentclass: scrreprt
 
 
 

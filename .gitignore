@@ -6,3 +6,5 @@ __pycache__/
 # Quarto
 .quarto/
 _book/
+/.quarto/
+**/*.quarto_ipynb
