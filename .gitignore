@@ -1,0 +1,8 @@
+# Python
+compchem_env/
+__pycache__/
+.ipynb_checkpoints/
+
+# Quarto
+.quarto/
+_book/
