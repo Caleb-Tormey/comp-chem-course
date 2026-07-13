@@ -3,7 +3,7 @@ project:
 
 book:
   title: "Introduction to Computational Chemistry"
-  author: "Norah Jones"
+  author: "Caleb A. Tormey"
   date: "4/30/2026"
   
   chapters:
@@ -11,22 +11,19 @@ book:
     - part: "Module 1: Foundations & 1D Quantum"
       chapters: 
         - notebooks/week_1_python_primer.ipynb
+        - notebooks/week_2_1D_Quantum.ipynb
     
     - part: "Appendices"
       chapters:
-        - notebooks/appendix_crash_course.ipynb
+        - notebooks/appendix_crash_course.qmd
+        - notebooks/appendix_linear_algebra.qmd
     - references.qmd
 
 bibliography: references.bib
 
 format:
-  html:
+  live-html: 
     theme: cosmo
-    code-fold: true    # Hides long code blocks behind a toggle
-    code-tools: true   # Adds a "Copy Code" button for students
-    toc: true          # Adds a Table of Contents to the right sidebar
-  #pdf:
-  #  documentclass: scrreprt
-
-
-
+    code-fold: true
+    code-tools: true
+    toc: true

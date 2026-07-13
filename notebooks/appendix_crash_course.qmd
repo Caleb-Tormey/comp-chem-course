@@ -1,0 +1,49 @@
+# Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course
+
+# Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course
+
+If you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.
+
+This appendix covers the five pillars you need to survive this course:
+
+1. **Variables:** Storing your numbers.
+2. **Lists:** Grouping your numbers.
+3. **Loops:** Repeating your calculations. 
+4. **Functions:** Building your own formulas.
+5. **Built-in Functions & Libraries:** Using tools that already exist so you don't have to reinvent the wheel.
+
+
+
+**Your Task:**
+Define the parameters for a Hydrogen molecule ($H_2$): $D_e = 4.75$ eV, $r_e = 0.741$ Å, and $a = 1.93$ Å$^{-1}$, and plot the potential from 0.4 to 4.0 Å.
+
+
+```{pyodide}
+#| autorun: true
+#| code-fold: true
+#| code-summary: "Click to see the interactive code"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Define the constants for H2
+De = 4.75
+re = 0.741
+a  = 1.93
+
+# 2. Create the distance array 'r'
+r = np.linspace(0.4, 4.0, 100)
+
+# 3. Calculate the Morse Potential 'V'
+V = De * (1 - np.exp(-a * (r - re)))**2
+
+# 4. Create the plot
+plt.figure(figsize=(8, 5))
+plt.plot(r, V, color='teal', label='$H_2$ Morse Potential')
+plt.axhline(De, color='gray', linestyle='--', label='Dissociation Limit')
+plt.xlabel('Distance (Å)')
+plt.ylabel('Energy (eV)')
+plt.ylim(0, 6)
+plt.legend()
+plt.show()
+```

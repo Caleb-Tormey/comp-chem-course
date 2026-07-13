@@ -3,8 +3,28 @@ compchem_env/
 __pycache__/
 .ipynb_checkpoints/
 
+# Ignore Python cache files
+*.pyc
+*.pyo
+
+# Ignore virtual environments (if you create one later)
+venv/
+.venv/
+env/
+
 # Quarto
 .quarto/
 _book/
 /.quarto/
 **/*.quarto_ipynb
+
+# Ignore the rendered output folders (GitHub Pages will handle this)
+/_book/
+/_site/
+
+# -----------------------------
+# OS Specific
+# -----------------------------
+# Ignore Mac/Windows hidden system files
+.DS_Store
+Thumbs.db
