@@ -109,6 +109,50 @@
     ]
   },
   {
+    "objectID": "notebooks/week_2_finite_well.html",
+    "href": "notebooks/week_2_finite_well.html",
+    "title": "3  📥 Download This Assignment",
+    "section": "",
+    "text": "4 Assignment 2: The Finite Well\nStudent Name: [TYPE YOUR NAME HERE] Date: [TYPE DATE HERE]",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📥 Download This Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_finite_well.html#part-1-defining-the-grid-and-potential",
+    "href": "notebooks/week_2_finite_well.html#part-1-defining-the-grid-and-potential",
+    "title": "3  📥 Download This Assignment",
+    "section": "4.1 Part 1: Defining the Grid and Potential",
+    "text": "4.1 Part 1: Defining the Grid and Potential\nReal molecules do not have infinite boundaries. We will simulate a well with a width of 2.0 atomic units and a wall height of \\(V_{\\text{wall}} = 10.0\\). Because the electron can “leak” into the walls, our mathematical grid needs to be much wider than the well itself.\nCreate a grid spanning from \\(x = -5\\) to \\(x = 5\\) with 400 points. Then, build the potential energy array \\(V(x)\\).\n\n\nCode\n# Setup parameters\nL_grid = 10.0\nN_points = 400\nV_wall = 10.0\nbox_width = 2.0\n\n### YOUR CODE HERE: Create the x array and calculate dx ###\n# x = ...\n# dx = ...\n\n# Initialize the potential array\nV = np.zeros(N_points)\n\n### YOUR CODE HERE: Build the potential well ###\n# Hint: Loop through N_points. If the absolute value of x[i] is greater than box_width / 2.0, set V[i] = V_wall.\n\n\n\n# Verify your potential\nplt.plot(x, V, color='black')\nplt.title(\"The Finite Well Potential\")\nplt.xlabel(\"Position (x)\")\nplt.ylabel(\"Potential Energy, V(x)\")\nplt.show()",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📥 Download This Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_finite_well.html#part-2-building-the-hamiltonian-matrix",
+    "href": "notebooks/week_2_finite_well.html#part-2-building-the-hamiltonian-matrix",
+    "title": "3  📥 Download This Assignment",
+    "section": "4.2 Part 2: Building the Hamiltonian Matrix",
+    "text": "4.2 Part 2: Building the Hamiltonian Matrix\nTo solve the system, we must build the Hamiltonian matrix \\(\\mathbf{H}\\). * The off-diagonals represent kinetic coupling: \\(-t\\) * The main diagonal represents the total energy at that point: \\(2t + V_i\\)\nComplete the matrix construction below.\n\n\nCode\nH = np.zeros((N_points, N_points))\n\n# Kinetic energy scaling factor (hbar = m = 1)\nt = 1.0 / (2.0 * dx**2)\n\n### YOUR CODE HERE: Fill the main diagonal ###\n# Hint: H[i, i] equals 2*t plus the potential energy at point i.\n# for i in range(N_points):\n#     H[i, i] = ...\n\n\n### YOUR CODE HERE: Fill the upper and lower off-diagonals ###\n# Hint: H[i, i+1] and H[i+1, i] both equal -t.\n# for i in range(N_points - 1):\n#     ...\n\nprint(\"Matrix built!\")",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📥 Download This Assignment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_finite_well.html#part-3-solving-and-conceptual-analysis",
+    "href": "notebooks/week_2_finite_well.html#part-3-solving-and-conceptual-analysis",
+    "title": "3  📥 Download This Assignment",
+    "section": "4.3 Part 3: Solving and Conceptual Analysis",
+    "text": "4.3 Part 3: Solving and Conceptual Analysis\nRun the cell below to diagonalize your matrix and plot the first few states. If your matrix is built correctly, the plot will automatically generate.\n\n\nCode\n# --- DO NOT MODIFY THIS CELL ---\n# This cell solves your matrix and plots the results.\n\nenergies, wavefunctions = la.eigh(H)\nstates_to_plot = [0, 1, 3, 7] \n\nplt.figure(figsize=(10, 6))\nplt.plot(x, V, color='black', linewidth=3, label='V(x)')\n\nfor n in states_to_plot:\n    E = energies[n]\n    psi = wavefunctions[:, n]\n    psi_plot = (psi * 15) + E  # Scale and shift for visibility\n    \n    plt.plot(x, psi_plot, label=f'State n={n+1} (E={E:.1f})')\n    plt.axhline(E, color='gray', linestyle=':', alpha=0.5)\n\nplt.ylim(0, 15)\nplt.xlim(-5, 5)\nplt.xlabel(\"Position (x)\")\nplt.ylabel(\"Energy\")\nplt.legend(loc='upper right')\nplt.title(\"Wavefunctions of the Finite Well\")\nplt.show()\n\n\n\n4.3.1 Conceptual Questions\nQuestion 1: Look at State 1 and State 2 in your plot. How does the behavior of the wavefunction change when it crosses from the \\(V=0\\) region into the \\(V=10\\) region? Why doesn’t it drop to exactly zero immediately?\n[DOUBLE CLICK THIS CELL AND TYPE YOUR ANSWER HERE]\nQuestion 2: State 8 has a calculated energy of approximately \\(E=12\\). Since \\(E &gt; V_{\\text{wall}}\\), this is an “unbound” state. Geometrically, how does the wavefunction for State 8 differ from the bound states, and what does this mean for the electron physically?\n[DOUBLE CLICK THIS CELL AND TYPE YOUR ANSWER HERE]",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📥 Download This Assignment</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/appendix_crash_course.html",
     "href": "notebooks/appendix_crash_course.html",
     "title": "4  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
