@@ -12,6 +12,7 @@ book:
       chapters: 
         - notebooks/week_1_python_primer.ipynb
         - notebooks/week_2_1D_Quantum.ipynb
+        - notebooks/week_2_finite_well.ipynb
     
     - part: "Appendices"
       chapters:
@@ -27,3 +28,7 @@ format:
     code-fold: true
     code-tools: true
     toc: true
+    code-links:
+      - text: "Download Notebook Source"
+        icon: file-code
+        href: https://github.com/Caleb-Tormey-comp-chem-course/blob/master/{path}
