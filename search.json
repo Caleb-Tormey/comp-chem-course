@@ -109,8 +109,8 @@
     ]
   },
   {
-    "objectID": "notebooks/week_2_finite_well.html",
-    "href": "notebooks/week_2_finite_well.html",
+    "objectID": "notebooks/week_2_problem_1_finite_well.html",
+    "href": "notebooks/week_2_problem_1_finite_well.html",
     "title": "3  📥 Download This Assignment",
     "section": "",
     "text": "4 Assignment 2: The Finite Well\nStudent Name: [TYPE YOUR NAME HERE] Date: [TYPE DATE HERE]",
@@ -120,8 +120,8 @@
     ]
   },
   {
-    "objectID": "notebooks/week_2_finite_well.html#part-1-defining-the-grid-and-potential",
-    "href": "notebooks/week_2_finite_well.html#part-1-defining-the-grid-and-potential",
+    "objectID": "notebooks/week_2_problem_1_finite_well.html#part-1-defining-the-grid-and-potential",
+    "href": "notebooks/week_2_problem_1_finite_well.html#part-1-defining-the-grid-and-potential",
     "title": "3  📥 Download This Assignment",
     "section": "4.1 Part 1: Defining the Grid and Potential",
     "text": "4.1 Part 1: Defining the Grid and Potential\nReal molecules do not have infinite boundaries. We will simulate a well with a width of 2.0 atomic units and a wall height of \\(V_{\\text{wall}} = 10.0\\). Because the electron can “leak” into the walls, our mathematical grid needs to be much wider than the well itself.\nCreate a grid spanning from \\(x = -5\\) to \\(x = 5\\) with 400 points. Then, build the potential energy array \\(V(x)\\).\n\n\nCode\n# Setup parameters\nL_grid = 10.0\nN_points = 400\nV_wall = 10.0\nbox_width = 2.0\n\n### YOUR CODE HERE: Create the x array and calculate dx ###\n# x = ...\n# dx = ...\n\n# Initialize the potential array\nV = np.zeros(N_points)\n\n### YOUR CODE HERE: Build the potential well ###\n# Hint: Loop through N_points. If the absolute value of x[i] is greater than box_width / 2.0, set V[i] = V_wall.\n\n\n\n# Verify your potential\nplt.plot(x, V, color='black')\nplt.title(\"The Finite Well Potential\")\nplt.xlabel(\"Position (x)\")\nplt.ylabel(\"Potential Energy, V(x)\")\nplt.show()",
@@ -131,8 +131,8 @@
     ]
   },
   {
-    "objectID": "notebooks/week_2_finite_well.html#part-2-building-the-hamiltonian-matrix",
-    "href": "notebooks/week_2_finite_well.html#part-2-building-the-hamiltonian-matrix",
+    "objectID": "notebooks/week_2_problem_1_finite_well.html#part-2-building-the-hamiltonian-matrix",
+    "href": "notebooks/week_2_problem_1_finite_well.html#part-2-building-the-hamiltonian-matrix",
     "title": "3  📥 Download This Assignment",
     "section": "4.2 Part 2: Building the Hamiltonian Matrix",
     "text": "4.2 Part 2: Building the Hamiltonian Matrix\nTo solve the system, we must build the Hamiltonian matrix \\(\\mathbf{H}\\). * The off-diagonals represent kinetic coupling: \\(-t\\) * The main diagonal represents the total energy at that point: \\(2t + V_i\\)\nComplete the matrix construction below.\n\n\nCode\nH = np.zeros((N_points, N_points))\n\n# Kinetic energy scaling factor (hbar = m = 1)\nt = 1.0 / (2.0 * dx**2)\n\n### YOUR CODE HERE: Fill the main diagonal ###\n# Hint: H[i, i] equals 2*t plus the potential energy at point i.\n# for i in range(N_points):\n#     H[i, i] = ...\n\n\n### YOUR CODE HERE: Fill the upper and lower off-diagonals ###\n# Hint: H[i, i+1] and H[i+1, i] both equal -t.\n# for i in range(N_points - 1):\n#     ...\n\nprint(\"Matrix built!\")",
@@ -142,8 +142,8 @@
     ]
   },
   {
-    "objectID": "notebooks/week_2_finite_well.html#part-3-solving-and-conceptual-analysis",
-    "href": "notebooks/week_2_finite_well.html#part-3-solving-and-conceptual-analysis",
+    "objectID": "notebooks/week_2_problem_1_finite_well.html#part-3-solving-and-conceptual-analysis",
+    "href": "notebooks/week_2_problem_1_finite_well.html#part-3-solving-and-conceptual-analysis",
     "title": "3  📥 Download This Assignment",
     "section": "4.3 Part 3: Solving and Conceptual Analysis",
     "text": "4.3 Part 3: Solving and Conceptual Analysis\nRun the cell below to diagonalize your matrix and plot the first few states. If your matrix is built correctly, the plot will automatically generate.\n\n\nCode\n# --- DO NOT MODIFY THIS CELL ---\n# This cell solves your matrix and plots the results.\n\nenergies, wavefunctions = la.eigh(H)\nstates_to_plot = [0, 1, 3, 7] \n\nplt.figure(figsize=(10, 6))\nplt.plot(x, V, color='black', linewidth=3, label='V(x)')\n\nfor n in states_to_plot:\n    E = energies[n]\n    psi = wavefunctions[:, n]\n    psi_plot = (psi * 15) + E  # Scale and shift for visibility\n    \n    plt.plot(x, psi_plot, label=f'State n={n+1} (E={E:.1f})')\n    plt.axhline(E, color='gray', linestyle=':', alpha=0.5)\n\nplt.ylim(0, 15)\nplt.xlim(-5, 5)\nplt.xlabel(\"Position (x)\")\nplt.ylabel(\"Energy\")\nplt.legend(loc='upper right')\nplt.title(\"Wavefunctions of the Finite Well\")\nplt.show()\n\n\n\n4.3.1 Conceptual Questions\nQuestion 1: Look at State 1 and State 2 in your plot. How does the behavior of the wavefunction change when it crosses from the \\(V=0\\) region into the \\(V=10\\) region? Why doesn’t it drop to exactly zero immediately?\n[DOUBLE CLICK THIS CELL AND TYPE YOUR ANSWER HERE]\nQuestion 2: State 8 has a calculated energy of approximately \\(E=12\\). Since \\(E &gt; V_{\\text{wall}}\\), this is an “unbound” state. Geometrically, how does the wavefunction for State 8 differ from the bound states, and what does this mean for the electron physically?\n[DOUBLE CLICK THIS CELL AND TYPE YOUR ANSWER HERE]",
@@ -153,47 +153,102 @@
     ]
   },
   {
+    "objectID": "notebooks/week_2_problem_2_harmonic_oscillator.html",
+    "href": "notebooks/week_2_problem_2_harmonic_oscillator.html",
+    "title": "4  Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials",
+    "section": "",
+    "text": "4.0.1 Objectives\nStudent Name: [TYPE YOUR NAME HERE]\nDate: [TYPE DATE HERE]\nCode\n# --- RUN THIS CELL FIRST ---\nimport numpy as np\nimport scipy.linalg as la\nimport matplotlib.pyplot as plt\n\n# Plot formatting\nplt.rcParams.update({\n    'font.size': 11,\n    'axes.linewidth': 1.2,\n    'lines.linewidth': 2.0\n})\nprint(\"Environment ready!\")",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-1-the-quantum-harmonic-oscillator-qho",
+    "href": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-1-the-quantum-harmonic-oscillator-qho",
+    "title": "4  Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials",
+    "section": "4.1 Part 1: The Quantum Harmonic Oscillator (QHO)",
+    "text": "4.1 Part 1: The Quantum Harmonic Oscillator (QHO)\nFor small displacements near equilibrium, a covalent bond acts like a quantum spring with potential energy: \\[V(x) = \\frac{1}{2} k x^2\\]\nwhere \\(x = 0\\) represents the equilibrium bond length (\\(r = r_e\\)).\n\n4.1.1 Your Task\n\nSet up a grid from \\(x = -4.0\\) to \\(x = 4.0\\) atomic units.\nDefine \\(V(x) = \\frac{1}{2} k x^2\\) with force constant \\(k = 1.0\\) and mass \\(m = 1.0\\).\nComplete the matrix solver (reusing your kinetic energy scaling \\(t = \\frac{\\hbar^2}{2 m \\Delta x^2}\\)).\n\n\n\nCode\n# Grid Parameters\nL_grid = 8.0\nN_points = 400\nx = np.linspace(-L_grid/2, L_grid/2, N_points)\ndx = x[1] - x[0]\n\n# Physical Parameters (Atomic Units: hbar = 1)\nm = 1.0\nk = 1.0\n\n# 1. Potential Array\n### YOUR CODE HERE: Define the harmonic potential array V_qho ###\n# V_qho = ...\n\n\n# 2. Hamiltonian Construction\nt = 1.0 / (2.0 * m * dx**2)\nH = np.zeros((N_points, N_points))\n\n### YOUR CODE HERE: Fill main diagonal (2*t + V_qho) and off-diagonals (-t) ###\n\n\n\n\n# 3. Solve for Eigenvalues and Eigenvectors\nenergies_qho, wavefunctions_qho = la.eigh(H)\n\nprint(\"QHO calculation complete!\")",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-2-energy-spacing-analysis",
+    "href": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-2-energy-spacing-analysis",
+    "title": "4  Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials",
+    "section": "4.2 Part 2: Energy Spacing Analysis",
+    "text": "4.2 Part 2: Energy Spacing Analysis\nAnalytical quantum mechanics predicts that the QHO energy levels are given by \\(E_n = \\hbar \\omega \\left(n + \\frac{1}{2}\\right)\\), meaning the gap between adjacent energy levels (\\(\\Delta E_n = E_{n+1} - E_n\\)) is strictly constant.\n\n4.2.1 Your Task\nCalculate the energy differences between adjacent states for the first 8 states and verify if \\(\\Delta E\\) remains constant.\n\n\nCode\n# Calculate energy gaps for the first 8 states\nnum_states = 8\ndelta_E_qho = []\n\n### YOUR CODE HERE: Calculate E[n+1] - E[n] for n from 0 to num_states-2 ###\n# Hint: Use a loop over range(num_states - 1)\n\n\n\n# Print results\nfor n in range(len(delta_E_qho)):\n    print(f\"ΔE from state {n+1} to {n+2}: {delta_E_qho[n]:.5f} atomic units\")\n\n\n\n\n4.2.2 Conceptual Question 1: Isotope Effects and Mass\nQuestion: In Infrared (IR) spectroscopy, substituting an atom with a heavier isotope (e.g., replacing Hydrogen with Deuterium, \\(H \\to D\\)) shifts the vibrational absorption frequency. Based on the classical frequency \\(\\omega = \\sqrt{\\frac{k}{\\mu}}\\), if you double the mass (\\(m = 2.0\\)) while keeping \\(k = 1.0\\), what do you expect to happen to: 1. The energy spacing \\(\\Delta E\\)? 2. The zero-point energy (ground state energy, \\(E_0\\))?\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-3-the-morse-potential-anharmonicity",
+    "href": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-3-the-morse-potential-anharmonicity",
+    "title": "4  Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials",
+    "section": "4.3 Part 3: The Morse Potential (Anharmonicity)",
+    "text": "4.3 Part 3: The Morse Potential (Anharmonicity)\nWhile the harmonic oscillator is a great approximation near equilibrium, real molecules can dissociate if given enough energy. A harmonic bond would require infinite energy to break!\nTo accurately model real bonds, we use the Morse Potential: \\[V_{\\text{Morse}}(x) = D_e \\left( 1 - e^{-a x} \\right)^2\\]\nwhere: * \\(D_e\\) is the bond dissociation energy. * \\(a = \\sqrt{\\frac{k}{2 D_e}}\\) controls the width of the potential well. * \\(x\\) is the displacement from equilibrium.\nNotice that for small \\(x\\), \\(V_{\\text{Morse}}(x) \\approx \\frac{1}{2} k x^2\\), but for large positive \\(x\\), \\(V_{\\text{Morse}}(x) \\to D_e\\) (the bond breaks!).\n\n\nCode\n# Parameters for Morse Potential\nDe = 10.0   # Dissociation energy\na = np.sqrt(k / (2.0 * De))  # Matched to QHO force constant k=1.0\n\n# 1. Build Morse Potential Array\n### YOUR CODE HERE: Build V_morse using np.exp() ###\n# V_morse = ...\n\n\n# 2. Build Hamiltonian for Morse\nH_morse = np.zeros((N_points, N_points))\n\n### YOUR CODE HERE: Construct the Morse Hamiltonian ###\n\n\n\n\n# 3. Diagonalize Morse Hamiltonian\nenergies_morse, wavefunctions_morse = la.eigh(H_morse)\n\n# --- PLOTTING COMPARISON (DO NOT MODIFY) ---\nplt.figure(figsize=(10, 6))\nplt.plot(x, V_qho, 'r--', label='Harmonic $V(x)$', alpha=0.7)\nplt.plot(x, V_morse, 'b-', label='Morse $V(x)$', linewidth=2.5)\n\n# Overlay Morse wavefunctions\nfor n in range(5):\n    E = energies_morse[n]\n    psi = wavefunctions_morse[:, n]\n    plt.plot(x, (psi * 8) + E, label=f'Morse $n={n+1}$')\n    plt.axhline(E, color='gray', linestyle=':', alpha=0.5)\n\nplt.ylim(0, 12)\nplt.xlim(-3, 4)\nplt.xlabel(\"Displacement from Equilibrium, $x$\")\nplt.ylabel(\"Energy (a.u.)\")\nplt.title(\"Harmonic vs. Morse Potential Well\")\nplt.legend(loc='upper right')\nplt.show()",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-4-morse-energy-spacing-vs.-quantum-number",
+    "href": "notebooks/week_2_problem_2_harmonic_oscillator.html#part-4-morse-energy-spacing-vs.-quantum-number",
+    "title": "4  Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials",
+    "section": "4.4 Part 4: Morse Energy Spacing vs. Quantum Number",
+    "text": "4.4 Part 4: Morse Energy Spacing vs. Quantum Number\nNow let’s compute the energy differences \\(\\Delta E_n\\) for the Morse potential and contrast them directly with the Harmonic Oscillator.\n\n\nCode\n# Calculate delta_E for Morse potential\ndelta_E_morse = [energies_morse[i+1] - energies_morse[i] for i in range(7)]\ndelta_E_harmonic = [energies_qho[i+1] - energies_qho[i] for i in range(7)]\n\nstate_indices = np.arange(1, 8)\n\nplt.figure(figsize=(8, 5))\nplt.plot(state_indices, delta_E_harmonic, 'ro--', label='Harmonic Spacing ($\\Delta E$)')\nplt.plot(state_indices, delta_E_morse, 'bs-', label='Morse Spacing ($\\Delta E$)')\n\nplt.xlabel(\"Transition ($n \\to n+1$)\")\nplt.ylabel(\"Energy Gap, $\\Delta E$ (a.u.)\")\nplt.title(\"Vibrational Energy Spacing: Harmonic vs. Anharmonic\")\nplt.legend()\nplt.grid(True, linestyle='--', alpha=0.5)\nplt.show()\n\n\n\n4.4.1 Conceptual Questions: QHO vs. Morse\nQuestion 2: Look at the plot of \\(\\Delta E\\) versus transition level generated in Part 4. 1. Describe what happens to the energy spacing between adjacent states in the Morse potential as \\(n\\) increases. 2. Why is the Harmonic Oscillator a suitable approximation for low vibrational states (e.g., \\(n=1 \\to n=2\\)), but a terrible approximation for higher vibrational energy levels?\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]\nQuestion 3: What physical phenomenon does the flattening out of the Morse energy levels represent as \\(E \\to D_e\\)? (Hint: Think about what happens to a chemical bond when a molecule absorbs too much thermal or light energy).\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]",
+    "crumbs": [
+      "Module 1: Foundations & 1D Quantum",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/appendix_crash_course.html",
     "href": "notebooks/appendix_crash_course.html",
-    "title": "4  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
+    "title": "5  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
     "section": "",
-    "text": "5 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
+    "text": "6 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html",
     "href": "notebooks/appendix_linear_algebra.html",
-    "title": "5  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "title": "6  Appendix: A Chemist’s Crash Course in Linear Algebra",
     "section": "",
-    "text": "6 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
+    "text": "7 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html#vectors-the-states",
     "href": "notebooks/appendix_linear_algebra.html#vectors-the-states",
-    "title": "5  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "6.1 1. Vectors (The States)",
-    "text": "6.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n6.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n6.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
+    "title": "6  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "7.1 1. Vectors (The States)",
+    "text": "7.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n7.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n7.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html#matrices-the-operators",
     "href": "notebooks/appendix_linear_algebra.html#matrices-the-operators",
-    "title": "5  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "6.2 2. Matrices (The Operators)",
-    "text": "6.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n6.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n6.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
+    "title": "6  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "7.2 2. Matrices (The Operators)",
+    "text": "7.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n7.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n7.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   }
 ]

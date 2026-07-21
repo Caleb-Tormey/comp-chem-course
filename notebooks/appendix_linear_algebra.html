@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Appendix: A Chemist’s Crash Course in Linear Algebra – Introduction to Computational Chemistry</title>
+<title>6&nbsp; Appendix: A Chemist’s Crash Course in Linear Algebra – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3f70bac5631458d474a321d4182f9338.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-82cb5808e81da3454e8042d903791e03.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -207,8 +207,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_finite_well.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/week_2_problem_1_finite_well.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</span></span></a>
   </div>
 </li>
       </ul>
@@ -225,13 +231,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,17 +258,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#appendix-a-chemists-crash-course-in-linear-algebra" id="toc-appendix-a-chemists-crash-course-in-linear-algebra" class="nav-link active" data-scroll-target="#appendix-a-chemists-crash-course-in-linear-algebra"><span class="header-section-number">6</span> Appendix: A Chemist’s Crash Course in Linear Algebra</a>
+  <li><a href="#appendix-a-chemists-crash-course-in-linear-algebra" id="toc-appendix-a-chemists-crash-course-in-linear-algebra" class="nav-link active" data-scroll-target="#appendix-a-chemists-crash-course-in-linear-algebra"><span class="header-section-number">7</span> Appendix: A Chemist’s Crash Course in Linear Algebra</a>
   <ul class="collapse">
-  <li><a href="#vectors-the-states" id="toc-vectors-the-states" class="nav-link" data-scroll-target="#vectors-the-states"><span class="header-section-number">6.1</span> 1. Vectors (The States)</a>
+  <li><a href="#vectors-the-states" id="toc-vectors-the-states" class="nav-link" data-scroll-target="#vectors-the-states"><span class="header-section-number">7.1</span> 1. Vectors (The States)</a>
   <ul class="collapse">
-  <li><a href="#the-vector-norm-length" id="toc-the-vector-norm-length" class="nav-link" data-scroll-target="#the-vector-norm-length"><span class="header-section-number">6.1.1</span> The Vector Norm (Length)</a></li>
-  <li><a href="#the-inner-product-the-overlap" id="toc-the-inner-product-the-overlap" class="nav-link" data-scroll-target="#the-inner-product-the-overlap"><span class="header-section-number">6.1.2</span> The Inner Product (The Overlap)</a></li>
+  <li><a href="#the-vector-norm-length" id="toc-the-vector-norm-length" class="nav-link" data-scroll-target="#the-vector-norm-length"><span class="header-section-number">7.1.1</span> The Vector Norm (Length)</a></li>
+  <li><a href="#the-inner-product-the-overlap" id="toc-the-inner-product-the-overlap" class="nav-link" data-scroll-target="#the-inner-product-the-overlap"><span class="header-section-number">7.1.2</span> The Inner Product (The Overlap)</a></li>
   </ul></li>
-  <li><a href="#matrices-the-operators" id="toc-matrices-the-operators" class="nav-link" data-scroll-target="#matrices-the-operators"><span class="header-section-number">6.2</span> 2. Matrices (The Operators)</a>
+  <li><a href="#matrices-the-operators" id="toc-matrices-the-operators" class="nav-link" data-scroll-target="#matrices-the-operators"><span class="header-section-number">7.2</span> 2. Matrices (The Operators)</a>
   <ul class="collapse">
-  <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"><span class="header-section-number">6.2.1</span> Matrix-Vector Multiplication</a></li>
-  <li><a href="#the-determinant" id="toc-the-determinant" class="nav-link" data-scroll-target="#the-determinant"><span class="header-section-number">6.2.2</span> The Determinant</a></li>
+  <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"><span class="header-section-number">7.2.1</span> Matrix-Vector Multiplication</a></li>
+  <li><a href="#the-determinant" id="toc-the-determinant" class="nav-link" data-scroll-target="#the-determinant"><span class="header-section-number">7.2.2</span> The Determinant</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -271,9 +277,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -290,23 +296,23 @@ window.Quarto = {
 </header>
 
 
-<section id="appendix-a-chemists-crash-course-in-linear-algebra" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Appendix: A Chemist’s Crash Course in Linear Algebra</h1>
+<section id="appendix-a-chemists-crash-course-in-linear-algebra" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Appendix: A Chemist’s Crash Course in Linear Algebra</h1>
 <p>If you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: <strong>Linear Algebra</strong>.</p>
 <p>This appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.</p>
 <hr>
-<section id="vectors-the-states" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="vectors-the-states"><span class="header-section-number">6.1</span> 1. Vectors (The States)</h2>
+<section id="vectors-the-states" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="vectors-the-states"><span class="header-section-number">7.1</span> 1. Vectors (The States)</h2>
 <p>In computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.</p>
-<section id="the-vector-norm-length" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="the-vector-norm-length"><span class="header-section-number">6.1.1</span> The Vector Norm (Length)</h3>
+<section id="the-vector-norm-length" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="the-vector-norm-length"><span class="header-section-number">7.1.1</span> The Vector Norm (Length)</h3>
 <p>The <strong>norm</strong> (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.</p>
 <p><strong>The Math:</strong> <span class="math display">\[||\vec{v}|| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}\]</span></p>
 <p><strong>The Example:</strong> If <span class="math inline">\(\vec{v} = \begin{bmatrix} 3 \\ -4 \end{bmatrix}\)</span>: <span class="math display">\[||\vec{v}|| = \sqrt{(3)^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\]</span></p>
 <p><strong>The Physical Meaning:</strong> In quantum mechanics, the total probability of finding a particle <em>somewhere</em> in the universe must be exactly 100% (or 1.0). When we <strong>normalize</strong> a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.</p>
 </section>
-<section id="the-inner-product-the-overlap" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="the-inner-product-the-overlap"><span class="header-section-number">6.1.2</span> The Inner Product (The Overlap)</h3>
+<section id="the-inner-product-the-overlap" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="the-inner-product-the-overlap"><span class="header-section-number">7.1.2</span> The Inner Product (The Overlap)</h3>
 <p>The <strong>inner product</strong> (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.</p>
 <p><strong>The Math:</strong> <span class="math display">\[\vec{u} \cdot \vec{v} = u_1 v_1 + u_2 v_2 + \dots + u_n v_n\]</span></p>
 <p><strong>The Example:</strong> If <span class="math inline">\(\vec{u} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\)</span> and <span class="math inline">\(\vec{v} = \begin{bmatrix} 3 \\ -2 \end{bmatrix}\)</span>: <span class="math display">\[\vec{u} \cdot \vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\]</span></p>
@@ -314,18 +320,18 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="matrices-the-operators" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="matrices-the-operators"><span class="header-section-number">6.2</span> 2. Matrices (The Operators)</h2>
+<section id="matrices-the-operators" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="matrices-the-operators"><span class="header-section-number">7.2</span> 2. Matrices (The Operators)</h2>
 <p>If vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (<span class="math inline">\(\mathbf{H}\)</span>) is just a giant matrix that operates on our wavefunction.</p>
-<section id="matrix-vector-multiplication" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">6.2.1</span> Matrix-Vector Multiplication</h3>
+<section id="matrix-vector-multiplication" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">7.2.1</span> Matrix-Vector Multiplication</h3>
 <p>To multiply a matrix by a vector, you take the dot product of each <em>row</em> of the matrix with the <em>column</em> of the vector.</p>
 <p><strong>The Math:</strong> <span class="math display">\[\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} ax + by \\ cx + dy \end{bmatrix}\]</span></p>
 <p><strong>The Example:</strong> Let’s see what happens when an operator acts on a state vector: <span class="math display">\[\begin{bmatrix} 2 &amp; 1 \\ 0 &amp; 3 \end{bmatrix} \begin{bmatrix} 4 \\ 2 \end{bmatrix} = \begin{bmatrix} (2)(4) + (1)(2) \\ (0)(4) + (3)(2) \end{bmatrix} = \begin{bmatrix} 8 + 2 \\ 0 + 6 \end{bmatrix} = \begin{bmatrix} 10 \\ 6 \end{bmatrix}\]</span></p>
 <p><strong>The Physical Meaning:</strong> The matrix grabbed the original state <span class="math inline">\(\begin{bmatrix} 4 \\ 2 \end{bmatrix}\)</span> and transformed it into an entirely new state <span class="math inline">\(\begin{bmatrix} 10 \\ 6 \end{bmatrix}\)</span>. The only time the matrix <em>doesn’t</em> change the fundamental direction of the vector is if that vector happens to be an <strong>eigenvector</strong>!</p>
 </section>
-<section id="the-determinant" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="the-determinant"><span class="header-section-number">6.2.2</span> The Determinant</h3>
+<section id="the-determinant" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="the-determinant"><span class="header-section-number">7.2.2</span> The Determinant</h3>
 <p>The determinant is a single number that summarizes the overall “scaling power” of a square matrix.</p>
 <p><strong>The Math (<span class="math inline">\(2 \times 2\)</span> example):</strong> To find the determinant of a <span class="math inline">\(2 \times 2\)</span> matrix, you cross-multiply the diagonals and subtract them. <span class="math display">\[\text{det}\left(\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}\right) = ad - bc\]</span></p>
 <p><strong>The Example:</strong> <span class="math display">\[\text{det}\left(\begin{bmatrix} 5 &amp; 2 \\ 1 &amp; 3 \end{bmatrix}\right) = (5)(3) - (2)(1) = 15 - 2 = 13\]</span></p>
@@ -818,7 +824,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
