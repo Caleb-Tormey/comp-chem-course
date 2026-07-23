@@ -14,9 +14,12 @@ book:
     - part: "Module 2: Finite Difference Methods for Quantum Mechanics" 
       chapters:
         - notebooks/week_2_1D_Quantum.ipynb
-        - notebooks/week_2_problem_1_finite_well.ipynb
-        - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
-        - notebooks/week_2_problem_3_tunneling.ipynb
+
+        - section: "Module 2 Problem Set"
+          contents:
+            - notebooks/week_2_problem_1_finite_well.ipynb
+            - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
+            - notebooks/week_2_problem_3_tunneling.ipynb
 
     
     - part: "Appendices"
