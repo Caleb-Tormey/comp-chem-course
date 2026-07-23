@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; 📥 Download This Assignment – Introduction to Computational Chemistry</title>
+<title>5&nbsp; Assignment 3: Quantum Tunneling and Scattering – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/week_2_problem_3_tunneling.html" rel="next">
-<link href="../notebooks/week_2_problem_1_finite_well.html" rel="prev">
+<link href="../notebooks/appendix_crash_course.html" rel="next">
+<link href="../notebooks/week_2_problem_2_harmonic_oscillator.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_1D_Quantum.html">Module 2: Finite Difference Methods for Quantum Mechanics</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_2_harmonic_oscillator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_1D_Quantum.html">Module 2: Finite Difference Methods for Quantum Mechanics</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_3_tunneling.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -224,13 +224,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_problem_3_tunneling.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/week_2_problem_3_tunneling.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></span></a>
   </div>
 </li>
@@ -275,23 +275,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" id="toc-assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" class="nav-link active" data-scroll-target="#assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials"><span class="header-section-number">5</span> Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">5.0.1</span> Objectives</a></li>
+  <li><a href="#part-1-scattering-and-the-backwards-integration-trick" id="toc-part-1-scattering-and-the-backwards-integration-trick" class="nav-link" data-scroll-target="#part-1-scattering-and-the-backwards-integration-trick"><span class="header-section-number">5.1</span> Part 1: Scattering and the Backwards Integration Trick</a></li>
+  <li><a href="#part-2-visualizing-the-wave-and-calculating-transmission" id="toc-part-2-visualizing-the-wave-and-calculating-transmission" class="nav-link" data-scroll-target="#part-2-visualizing-the-wave-and-calculating-transmission"><span class="header-section-number">5.2</span> Part 2: Visualizing the Wave and Calculating Transmission</a></li>
+  <li><a href="#part-3-the-parameters-of-tunneling-mass-width-height" id="toc-part-3-the-parameters-of-tunneling-mass-width-height" class="nav-link" data-scroll-target="#part-3-the-parameters-of-tunneling-mass-width-height"><span class="header-section-number">5.3</span> Part 3: The Parameters of Tunneling (Mass, Width, Height)</a>
   <ul class="collapse">
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">5.0.1</span> Objectives</a></li>
-  <li><a href="#part-1-the-quantum-harmonic-oscillator-qho" id="toc-part-1-the-quantum-harmonic-oscillator-qho" class="nav-link" data-scroll-target="#part-1-the-quantum-harmonic-oscillator-qho"><span class="header-section-number">5.1</span> Part 1: The Quantum Harmonic Oscillator (QHO)</a>
-  <ul class="collapse">
-  <li><a href="#your-task" id="toc-your-task" class="nav-link" data-scroll-target="#your-task"><span class="header-section-number">5.1.1</span> Your Task</a></li>
-  </ul></li>
-  <li><a href="#part-2-energy-spacing-analysis" id="toc-part-2-energy-spacing-analysis" class="nav-link" data-scroll-target="#part-2-energy-spacing-analysis"><span class="header-section-number">5.2</span> Part 2: Energy Spacing Analysis</a>
-  <ul class="collapse">
-  <li><a href="#your-task-1" id="toc-your-task-1" class="nav-link" data-scroll-target="#your-task-1"><span class="header-section-number">5.2.1</span> Your Task</a></li>
-  <li><a href="#conceptual-question-1-isotope-effects-and-mass" id="toc-conceptual-question-1-isotope-effects-and-mass" class="nav-link" data-scroll-target="#conceptual-question-1-isotope-effects-and-mass"><span class="header-section-number">5.2.2</span> Conceptual Question 1: Isotope Effects and Mass</a></li>
-  </ul></li>
-  <li><a href="#part-3-the-morse-potential-anharmonicity" id="toc-part-3-the-morse-potential-anharmonicity" class="nav-link" data-scroll-target="#part-3-the-morse-potential-anharmonicity"><span class="header-section-number">5.3</span> Part 3: The Morse Potential (Anharmonicity)</a></li>
-  <li><a href="#part-4-morse-energy-spacing-vs.-quantum-number" id="toc-part-4-morse-energy-spacing-vs.-quantum-number" class="nav-link" data-scroll-target="#part-4-morse-energy-spacing-vs.-quantum-number"><span class="header-section-number">5.4</span> Part 4: Morse Energy Spacing vs.&nbsp;Quantum Number</a>
-  <ul class="collapse">
-  <li><a href="#conceptual-questions-qho-vs.-morse" id="toc-conceptual-questions-qho-vs.-morse" class="nav-link" data-scroll-target="#conceptual-questions-qho-vs.-morse"><span class="header-section-number">5.4.1</span> Conceptual Questions: QHO vs.&nbsp;Morse</a></li>
-  </ul></li>
+  <li><a href="#your-task" id="toc-your-task" class="nav-link" data-scroll-target="#your-task"><span class="header-section-number">5.3.1</span> Your Task</a></li>
+  <li><a href="#conceptual-questions" id="toc-conceptual-questions" class="nav-link" data-scroll-target="#conceptual-questions"><span class="header-section-number">5.3.2</span> Conceptual Questions</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey-comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
@@ -299,9 +289,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_1D_Quantum.html">Module 2: Finite Difference Methods for Quantum Mechanics</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_2_harmonic_oscillator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_1D_Quantum.html">Module 2: Finite Difference Methods for Quantum Mechanics</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_3_tunneling.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -318,203 +308,169 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>To complete this assignment, do not work on this webpage. Instead, download the raw notebook file, open it locally in VS Code or Jupyter, and fill in your code. * <strong><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/week_2_problem_2_harmonic_oscillator.ipynb">Click Here to Download week_2_finite_well.ipynb</a></strong></p>
-</div>
-</div>
-</div>
-<section id="assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</h1>
 <p><strong>Student Name:</strong> [TYPE YOUR NAME HERE]<br>
 <strong>Date:</strong> [TYPE DATE HERE]</p>
 <section id="objectives" class="level3" data-number="5.0.1">
 <h3 data-number="5.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">5.0.1</span> Objectives</h3>
 <ol type="1">
-<li>Implement the <strong>Quantum Harmonic Oscillator (QHO)</strong> using matrix diagonalization.</li>
-<li>Calculate and analyze the energy level spacing (<span class="math inline">\(\Delta E_n\)</span>) to verify equal energy quantization.</li>
-<li>Explore how reduced mass (<span class="math inline">\(\mu\)</span>) and force constant (<span class="math inline">\(k\)</span>) govern vibrational frequencies.</li>
-<li>Implement the <strong>Morse Potential</strong> to model a realistic, breakable chemical bond, observing how anharmonicity alters energy spacing at higher quantum numbers.</li>
+<li>Use the iterative “step” method (finite difference) to simulate a free particle hitting a potential energy barrier.</li>
+<li>Understand plane waves, reflection, and transmission in quantum scattering.</li>
+<li>Calculate the Transmission Coefficient (<span class="math inline">\(T\)</span>).</li>
+<li>Analyze how barrier width, barrier height, and particle mass exponentially alter the probability of tunneling.</li>
 </ol>
-<hr>
-<div id="a4766b70" class="cell">
+<div id="6cc139a6" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- RUN THIS CELL FIRST ---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot formatting</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">11</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.linewidth'</span>: <span class="fl">1.2</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="fl">2.0</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment ready!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">11</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.linewidth'</span>: <span class="fl">1.2</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="fl">2.0</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment ready!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="part-1-the-quantum-harmonic-oscillator-qho" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="part-1-the-quantum-harmonic-oscillator-qho"><span class="header-section-number">5.1</span> Part 1: The Quantum Harmonic Oscillator (QHO)</h2>
-<p>For small displacements near equilibrium, a covalent bond acts like a quantum spring with potential energy: <span class="math display">\[V(x) = \frac{1}{2} k x^2\]</span></p>
-<p>where <span class="math inline">\(x = 0\)</span> represents the equilibrium bond length (<span class="math inline">\(r = r_e\)</span>).</p>
-<section id="your-task" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="your-task"><span class="header-section-number">5.1.1</span> Your Task</h3>
-<ol type="1">
-<li>Set up a grid from <span class="math inline">\(x = -4.0\)</span> to <span class="math inline">\(x = 4.0\)</span> atomic units.</li>
-<li>Define <span class="math inline">\(V(x) = \frac{1}{2} k x^2\)</span> with force constant <span class="math inline">\(k = 1.0\)</span> and mass <span class="math inline">\(m = 1.0\)</span>.</li>
-<li>Complete the matrix solver (reusing your kinetic energy scaling <span class="math inline">\(t = \frac{\hbar^2}{2 m \Delta x^2}\)</span>).</li>
-</ol>
-<div id="e068850c" class="cell">
+<section id="part-1-scattering-and-the-backwards-integration-trick" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="part-1-scattering-and-the-backwards-integration-trick"><span class="header-section-number">5.1</span> Part 1: Scattering and the Backwards Integration Trick</h2>
+<p>When a particle is free (not trapped in a well), it travels as a complex plane wave: <span class="math inline">\(\psi(x) = A e^{ikx}\)</span>, where <span class="math inline">\(k = \sqrt{2mE}/\hbar\)</span> is the wave vector.</p>
+<p>When a plane wave hits a barrier from the left, it splits: 1. <strong>Incident Wave:</strong> Travels right, towards the barrier. 2. <strong>Reflected Wave:</strong> Bounces left, off the barrier. 3. <strong>Transmitted Wave:</strong> Tunnels through and travels right.</p>
+<p><strong>The Computational Hack:</strong> If we integrate from left to right, we have to guess the exact ratio of incident and reflected waves. Instead, we will start on the <strong>right side</strong> of the barrier, assuming a perfect transmitted wave <span class="math inline">\(\psi(x) = e^{ikx}\)</span> has already made it through. Then, we use our finite difference loop to integrate <em>backwards</em> (right-to-left) through the barrier to find out what incident wave on the left was required to create it!</p>
+<p>From the Schrödinger equation, our iterative step is: <span class="math display">\[ \psi_{j-1} = 2\psi_j - \psi_{j+1} - \frac{2m (\Delta x)^2}{\hbar^2} (E - V_j) \psi_j \]</span> <em>(Note: Because wavefunctions use complex numbers, we must tell numpy our array is <code>dtype=complex</code>)</em></p>
+<div id="90568fa8" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Parameters</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>L_grid <span class="op">=</span> <span class="fl">8.0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>N_points <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span>L_grid<span class="op">/</span><span class="dv">2</span>, L_grid<span class="op">/</span><span class="dv">2</span>, N_points)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Physical Parameters (Atomic Units: hbar = 1)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Potential Array</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Define the harmonic potential array V_qho </span><span class="al">###</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># V_qho = ...</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Hamiltonian Construction</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> (<span class="fl">2.0</span> <span class="op">*</span> m <span class="op">*</span> dx<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros((N_points, N_points))</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Fill main diagonal (2*t + V_qho) and off-diagonals (-t) </span><span class="al">###</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Parameters (from x = -5 to x = 5)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, N)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Physical Parameters (Atomic Units: hbar = 1)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fl">1.0</span>     <span class="co"># Mass of particle</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="fl">2.0</span>     <span class="co"># Energy of incoming particle</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>V0 <span class="op">=</span> <span class="fl">5.0</span>    <span class="co"># Barrier height (Notice E &lt; V0, classically forbidden!)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>barrier_width <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build the Rectangular Barrier</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.zeros(N)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(x[i]) <span class="op">&lt;=</span> barrier_width <span class="op">/</span> <span class="fl">2.0</span>:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        V[i] <span class="op">=</span> V0</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Initialize the Complex Wavefunction Array</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>psi <span class="op">=</span> np.zeros(N, dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Wave vector outside the barrier (where V=0)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> m <span class="op">*</span> E) </span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Solve for Eigenvalues and Eigenvectors</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>energies_qho, wavefunctions_qho <span class="op">=</span> la.eigh(H)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Set Initial Conditions on the RIGHT side of the grid (Transmitted Wave)</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>psi[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>psi[<span class="op">-</span><span class="dv">2</span>] <span class="op">=</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="op">-</span><span class="dv">2</span>])</span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"QHO calculation complete!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Integrate BACKWARDS (from right to left)</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Write a loop to calculate psi[j-1] </span><span class="al">###</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Loop j backwards from N-2 down to 1.</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># for j in range(N-2, 0, -1):</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     psi[j-1] = ...</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Backwards integration complete!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-</section>
-<section id="part-2-energy-spacing-analysis" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="part-2-energy-spacing-analysis"><span class="header-section-number">5.2</span> Part 2: Energy Spacing Analysis</h2>
-<p>Analytical quantum mechanics predicts that the QHO energy levels are given by <span class="math inline">\(E_n = \hbar \omega \left(n + \frac{1}{2}\right)\)</span>, meaning the gap between adjacent energy levels (<span class="math inline">\(\Delta E_n = E_{n+1} - E_n\)</span>) is strictly constant.</p>
-<section id="your-task-1" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="your-task-1"><span class="header-section-number">5.2.1</span> Your Task</h3>
-<p>Calculate the energy differences between adjacent states for the first 8 states and verify if <span class="math inline">\(\Delta E\)</span> remains constant.</p>
-<div id="3a80ab87" class="cell">
+<section id="part-2-visualizing-the-wave-and-calculating-transmission" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="part-2-visualizing-the-wave-and-calculating-transmission"><span class="header-section-number">5.2</span> Part 2: Visualizing the Wave and Calculating Transmission</h2>
+<p>Because we started with an amplitude of 1 on the right side (<span class="math inline">\(|A_{\text{trans}}|^2 = 1\)</span>), the amplitude on the far left side of our grid now represents a mixture of the Incident and Reflected waves.</p>
+<p>To find the <strong>Transmission Coefficient (<span class="math inline">\(T\)</span>)</strong>, we calculate the ratio of the transmitted probability density to the incident probability density.</p>
+<p>Let’s visualize the real part of the wavefunction to see the amplitude decay as it crosses the barrier.</p>
+<div id="c5996d74" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate energy gaps for the first 8 states</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>num_states <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>delta_E_qho <span class="op">=</span> []</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To find the incident amplitude, we extract it from the far left of the grid</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (Using a standard computational extraction for the incident component A)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>A_inc <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> (psi[<span class="dv">0</span>] <span class="op">+</span> (<span class="ot">1j</span> <span class="op">/</span> k) <span class="op">*</span> (psi[<span class="dv">1</span>] <span class="op">-</span> psi[<span class="dv">0</span>]) <span class="op">/</span> dx) <span class="op">*</span> np.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="dv">0</span>])</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Calculate E[n+1] - E[n] for n from 0 to num_states-2 </span><span class="al">###</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use a loop over range(num_states - 1)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Transmission probability T = |A_trans|^2 / |A_inc|^2</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we forced A_trans = 1, T is simply 1 / |A_inc|^2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> np.<span class="bu">abs</span>(A_inc)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Transmission Coefficient (T): </span><span class="sc">{</span>T<span class="sc">:.3e}</span><span class="ss"> (or </span><span class="sc">{</span>T <span class="op">*</span> <span class="dv">100</span><span class="sc">:.4f}</span><span class="ss">%)"</span>)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(delta_E_qho)):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ΔE from state </span><span class="sc">{</span>n<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>n<span class="op">+</span><span class="dv">2</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>delta_E_qho[n]<span class="sc">:.5f}</span><span class="ss"> atomic units"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># --- PLOTTING ---</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the potential down slightly just for visual comparison with the wave</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x, V <span class="op">/</span> V0, <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">'Barrier (Scaled)'</span>) </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, np.real(psi), <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Re($</span><span class="er">\</span><span class="st">psi$)'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Tunneling Wavefunction (Energy = </span><span class="sc">{</span>E<span class="sc">}</span><span class="ss">, Barrier = </span><span class="sc">{</span>V0<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Position"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="conceptual-question-1-isotope-effects-and-mass" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="conceptual-question-1-isotope-effects-and-mass"><span class="header-section-number">5.2.2</span> Conceptual Question 1: Isotope Effects and Mass</h3>
-<p><strong>Question:</strong> In Infrared (IR) spectroscopy, substituting an atom with a heavier isotope (e.g., replacing Hydrogen with Deuterium, <span class="math inline">\(H \to D\)</span>) shifts the vibrational absorption frequency. Based on the classical frequency <span class="math inline">\(\omega = \sqrt{\frac{k}{\mu}}\)</span>, if you <strong>double the mass</strong> (<span class="math inline">\(m = 2.0\)</span>) while keeping <span class="math inline">\(k = 1.0\)</span>, what do you expect to happen to: 1. The energy spacing <span class="math inline">\(\Delta E\)</span>? 2. The zero-point energy (ground state energy, <span class="math inline">\(E_0\)</span>)?</p>
-<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
-</section>
-</section>
-<section id="part-3-the-morse-potential-anharmonicity" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="part-3-the-morse-potential-anharmonicity"><span class="header-section-number">5.3</span> Part 3: The Morse Potential (Anharmonicity)</h2>
-<p>While the harmonic oscillator is a great approximation near equilibrium, real molecules can <strong>dissociate</strong> if given enough energy. A harmonic bond would require infinite energy to break!</p>
-<p>To accurately model real bonds, we use the <strong>Morse Potential</strong>: <span class="math display">\[V_{\text{Morse}}(x) = D_e \left( 1 - e^{-a x} \right)^2\]</span></p>
-<p>where: * <span class="math inline">\(D_e\)</span> is the bond dissociation energy. * <span class="math inline">\(a = \sqrt{\frac{k}{2 D_e}}\)</span> controls the width of the potential well. * <span class="math inline">\(x\)</span> is the displacement from equilibrium.</p>
-<p>Notice that for small <span class="math inline">\(x\)</span>, <span class="math inline">\(V_{\text{Morse}}(x) \approx \frac{1}{2} k x^2\)</span>, but for large positive <span class="math inline">\(x\)</span>, <span class="math inline">\(V_{\text{Morse}}(x) \to D_e\)</span> (the bond breaks!).</p>
-<div id="d16f9a8c" class="cell">
+<section id="part-3-the-parameters-of-tunneling-mass-width-height" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="part-3-the-parameters-of-tunneling-mass-width-height"><span class="header-section-number">5.3</span> Part 3: The Parameters of Tunneling (Mass, Width, Height)</h2>
+<p>Tunneling is highly sensitive to the physical parameters of the system. Let’s wrap our solver into a Python function so we can rapidly test different chemical scenarios.</p>
+<section id="your-task" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="your-task"><span class="header-section-number">5.3.1</span> Your Task</h3>
+<p>Run the cell below to define the <code>calculate_transmission</code> function. Then, use the following code cells to see how <span class="math inline">\(T\)</span> changes when you alter: 1. The <strong>Width</strong> of the barrier. 2. The <strong>Height</strong> of the barrier (<span class="math inline">\(V_0\)</span>). 3. The <strong>Mass</strong> of the particle (e.g., Hydrogen vs.&nbsp;Deuterium).</p>
+<div id="bb0476d2" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for Morse Potential</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>De <span class="op">=</span> <span class="fl">10.0</span>   <span class="co"># Dissociation energy</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.sqrt(k <span class="op">/</span> (<span class="fl">2.0</span> <span class="op">*</span> De))  <span class="co"># Matched to QHO force constant k=1.0</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build Morse Potential Array</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Build V_morse using np.exp() </span><span class="al">###</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># V_morse = ...</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Build Hamiltonian for Morse</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>H_morse <span class="op">=</span> np.zeros((N_points, N_points))</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Construct the Morse Hamiltonian </span><span class="al">###</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Diagonalize Morse Hamiltonian</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>energies_morse, wavefunctions_morse <span class="op">=</span> la.eigh(H_morse)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># --- PLOTTING COMPARISON (DO NOT MODIFY) ---</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>plt.plot(x, V_qho, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Harmonic $V(x)$'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x, V_morse, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Morse $V(x)$'</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay Morse wavefunctions</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    E <span class="op">=</span> energies_morse[n]</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    psi <span class="op">=</span> wavefunctions_morse[:, n]</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, (psi <span class="op">*</span> <span class="dv">8</span>) <span class="op">+</span> E, label<span class="op">=</span><span class="ss">f'Morse $n=</span><span class="sc">{</span>n<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">$'</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    plt.axhline(E, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">12</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Displacement from Equilibrium, $x$"</span>)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Energy (a.u.)"</span>)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Harmonic vs. Morse Potential Well"</span>)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- DO NOT MODIFY THIS CELL ---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_transmission(m, E, V0, width):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculates transmission probability T for given parameters."""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> m <span class="op">*</span> E)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span> np.zeros(N)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(x[i]) <span class="op">&lt;=</span> width <span class="op">/</span> <span class="fl">2.0</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            V[i] <span class="op">=</span> V0</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    psi_temp <span class="op">=</span> np.zeros(N, dtype<span class="op">=</span><span class="bu">complex</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    psi_temp[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    psi_temp[<span class="op">-</span><span class="dv">2</span>] <span class="op">=</span> np.exp(<span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="op">-</span><span class="dv">2</span>])</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(N<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        psi_temp[j<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>psi_temp[j] <span class="op">-</span> psi_temp[j<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> (<span class="dv">2</span><span class="op">*</span>m<span class="op">*</span>dx<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>(E <span class="op">-</span> V[j])<span class="op">*</span>psi_temp[j]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    A_inc <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> (psi_temp[<span class="dv">0</span>] <span class="op">+</span> (<span class="ot">1j</span> <span class="op">/</span> k) <span class="op">*</span> (psi_temp[<span class="dv">1</span>] <span class="op">-</span> psi_temp[<span class="dv">0</span>]) <span class="op">/</span> dx) <span class="op">*</span> np.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> k <span class="op">*</span> x[<span class="dv">0</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> np.<span class="bu">abs</span>(A_inc)<span class="op">**</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section>
-<section id="part-4-morse-energy-spacing-vs.-quantum-number" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="part-4-morse-energy-spacing-vs.-quantum-number"><span class="header-section-number">5.4</span> Part 4: Morse Energy Spacing vs.&nbsp;Quantum Number</h2>
-<p>Now let’s compute the energy differences <span class="math inline">\(\Delta E_n\)</span> for the Morse potential and contrast them directly with the Harmonic Oscillator.</p>
-<div id="c89b5302" class="cell">
+<div id="44f7a36d" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate delta_E for Morse potential</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>delta_E_morse <span class="op">=</span> [energies_morse[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> energies_morse[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>delta_E_harmonic <span class="op">=</span> [energies_qho[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> energies_qho[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>state_indices <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">8</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Experiment with the function </span><span class="al">###</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Baseline: m=1.0, E=2.0, V0=5.0, width=1.0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>T_baseline <span class="op">=</span> calculate_transmission(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">5.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Baseline T:  </span><span class="sc">{</span>T_baseline<span class="sc">:.3e}</span><span class="ss">"</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(state_indices, delta_E_harmonic, <span class="st">'ro--'</span>, label<span class="op">=</span><span class="st">'Harmonic Spacing ($</span><span class="er">\</span><span class="st">Delta E$)'</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.plot(state_indices, delta_E_morse, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'Morse Spacing ($</span><span class="er">\</span><span class="st">Delta E$)'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Double the Width (width = 2.0)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># T_wide = calculate_transmission(...)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Wider Barrier T: {T_wide:.3e}")</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Transition ($n </span><span class="ch">\t</span><span class="st">o n+1$)"</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Energy Gap, $</span><span class="er">\</span><span class="st">Delta E$ (a.u.)"</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Vibrational Energy Spacing: Harmonic vs. Anharmonic"</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Double the Barrier Height (V0 = 10.0)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># T_tall = calculate_transmission(...)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Taller Barrier T: {T_tall:.3e}")</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Double the Mass (Isotope effect: H -&gt; D) (m = 2.0)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># T_heavy = calculate_transmission(...)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Heavier Mass T:  {T_heavy:.3e}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="conceptual-questions-qho-vs.-morse" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="conceptual-questions-qho-vs.-morse"><span class="header-section-number">5.4.1</span> Conceptual Questions: QHO vs.&nbsp;Morse</h3>
-<p><strong>Question 2:</strong> Look at the plot of <span class="math inline">\(\Delta E\)</span> versus transition level generated in Part 4. 1. Describe what happens to the energy spacing between adjacent states in the Morse potential as <span class="math inline">\(n\)</span> increases. 2. Why is the Harmonic Oscillator a suitable approximation for low vibrational states (e.g., <span class="math inline">\(n=1 \to n=2\)</span>), but a terrible approximation for higher vibrational energy levels?</p>
+</section>
+<section id="conceptual-questions" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="conceptual-questions"><span class="header-section-number">5.3.2</span> Conceptual Questions</h3>
+<p><strong>Question 1:</strong> Based on your calculations in Part 3, does tunneling probability decay <em>linearly</em> or <em>exponentially</em> as barrier width increases? Explain how the shape of the wavefunction inside the barrier supports your answer.</p>
 <p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
-<p><strong>Question 3:</strong> What physical phenomenon does the flattening out of the Morse energy levels represent as <span class="math inline">\(E \to D_e\)</span>? (Hint: Think about what happens to a chemical bond when a molecule absorbs too much thermal or light energy).</p>
+<p><strong>Question 2:</strong> <strong>The Kinetic Isotope Effect.</strong> In organic chemistry, enzymes sometimes rely on quantum tunneling to move a Hydrogen atom (a proton, <span class="math inline">\(m \approx 1\)</span>) across a barrier to catalyze a reaction. If a chemist mutates the substrate by replacing that Hydrogen with Deuterium (<span class="math inline">\(m \approx 2\)</span>), the reaction rate slows down massively. Based on your “Heavier Mass” calculation, explain why the enzyme can easily move Hydrogen but struggles to move Deuterium.</p>
 <p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
 
 
@@ -532,7 +488,6 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 </section>
 
@@ -1001,13 +956,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/week_2_problem_1_finite_well.html" class="pagination-link" aria-label="📥 Download This Assignment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span>
+      <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="pagination-link" aria-label="📥 Download This Assignment">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/week_2_problem_3_tunneling.html" class="pagination-link" aria-label="Assignment 3: Quantum Tunneling and Scattering">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
