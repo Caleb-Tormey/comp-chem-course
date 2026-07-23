@@ -252,47 +252,113 @@
     ]
   },
   {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html",
+    "href": "notebooks/week_2_problem_4_ammonia.html",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "",
+    "text": "6.0.1 The Challenge\nStudent Name: [TYPE YOUR NAME HERE]\nDate: [TYPE DATE HERE]\nIn this capstone assignment, you are provided no template code. You must draw upon the numerical techniques, grid definitions, and matrix solvers you built in Problems 1–3 to model a real chemical phenomenon: the umbrella inversion of the ammonia molecule (\\(\\text{NH}_3\\)).\nInstructions: 1. Build your Python code from scratch in the provided code cells. 2. Document your code cleanly with comments explaining your physical logic. 3. Answer the conceptual questions in complete sentences.",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html#the-physical-system-the-double-well-potential",
+    "href": "notebooks/week_2_problem_4_ammonia.html#the-physical-system-the-double-well-potential",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "6.1 The Physical System: The Double-Well Potential",
+    "text": "6.1 The Physical System: The Double-Well Potential\nThe Nitrogen atom in ammonia experiences a symmetric double-well potential as it flips back and forth through the plane of Hydrogen atoms. We can model this coordinate \\(x\\) using a Quartic Double-Well Potential:\n\\[V(x) = A (x^2 - x_0^2)^2\\]\n\n\\(x = \\pm x_0\\) represent the two stable equilibrium geometries (Nitrogen “up” vs. Nitrogen “down”).\n\\(x = 0\\) is the planar transition state with a barrier height of \\(V_{\\text{max}} = A x_0^4\\).\n\n\n6.1.1 Physical Parameters (Atomic Units: \\(\\hbar = m = 1\\))\nUse the following parameters for your simulation: * Grid span: \\(x \\in [-4.0, 4.0]\\) with \\(N = 400\\) grid points. * Well minima location: \\(x_0 = 1.5\\) * Potential prefactor: \\(A = 1.0\\) (This yields a barrier height \\(V_{\\text{max}} \\approx 5.06\\) at \\(x=0\\)).",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html#task-1-matrix-construction-and-bound-state-analysis",
+    "href": "notebooks/week_2_problem_4_ammonia.html#task-1-matrix-construction-and-bound-state-analysis",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "6.2 Task 1: Matrix Construction and Bound State Analysis",
+    "text": "6.2 Task 1: Matrix Construction and Bound State Analysis\nYour Goal: 1. Define the grid \\(x\\), step size \\(dx\\), and potential energy array \\(V(x)\\). 2. Construct the \\(N \\times N\\) Hamiltonian matrix using finite differences. 3. Diagonalize the matrix to extract the eigenvalues (energies) and eigenvectors (wavefunctions). 4. Plot the potential \\(V(x)\\) along with the first 4 energy levels (\\(n=1, 2, 3, 4\\)) overlaid on their respective wavefunctions.\n\n\nCode\n# --- WRITE YOUR CODE FROM SCRATCH HERE ---\n# Import required libraries (numpy, scipy.linalg, matplotlib.pyplot)",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html#task-2-calculating-tunneling-splitting-and-inversion-frequency",
+    "href": "notebooks/week_2_problem_4_ammonia.html#task-2-calculating-tunneling-splitting-and-inversion-frequency",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "6.3 Task 2: Calculating Tunneling Splitting and Inversion Frequency",
+    "text": "6.3 Task 2: Calculating Tunneling Splitting and Inversion Frequency\nBecause the central barrier is finite, the ground state level splits into a pair of nearly degenerate states: * \\(E_1\\): Symmetric ground state (even parity) * \\(E_2\\): Antisymmetric first excited state (odd parity)\nThe energy gap \\(\\Delta E = E_2 - E_1\\) dictates the quantum tunneling frequency: \\[\\nu = \\frac{\\Delta E}{h} = \\frac{\\Delta E}{2\\pi \\hbar}\\]\nIn atomic units (\\(\\hbar = 1\\)), the tunneling frequency is simply \\(\\nu = \\frac{\\Delta E}{2\\pi}\\).\nYour Goal: 1. Extract \\(E_1\\) and \\(E_2\\) from your calculated eigenvalues and compute \\(\\Delta E\\). 2. Calculate the corresponding tunneling frequency \\(\\nu\\) in atomic units. 3. Print these values clearly formatted.\n\n\nCode\n# --- WRITE YOUR CODE FROM SCRATCH HERE ---",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html#task-3-the-classical-vs.-quantum-comparison",
+    "href": "notebooks/week_2_problem_4_ammonia.html#task-3-the-classical-vs.-quantum-comparison",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "6.4 Task 3: The Classical vs. Quantum Comparison",
+    "text": "6.4 Task 3: The Classical vs. Quantum Comparison\nClassically, a particle trapped in one of the wells cannot cross to the other side unless it receives enough thermal energy to jump over the barrier.\nAccording to Arrhenius/Transition State Theory, the thermal rate constant \\(k_{\\text{thermal}}\\) to jump over a barrier of height \\(V_{\\text{max}}\\) at temperature \\(T\\) is proportional to the Boltzmann factor: \\[k_{\\text{thermal}} \\approx \\nu_0 e^{-V_{\\text{max}} / (k_B T)}\\]\nWhere \\(\\nu_0\\) is the vibrational frequency inside a single well (\\(\\approx 0.5\\) a.u.), \\(k_B = 3.166 \\times 10^{-6} \\text{ Hartree/K}\\), and \\(T = 300 \\text{ K}\\).\nYour Goal: Write a short script to calculate and compare: 1. The classical thermal jumping rate (\\(k_{\\text{thermal}}\\)) at \\(T = 300\\text{ K}\\). 2. The quantum tunneling frequency (\\(\\nu\\)) you calculated in Task 2.\n\n\nCode\n# --- WRITE YOUR CODE FROM SCRATCH HERE ---",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_problem_4_ammonia.html#conceptual-synthesis-questions",
+    "href": "notebooks/week_2_problem_4_ammonia.html#conceptual-synthesis-questions",
+    "title": "6  Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates",
+    "section": "6.5 Conceptual Synthesis Questions",
+    "text": "6.5 Conceptual Synthesis Questions\nQuestion 1 (Wavefunction Symmetry): Look closely at the plots of your first two wavefunctions (\\(\\psi_1\\) and \\(\\psi_2\\)). * What is the symmetry (parity) of \\(\\psi_1\\) versus \\(\\psi_2\\) with respect to the central barrier at \\(x=0\\)? * If a Nitrogen atom is initially localized entirely in the left well (\\(x = -x_0\\)), why must its initial state be a superposition (combination) of both \\(\\psi_1\\) and \\(\\psi_2\\)?\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]\n\nQuestion 2 (Quantum vs. Classical Rates): Compare your calculated classical thermal rate at \\(300\\text{ K}\\) to your quantum tunneling rate. * Which mechanism dominates the inversion process at room temperature? * What would happen to the classical rate versus the quantum tunneling rate if you cooled the system down to near absolute zero (\\(T \\to 0\\text{ K}\\))?\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]\n\nQuestion 3 (Barrier Sensitivity): If you double the barrier prefactor to \\(A = 2.0\\) (making the central barrier twice as tall), predict what will happen to the energy gap \\(\\Delta E = E_2 - E_1\\). Test your hypothesis by re-running your solver. How does this explain why larger molecules with heavier central atoms rarely show observable inversion tunneling?\n[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]",
+    "crumbs": [
+      "Module 2: Problem Set",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/appendix_crash_course.html",
     "href": "notebooks/appendix_crash_course.html",
-    "title": "6  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
+    "title": "7  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
     "section": "",
-    "text": "7 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
+    "text": "8 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html",
     "href": "notebooks/appendix_linear_algebra.html",
-    "title": "7  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "title": "8  Appendix: A Chemist’s Crash Course in Linear Algebra",
     "section": "",
-    "text": "8 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
+    "text": "9 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html#vectors-the-states",
     "href": "notebooks/appendix_linear_algebra.html#vectors-the-states",
-    "title": "7  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "8.1 1. Vectors (The States)",
-    "text": "8.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n8.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n8.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
+    "title": "8  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "9.1 1. Vectors (The States)",
+    "text": "9.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n9.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n9.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/appendix_linear_algebra.html#matrices-the-operators",
     "href": "notebooks/appendix_linear_algebra.html#matrices-the-operators",
-    "title": "7  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "8.2 2. Matrices (The Operators)",
-    "text": "8.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n8.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n8.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
+    "title": "8  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "9.2 2. Matrices (The Operators)",
+    "text": "9.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n9.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n9.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   }
 ]
