@@ -22,6 +22,7 @@ book:
         - notebooks/week_2_problem_1_finite_well.ipynb
         - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
         - notebooks/week_2_problem_3_tunneling.ipynb
+        - notebooks/week_2_problem_4_ammonia.ipynb
     
     - part: "Appendices"
       chapters:
