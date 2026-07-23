@@ -8,24 +8,26 @@ book:
   
   chapters:
     - index.qmd
+    
     - part: "Module 1: Introduction to Python"
       chapters: 
         - notebooks/week_1_python_primer.ipynb
+        
     - part: "Module 2: Finite Difference Methods for Quantum Mechanics" 
       chapters:
         - notebooks/week_2_1D_Quantum.ipynb
 
-        - section: "Module 2 Problem Set"
-          contents:
-            - notebooks/week_2_problem_1_finite_well.ipynb
-            - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
-            - notebooks/week_2_problem_3_tunneling.ipynb
-
+    - part: "Module 2: Problem Set"
+      chapters:
+        - notebooks/week_2_problem_1_finite_well.ipynb
+        - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
+        - notebooks/week_2_problem_3_tunneling.ipynb
     
     - part: "Appendices"
       chapters:
         - notebooks/appendix_crash_course.qmd
         - notebooks/appendix_linear_algebra.qmd
+        
     - references.qmd
 
 bibliography: references.bib
@@ -39,4 +41,4 @@ format:
     code-links:
       - text: "Download Notebook Source"
         icon: file-code
-        href: https://github.com/Caleb-Tormey-comp-chem-course/blob/master/{path}
+        href: https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}
