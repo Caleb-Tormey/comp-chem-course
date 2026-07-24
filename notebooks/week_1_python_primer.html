@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Python and Math Primer – Introduction to Computational Chemistry</title>
+<title>3&nbsp; Python and Math Primer – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../notebooks/week_2_1D_Quantum.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../notebooks/week_1_atomic_units.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-514c3c5c645fecdfd9acb6a6b9a944a6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-82cb5808e81da3454e8042d903791e03.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html">Module 1: Introduction to Python</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_physics_chem_review.html">Module 1: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +187,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 1: Introduction to Python</span></a>
+ <span class="menu-text">Module 1: Introduction to Python and Computational Chemistry</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -195,8 +195,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/week_1_physics_chem_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A Refresher on Mechanics and Waves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/week_1_atomic_units.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Computational Secret Weapon: Atomic Units</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/week_1_python_primer.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +225,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_1D_Quantum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 2: 1D Quantum Models and the Finite Difference Method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2: 1D Quantum Models and the Finite Difference Method</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,25 +242,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_problem_1_finite_well.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_problem_3_tunneling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_problem_4_ammonia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span></span></a>
   </div>
 </li>
       </ul>
@@ -265,13 +277,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,21 +304,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#storing-data-lists-and-indexing" id="toc-storing-data-lists-and-indexing" class="nav-link active" data-scroll-target="#storing-data-lists-and-indexing"><span class="header-section-number">1.1</span> 1. Storing Data: Lists and Indexing</a>
+  <li><a href="#storing-data-lists-and-indexing" id="toc-storing-data-lists-and-indexing" class="nav-link active" data-scroll-target="#storing-data-lists-and-indexing"><span class="header-section-number">3.1</span> 1. Storing Data: Lists and Indexing</a>
   <ul class="collapse">
-  <li><a href="#why-do-we-need-numpy-arrays" id="toc-why-do-we-need-numpy-arrays" class="nav-link" data-scroll-target="#why-do-we-need-numpy-arrays"><span class="header-section-number">1.1.1</span> Why do we need NumPy Arrays?</a></li>
+  <li><a href="#why-do-we-need-numpy-arrays" id="toc-why-do-we-need-numpy-arrays" class="nav-link" data-scroll-target="#why-do-we-need-numpy-arrays"><span class="header-section-number">3.1.1</span> Why do we need NumPy Arrays?</a></li>
   </ul></li>
-  <li><a href="#vectorization-and-visualization" id="toc-vectorization-and-visualization" class="nav-link" data-scroll-target="#vectorization-and-visualization"><span class="header-section-number">1.2</span> Vectorization and Visualization</a></li>
-  <li><a href="#working-with-3d-coordinates" id="toc-working-with-3d-coordinates" class="nav-link" data-scroll-target="#working-with-3d-coordinates"><span class="header-section-number">1.3</span> Working with 3D Coordinates</a></li>
+  <li><a href="#vectorization-and-visualization" id="toc-vectorization-and-visualization" class="nav-link" data-scroll-target="#vectorization-and-visualization"><span class="header-section-number">3.2</span> Vectorization and Visualization</a></li>
+  <li><a href="#working-with-3d-coordinates" id="toc-working-with-3d-coordinates" class="nav-link" data-scroll-target="#working-with-3d-coordinates"><span class="header-section-number">3.3</span> Working with 3D Coordinates</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html">Module 1: Introduction to Python</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_physics_chem_review.html">Module 1: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_python_primer.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -335,8 +347,8 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="storing-data-lists-and-indexing" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="storing-data-lists-and-indexing"><span class="header-section-number">1.1</span> 1. Storing Data: Lists and Indexing</h2>
+<section id="storing-data-lists-and-indexing" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="storing-data-lists-and-indexing"><span class="header-section-number">3.1</span> 1. Storing Data: Lists and Indexing</h2>
 <p>Before we do heavy math, we need to know how Python stores information. Imagine you have a rack of test tubes. In Python, the equivalent of this rack is called a <strong>List</strong> (or an Array). It is simply an ordered collection of items.</p>
 <p>Crucially, computers start counting at <strong>zero</strong>. So, the first “test tube” is at position 0, the second is at position 1, and so on. This position is called the <strong>index</strong>.</p>
 <p>Let’s look at a list of atomic masses for the first few noble gases: Helium, Neon, and Argon.</p>
@@ -361,8 +373,8 @@ The mass of Helium (index 0) is: 4.0
 The mass of Neon (index 1) is: 20.18</code></pre>
 </div>
 </div>
-<section id="why-do-we-need-numpy-arrays" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="why-do-we-need-numpy-arrays"><span class="header-section-number">1.1.1</span> Why do we need NumPy Arrays?</h3>
+<section id="why-do-we-need-numpy-arrays" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="why-do-we-need-numpy-arrays"><span class="header-section-number">3.1.1</span> Why do we need NumPy Arrays?</h3>
 <p>Standard Python lists are great for holding stuff, but they are terrible at math. If you try to multiply a standard Python list by 2, it doesn’t double the numbers; it just duplicates the list!</p>
 <p>Because computational chemistry requires doing math on thousands of numbers at once, we use a library called <strong>NumPy</strong>. A NumPy array looks just like a list, but it acts like a mathematical vector.</p>
 <div id="d201f6bd" class="cell" data-execution_count="11">
@@ -382,8 +394,8 @@ Array * 2 gives:  [2. 4. 6.]</code></pre>
 </div>
 </section>
 </section>
-<section id="vectorization-and-visualization" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="vectorization-and-visualization"><span class="header-section-number">1.2</span> Vectorization and Visualization</h2>
+<section id="vectorization-and-visualization" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="vectorization-and-visualization"><span class="header-section-number">3.2</span> Vectorization and Visualization</h2>
 <p>In computational chemistry, we rarely calculate a single value. We calculate properties over a grid of points or thousands of atoms. <code>numpy</code> allows us to apply mathematical operations to entire arrays at once (vectorization), which is orders of magnitude faster than using a standard Python <code>for</code> loop.</p>
 <p>To see this in action, let’s plot the <strong>Lennard-Jones potential</strong>, which approximates the interaction between two neutral atoms (like Argon). The potential energy <span class="math inline">\(V(r)\)</span> as a function of the distance <span class="math inline">\(r\)</span> is given by:</p>
 <p><span class="math display">\[V(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^6 \right]\]</span></p>
@@ -421,8 +433,8 @@ Array * 2 gives:  [2. 4. 6.]</code></pre>
 </div>
 </div>
 </section>
-<section id="working-with-3d-coordinates" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="working-with-3d-coordinates"><span class="header-section-number">1.3</span> Working with 3D Coordinates</h2>
+<section id="working-with-3d-coordinates" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="working-with-3d-coordinates"><span class="header-section-number">3.3</span> Working with 3D Coordinates</h2>
 <p>A massive part of computational chemistry is simply managing where atoms are in 3D space. The standard Euclidean distance <span class="math inline">\(d\)</span> between two atoms at coordinates <span class="math inline">\((x_1, y_1, z_1)\)</span> and <span class="math inline">\((x_2, y_2, z_2)\)</span> is:</p>
 <p><span class="math display">\[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\]</span></p>
 <p>Using <code>numpy</code>, we can calculate this without writing out the individual <span class="math inline">\(x, y, z\)</span> components. We can use the linear algebra norm <code>np.linalg.norm()</code>.</p>
@@ -935,13 +947,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../notebooks/week_1_atomic_units.html" class="pagination-link" aria-label="The Computational Secret Weapon: Atomic Units">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Computational Secret Weapon: Atomic Units</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../notebooks/week_2_1D_Quantum.html" class="pagination-link" aria-label="Week 2: 1D Quantum Models and the Finite Difference Method">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 2: 1D Quantum Models and the Finite Difference Method</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2: 1D Quantum Models and the Finite Difference Method</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
