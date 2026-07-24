@@ -1,0 +1,130 @@
+# A Refresher on Mechanics and Waves
+
+Before we can simulate how a molecule behaves, we need to agree on the physical rules that govern it. Computational chemistry is essentially applied physics. Whether we are doing classical molecular dynamics or solving the quantum Schrödinger equation, we are almost always just balancing kinetic and potential energy.
+
+Here is a rapid review of the core physics and mathematical notation you will need for this course.
+
+## 1. The Energy Perspective
+
+In chemistry, we rarely care about tracking forces directly; we care about **Energy**. The total energy of a system ($E$, or sometimes $H$ for the Hamiltonian) is the sum of its kinetic energy ($T$) and its potential energy ($V$).
+
+$$ E = T + V $$
+
+*   **Potential Energy ($V$ or $U$):** Energy based on position. For electrons and nuclei, this is usually Coulombic attraction/repulsion, or a chemical bond modeled as a spring.
+*   **Kinetic Energy ($T$ or $K$):** Energy of motion. While you likely learned this as $T = \frac{1}{2}mv^2$, in computational and quantum chemistry, we almost exclusively write it in terms of **momentum ($p$)**:
+    $$ T = \frac{p^2}{2m} $$
+
+This momentum substitution is crucial because in quantum mechanics, momentum ($p$) is converted directly into the mathematical operator that acts on wavefunctions.
+
+## 2. A Note on Derivative Notation
+
+Computational chemistry pulls from math, physics, and chemistry textbooks—which means the notation can be a chaotic mix of different historical standards. When we take a derivative, you will see it written in several ways depending on the context:
+
+*   **Leibniz Notation ($\frac{d}{dx}$, $\frac{\partial}{\partial x}$):** The most common in physical chemistry. It explicitly tells you what variable you are changing. We use the curly $\partial$ (partial derivative) when a function has multiple variables (like $x, y, z$), but we are only taking the derivative with respect to one of them.
+*   **Lagrange Notation ($f'$ or $V'$):** A prime mark. It is fast to write, but it assumes you already know what the variable is.
+*   **Newton Notation ($\dot{x}$ or $\ddot{x}$):** A dot over a variable specifically means a **time derivative** ($\frac{dx}{dt}$). Two dots means the second derivative with respect to time (acceleration). *We will use this heavily in Molecular Dynamics!*
+*   **Vector/Operator Notation ($\nabla$):** The "del" operator or gradient. This is just a compact way to say "take the spatial derivative in all 3D directions ($x, y, z$) at once."
+
+## 3. Forces from Potentials
+
+One of the most important relationships in this entire course is how potential energy relates to physical force. **Force is the negative gradient (derivative) of potential energy.** 
+
+$$ F = -\frac{dV}{dx} $$
+
+In 3D space, we write this as $F = -\nabla V$. Physically, this means a particle always experiences a force pushing it "downhill" toward the lowest potential energy.
+
+### Interactive Sandbox: Potentials and Forces
+Let's visualize this. Below is a harmonic potential (a spring-like chemical bond). The code uses Python's `numpy.gradient()` to numerically calculate the derivative of the potential energy to find the physical force pushing on the atoms. 
+
+Run the cell and notice where the force is zero!
+
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Define the positions (bond length stretch)
+x = np.linspace(-3, 3, 100)
+dx = x[1] - x[0]
+
+# 2. Define the Potential Energy (Harmonic Oscillator: V = 0.5 * k * x^2)
+k = 2.0
+V = 0.5 * k * x**2
+
+# 3. Calculate the Force (F = -dV/dx)
+# We use np.gradient to take the numerical derivative
+dV_dx = np.gradient(V, dx)
+F = -dV_dx
+
+# Plotting
+plt.figure(figsize=(8, 4))
+plt.plot(x, V, label="Potential Energy, $V(x)$", color="black", linewidth=2)
+plt.plot(x, F, label="Force, $F(x)$", color="red", linestyle="--", linewidth=2)
+
+plt.axhline(0, color='gray', linewidth=1) # Zero line
+plt.axvline(0, color='gray', linewidth=1) # Equilibrium position
+plt.xlabel("Displacement from Equilibrium ($x$)")
+plt.legend()
+plt.title("Relationship Between Potential and Force")
+plt.show()
+```
+
+## 4. Waves and Particles
+
+Finally, when we scale down to electrons, particles stop acting like billiard balls and start acting like waves. You need to remember two foundational relations:
+
+1. **Planck-Einstein Relation:** Energy is proportional to frequency ($\nu$).
+   $$E = h\nu$$
+2. **De Broglie Wavelength:** Momentum ($p$) is inversely proportional to wavelength ($\lambda$).
+   $$p = \frac{h}{\lambda}$$
+
+In computational physics, we often bundle the $2\pi$ into these constants to make the math cleaner. We use the reduced Planck constant ($\hbar = \frac{h}{2\pi}$) and the wavevector ($k = \frac{2\pi}{\lambda}$). This lets us write momentum beautifully as:
+
+$$p = \hbar k$$
+
+When you see $k$ in our quantum tunneling codes, just remember it is describing the momentum of the wave!
+
+## 5. Complex Numbers and the Born Interpretation
+
+In Module 2, you will encounter the imaginary number $i$ (or `1j` in Python). Students often panic when they see imaginary numbers in physical equations, but in quantum mechanics, they are just a mathematical bookkeeping tool.
+
+Here are the rules of survival for complex numbers in this course:
+1. **The Wavefunction is Fake:** The wavefunction itself ($\psi$) has no physical, measurable reality. It is a complex mathematical object that contains imaginary parts.
+2. **Probability is Real:** To get a real, physical observable—like the probability of finding an electron in a specific spot—we must multiply the wavefunction by its **complex conjugate** ($\psi^*$). 
+
+The complex conjugate simply flips the sign of the imaginary part. When you multiply them together, the imaginary parts cancel out, leaving a completely real number called the **Probability Density**:
+$$ \text{Probability Density} = |\psi|^2 = \psi^* \psi $$
+
+**Python Tip:** You don't have to do this math by hand. Python's `np.abs(psi)**2` function automatically calculates the complex conjugate and returns the real probability density!
+
+## 6. The Taylor Expansion: The Art of Making Things Easy
+
+If there is one mathematical trick you must master for physical chemistry, it is the Taylor series. Real molecules are incredibly complicated. The Taylor expansion is our mathematical justification for replacing a complicated reality with a simple, easy-to-calculate approximation. 
+
+The core idea is this: **Any smooth, complicated curve can be approximated as a polynomial.** 
+
+Suppose we have a very complex potential energy surface $V(x)$ for a chemical bond, and we want to know what happens near the equilibrium bond length ($x_0$). The Taylor expansion of the potential energy is:
+$$ V(x) = V(x_0) + V'(x_0)(x - x_0) + \frac{1}{2}V''(x_0)(x - x_0)^2 + \dots $$
+
+Let's look at how this brilliantly simplifies things for a molecule at equilibrium:
+1. **$V(x_0)$ is just a baseline:** We can set the energy at the bottom of the well to zero.
+2. **$V'(x_0) = 0$:** Because $x_0$ is the minimum of the well, the first derivative (the slope) is zero. 
+3. **The Dominant Term:** The only thing left is the second derivative term! 
+
+$$ V(x) \approx \frac{1}{2} V''(x_0) (x - x_0)^2 $$
+
+By defining the curvature $V''(x_0)$ as a "spring constant" ($k$), we get the equation for a parabola: $V = \frac{1}{2}kx^2$. 
+
+Because the potential is quadratic, the force ($F = -dV/dx$) becomes **linear** ($F = -kx$). The Taylor expansion is the ultimate tool for **linearizing** difficult problems. This is why we model molecular bonds as springs (The Harmonic Oscillator). 
+
+*Note: You will see this trick everywhere in chemistry. For example, if you later study real non-ideal gases, the famous Virial Equation of State is simply a Taylor expansion of the Ideal Gas Law to account for molecular collisions!*
+
+## 7. Coulomb's Law: The Only Force that Matters
+
+Finally, a quick note on the forces we actually care about. In physics, there is gravity, electromagnetism, and the strong/weak nuclear forces. 
+
+In computational chemistry, **we throw almost all of that away.**
+* Gravity is so incredibly weak at the atomic scale that it is essentially zero.
+* The nuclear forces are locked tightly inside the nucleus, which we usually treat as a single, unchangeable point of mass.
+
+99.9% of all computational chemistry is just applied electromagnetism. Almost every potential energy surface $V(x)$ you will ever calculate is ultimately derived from **Coulomb's Law**—the electrostatic attraction and repulsion of charged electrons and nuclei:
+$$ V = \frac{q_1 q_2}{4\pi\epsilon_0 r} $$

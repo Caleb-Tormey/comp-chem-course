@@ -9,8 +9,10 @@ book:
   chapters:
     - index.qmd
     
-    - part: "Module 1: Introduction to Python"
+    - part: "Module 1: Introduction to Python and Computational Chemistry"
       chapters: 
+        - notebooks/week_1_physics_chem_review.qmd
+        - notebooks/week_1_atomic_units.qmd
         - notebooks/week_1_python_primer.ipynb
         
     - part: "Module 2: Finite Difference Methods for Quantum Mechanics" 
