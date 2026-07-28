@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Appendix: A Chemist’s Crash Course in Linear Algebra – Introduction to Computational Chemistry</title>
+<title>4&nbsp; Week 1 Assignment: Physics, Units, and Python – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
-<link href="../notebooks/appendix_crash_course.html" rel="prev">
+<link href="../notebooks/week_2_1D_Quantum.html" rel="next">
+<link href="../notebooks/week_1_python_primer.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_physics_chem_review.html">Module 1: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_problems.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 1 Assignment: Physics, Units, and Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -216,7 +216,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_1_problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/week_1_problems.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 1 Assignment: Physics, Units, and Python</span></span></a>
   </div>
 </li>
@@ -291,7 +291,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
@@ -313,18 +313,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#appendix-a-chemists-crash-course-in-linear-algebra" id="toc-appendix-a-chemists-crash-course-in-linear-algebra" class="nav-link active" data-scroll-target="#appendix-a-chemists-crash-course-in-linear-algebra"><span class="header-section-number">12</span> Appendix: A Chemist’s Crash Course in Linear Algebra</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">4.0.1</span> Objectives</a></li>
+  <li><a href="#problem-1-the-universal-spectroscopy-converter" id="toc-problem-1-the-universal-spectroscopy-converter" class="nav-link" data-scroll-target="#problem-1-the-universal-spectroscopy-converter"><span class="header-section-number">4.1</span> Problem 1: The Universal Spectroscopy Converter</a></li>
+  <li><a href="#problem-2-potential-energy-and-physical-force" id="toc-problem-2-potential-energy-and-physical-force" class="nav-link" data-scroll-target="#problem-2-potential-energy-and-physical-force"><span class="header-section-number">4.2</span> Problem 2: Potential Energy and Physical Force</a></li>
+  <li><a href="#problem-3-the-sanity-check-symbolic-math" id="toc-problem-3-the-sanity-check-symbolic-math" class="nav-link" data-scroll-target="#problem-3-the-sanity-check-symbolic-math"><span class="header-section-number">4.3</span> Problem 3: The “Sanity Check” (Symbolic Math)</a>
   <ul class="collapse">
-  <li><a href="#vectors-the-states" id="toc-vectors-the-states" class="nav-link" data-scroll-target="#vectors-the-states"><span class="header-section-number">12.1</span> 1. Vectors (The States)</a>
-  <ul class="collapse">
-  <li><a href="#the-vector-norm-length" id="toc-the-vector-norm-length" class="nav-link" data-scroll-target="#the-vector-norm-length"><span class="header-section-number">12.1.1</span> The Vector Norm (Length)</a></li>
-  <li><a href="#the-inner-product-the-overlap" id="toc-the-inner-product-the-overlap" class="nav-link" data-scroll-target="#the-inner-product-the-overlap"><span class="header-section-number">12.1.2</span> The Inner Product (The Overlap)</a></li>
-  </ul></li>
-  <li><a href="#matrices-the-operators" id="toc-matrices-the-operators" class="nav-link" data-scroll-target="#matrices-the-operators"><span class="header-section-number">12.2</span> 2. Matrices (The Operators)</a>
-  <ul class="collapse">
-  <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"><span class="header-section-number">12.2.1</span> Matrix-Vector Multiplication</a></li>
-  <li><a href="#the-determinant" id="toc-the-determinant" class="nav-link" data-scroll-target="#the-determinant"><span class="header-section-number">12.2.2</span> The Determinant</a></li>
-  </ul></li>
+  <li><a href="#conceptual-synthesis" id="toc-conceptual-synthesis" class="nav-link" data-scroll-target="#conceptual-synthesis"><span class="header-section-number">4.3.1</span> Conceptual Synthesis</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
@@ -332,9 +326,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/appendix_crash_course.html">Appendices</a></li><li class="breadcrumb-item"><a href="../notebooks/appendix_linear_algebra.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_1_physics_chem_review.html">Module 1: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../notebooks/week_1_problems.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 1 Assignment: Physics, Units, and Python</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 1 Assignment: Physics, Units, and Python</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -351,49 +345,172 @@ window.Quarto = {
 </header>
 
 
-<section id="appendix-a-chemists-crash-course-in-linear-algebra" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Appendix: A Chemist’s Crash Course in Linear Algebra</h1>
-<p>If you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: <strong>Linear Algebra</strong>.</p>
-<p>This appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.</p>
-<hr>
-<section id="vectors-the-states" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="vectors-the-states"><span class="header-section-number">12.1</span> 1. Vectors (The States)</h2>
-<p>In computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.</p>
-<section id="the-vector-norm-length" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="the-vector-norm-length"><span class="header-section-number">12.1.1</span> The Vector Norm (Length)</h3>
-<p>The <strong>norm</strong> (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.</p>
-<p><strong>The Math:</strong> <span class="math display">\[||\vec{v}|| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}\]</span></p>
-<p><strong>The Example:</strong> If <span class="math inline">\(\vec{v} = \begin{bmatrix} 3 \\ -4 \end{bmatrix}\)</span>: <span class="math display">\[||\vec{v}|| = \sqrt{(3)^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\]</span></p>
-<p><strong>The Physical Meaning:</strong> In quantum mechanics, the total probability of finding a particle <em>somewhere</em> in the universe must be exactly 100% (or 1.0). When we <strong>normalize</strong> a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.</p>
+<p><strong>Student Name:</strong> [TYPE YOUR NAME HERE]<br>
+<strong>Date:</strong> [TYPE DATE HERE]</p>
+<section id="objectives" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">4.0.1</span> Objectives</h3>
+<ol type="1">
+<li>Write a custom Python function to handle unit conversions.</li>
+<li>Use a <code>for</code> loop to process a list of experimental data.</li>
+<li>Use NumPy arrays to calculate a potential energy surface and its physical force.</li>
+<li>Use SymPy to perform a symbolic “sanity check” by taking exact derivatives and integrals.</li>
+<li>Plot your results clearly using Matplotlib.</li>
+</ol>
+<div id="7027950f" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- RUN THIS CELL FIRST --- </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This loads the libraries you need for the assignment.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment ready! Let's do some chemistry."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Environment ready! Let's do some chemistry.</code></pre>
+</div>
+</div>
 </section>
-<section id="the-inner-product-the-overlap" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="the-inner-product-the-overlap"><span class="header-section-number">12.1.2</span> The Inner Product (The Overlap)</h3>
-<p>The <strong>inner product</strong> (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.</p>
-<p><strong>The Math:</strong> <span class="math display">\[\vec{u} \cdot \vec{v} = u_1 v_1 + u_2 v_2 + \dots + u_n v_n\]</span></p>
-<p><strong>The Example:</strong> If <span class="math inline">\(\vec{u} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\)</span> and <span class="math inline">\(\vec{v} = \begin{bmatrix} 3 \\ -2 \end{bmatrix}\)</span>: <span class="math display">\[\vec{u} \cdot \vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\]</span></p>
-<p><strong>The Physical Meaning:</strong> The inner product measures <strong>overlap</strong> (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly <strong>zero</strong>, the vectors are perfectly perpendicular (<strong>orthogonal</strong>). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a <span class="math inline">\(p_x\)</span> and a <span class="math inline">\(p_y\)</span> orbital).</p>
-<hr>
+<section id="problem-1-the-universal-spectroscopy-converter" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="problem-1-the-universal-spectroscopy-converter"><span class="header-section-number">4.1</span> Problem 1: The Universal Spectroscopy Converter</h2>
+<p>When reading computational chemistry papers, you will constantly need to compare your calculated Atomic Units (Hartrees) against experimental data reported in various units like Electron Volts (eV), kcal/mol, or wavenumbers (cm⁻¹).</p>
+<p><strong>Your Task:</strong> 1. Complete the <code>convert_to_hartree</code> function below. Use <code>if</code>, <code>elif</code>, and <code>else</code> statements to apply the correct conversion factor based on the <code>starting_unit</code> string provided. 2. Use a <code>for</code> loop to iterate over the provided <code>experimental_data</code> list. 3. Inside the loop, call your function to convert each value to Hartrees and print the result.</p>
+<p><em>Hint: The conversion factors to multiply by are:</em> * <code>1 eV = 0.036749 Hartree</code> * <code>1 kcal/mol = 0.001593 Hartree</code> * <code>1 cm^-1 = 0.000004556 Hartree</code></p>
+<div id="60796b35" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_to_hartree(value, starting_unit):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Converts various energy units into Hartrees."""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">### YOUR CODE HERE: Write the if/elif logic </span><span class="al">###</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if starting_unit == 'eV':</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     return value * 0.036749</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># elif ...</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Replace this with your actual return variable!</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is a list of lists containing experimental data.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Format: [Chemical feature, Value, Unit]</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>experimental_data <span class="op">=</span> [</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Carbon C=C double bond energy"</span>, <span class="fl">146.0</span>, <span class="st">"kcal/mol"</span>],</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Hydrogen ionization energy"</span>, <span class="fl">13.6</span>, <span class="st">"eV"</span>],</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"O-H vibrational stretch"</span>, <span class="fl">3600.0</span>, <span class="st">"cm^-1"</span>]</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- Conversion Results ---"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Write a for loop to process experimental_data </span><span class="al">###</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: for item in experimental_data:</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#           feature = item[0]</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#           value = item[1]</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#           unit = item[2]</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#           ... call your function and print! ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>--- Conversion Results ---</code></pre>
+</div>
+</div>
 </section>
+<section id="problem-2-potential-energy-and-physical-force" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="problem-2-potential-energy-and-physical-force"><span class="header-section-number">4.2</span> Problem 2: Potential Energy and Physical Force</h2>
+<p>In the Python Primer, we plotted the Lennard-Jones potential for two Argon atoms. Now, you will do this for <strong>Krypton</strong> atoms, but with an added physics twist: you must also calculate and plot the physical force pushing the atoms around.</p>
+<p>Recall from the Physics Refresher that Force is the negative numerical derivative of the potential energy:<br>
+<span class="math display">\[F(r) = -\frac{dV}{dr}\]</span></p>
+<p><strong>Your Task:</strong> 1. Create a <code>numpy</code> array for the distance <span class="math inline">\(r\)</span> ranging from <span class="math inline">\(3.2\)</span> to <span class="math inline">\(10.0\)</span> Å with 200 points. 2. Calculate the potential energy array <span class="math inline">\(V\)</span> for Krypton. 3. Use <code>np.gradient()</code> to calculate the Force array <span class="math inline">\(F\)</span>. (Don’t forget the negative sign!) 4. Plot <strong>both</strong> <span class="math inline">\(V\)</span> and <span class="math inline">\(F\)</span> on the same Matplotlib graph. Give them different colors and include a legend.</p>
+<p><strong>Krypton Parameters:</strong> * Well depth (<span class="math inline">\(\epsilon\)</span>): <span class="math inline">\(1.40\)</span> kJ/mol * Zero-crossing distance (<span class="math inline">\(\sigma\)</span>): <span class="math inline">\(3.60\)</span> Å</p>
+<div id="09e27c85" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Krypton Parameters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">1.40</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">3.60</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">### 1. Create the distance grid (r)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># r = ...</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">### 2. Calculate the Potential Energy (V)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># V = 4 * epsilon * ((sigma / r)**12 - (sigma / r)**6)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">### 3. Calculate the Force (F)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: First figure out the step size (dr) of your grid by subtracting r[0] from r[1]</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># dr = ...</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># F = ... </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">### 4. Plotting</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE: Add your plt.plot() commands, labels, and plt.legend()</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># Zero line</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">2.0</span>, <span class="fl">3.0</span>) <span class="co"># Zoom in to see the well</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_1_problems_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="matrices-the-operators" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="matrices-the-operators"><span class="header-section-number">12.2</span> 2. Matrices (The Operators)</h2>
-<p>If vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (<span class="math inline">\(\mathbf{H}\)</span>) is just a giant matrix that operates on our wavefunction.</p>
-<section id="matrix-vector-multiplication" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">12.2.1</span> Matrix-Vector Multiplication</h3>
-<p>To multiply a matrix by a vector, you take the dot product of each <em>row</em> of the matrix with the <em>column</em> of the vector.</p>
-<p><strong>The Math:</strong> <span class="math display">\[\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} ax + by \\ cx + dy \end{bmatrix}\]</span></p>
-<p><strong>The Example:</strong> Let’s see what happens when an operator acts on a state vector: <span class="math display">\[\begin{bmatrix} 2 &amp; 1 \\ 0 &amp; 3 \end{bmatrix} \begin{bmatrix} 4 \\ 2 \end{bmatrix} = \begin{bmatrix} (2)(4) + (1)(2) \\ (0)(4) + (3)(2) \end{bmatrix} = \begin{bmatrix} 8 + 2 \\ 0 + 6 \end{bmatrix} = \begin{bmatrix} 10 \\ 6 \end{bmatrix}\]</span></p>
-<p><strong>The Physical Meaning:</strong> The matrix grabbed the original state <span class="math inline">\(\begin{bmatrix} 4 \\ 2 \end{bmatrix}\)</span> and transformed it into an entirely new state <span class="math inline">\(\begin{bmatrix} 10 \\ 6 \end{bmatrix}\)</span>. The only time the matrix <em>doesn’t</em> change the fundamental direction of the vector is if that vector happens to be an <strong>eigenvector</strong>!</p>
-</section>
-<section id="the-determinant" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="the-determinant"><span class="header-section-number">12.2.2</span> The Determinant</h3>
-<p>The determinant is a single number that summarizes the overall “scaling power” of a square matrix.</p>
-<p><strong>The Math (<span class="math inline">\(2 \times 2\)</span> example):</strong> To find the determinant of a <span class="math inline">\(2 \times 2\)</span> matrix, you cross-multiply the diagonals and subtract them. <span class="math display">\[\text{det}\left(\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}\right) = ad - bc\]</span></p>
-<p><strong>The Example:</strong> <span class="math display">\[\text{det}\left(\begin{bmatrix} 5 &amp; 2 \\ 1 &amp; 3 \end{bmatrix}\right) = (5)(3) - (2)(1) = 15 - 2 = 13\]</span></p>
-<p><strong>The Physical Meaning:</strong> Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of <span class="math inline">\(13\)</span> means the matrix stretches 2D space to be 13 times larger. * A determinant of <span class="math inline">\(1\)</span> means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly <strong>zero</strong>, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).</p>
+<section id="problem-3-the-sanity-check-symbolic-math" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="problem-3-the-sanity-check-symbolic-math"><span class="header-section-number">4.3</span> Problem 3: The “Sanity Check” (Symbolic Math)</h2>
+<p>Before applying numerical grids and arrays to an unknown system, computational scientists always test their code on a system with a known exact answer. This is called a “sanity check.”</p>
+<p>To find these exact analytical answers, Python has a powerful symbolic math library called <code>SymPy</code>. It acts like a built-in calculus student—it can solve algebra, take derivatives, and do integrals <em>exactly</em>, leaving variables like <span class="math inline">\(\pi\)</span> or <span class="math inline">\(x\)</span> intact rather than turning them into floating-point decimals.</p>
+<p><strong>Your Task:</strong> We want to analyze a simple quadratic potential: <span class="math inline">\(V(x) = 2x^2 - 8\)</span>. 1. Run the first cell below to define the symbolic variable <span class="math inline">\(x\)</span> and the equation <span class="math inline">\(V\)</span>. 2. In the second cell, use <code>sp.solve()</code> to find the roots (where <span class="math inline">\(V(x) = 0\)</span>). 3. Use <code>sp.diff()</code> to find the exact analytical Force equation (<span class="math inline">\(F = -\frac{dV}{dx}\)</span>). 4. Use <code>sp.integrate()</code> to find the exact definite integral (the area under the curve) of <span class="math inline">\(V(x)\)</span> from <span class="math inline">\(x=0\)</span> to <span class="math inline">\(x=2\)</span>.</p>
+<div id="52bd6939" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define 'x' as a symbolic math variable (not a number or a numpy array!)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> sp.symbols(<span class="st">'x'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Define the potential energy equation</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">8</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's print it to see how sympy formats it beautifully!</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>display(V)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle 2 x^{2} - 8\)</span></p>
+</div>
+</div>
+<div id="6b1c56ec" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE </span><span class="al">###</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Find the roots (Where does V(x) cross zero?)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: sp.solve(equation, variable)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># roots = ...</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Roots:", roots)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Find the symbolic derivative to get the Force (F = -dV/dx)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: sp.diff(equation, variable)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># F_symbolic = ...</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Analytical Force:", F_symbolic)</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Evaluate the definite integral of V from x=0 to x=2</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: sp.integrate(equation, (variable, lower_bound, upper_bound))</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># area = ...</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Definite Integral:", area)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="conceptual-synthesis" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="conceptual-synthesis"><span class="header-section-number">4.3.1</span> Conceptual Synthesis</h3>
+<p><strong>Question 1:</strong> Look at your plot from Problem 2. At the exact bottom of the potential energy well (where the potential energy is at its most negative), what is the value of the Force? Does this make physical sense for a molecule at equilibrium?</p>
+<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
+<p><strong>Question 2:</strong> Why is it critical to perform a symbolic “sanity check” (like you did in Problem 3) on a simple equation before writing numerical grid code for a complex, unsolvable system (like a multi-electron atom)?</p>
+<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
 
-
-<!-- -->
 
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
@@ -409,7 +526,6 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 </section>
 
@@ -878,95 +994,16 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span>
+      <a href="../notebooks/week_1_python_primer.html" class="pagination-link" aria-label="Python and Math Primer">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python and Math Primer</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/week_2_1D_Quantum.html" class="pagination-link" aria-label="Week 2: 1D Quantum Models and the Finite Difference Method">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2: 1D Quantum Models and the Finite Difference Method</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Appendix: A Chemist's Crash Course in Linear Algebra"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix: A Chemist's Crash Course in Linear Algebra</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>If you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: **Linear Algebra**.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>This appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won't prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don't show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Vectors (The States)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>In computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector. </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Vector Norm (Length)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>The **norm** (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>**The Math:**</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>$$||\vec{v}|| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}$$</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**The Example:**</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>If $\vec{v} = \begin{bmatrix} 3 <span class="sc">\\</span> -4 \end{bmatrix}$:</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>$$||\vec{v}|| = \sqrt{(3)^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>**The Physical Meaning:**</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>In quantum mechanics, the total probability of finding a particle *somewhere* in the universe must be exactly 100% (or 1.0). When we **normalize** a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Inner Product (The Overlap)</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>The **inner product** (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**The Math:**</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>$$\vec{u} \cdot \vec{v} = u_1 v_1 + u_2 v_2 + \dots + u_n v_n$$</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>**The Example:**</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>If $\vec{u} = \begin{bmatrix} 2 <span class="sc">\\</span> 1 \end{bmatrix}$ and $\vec{v} = \begin{bmatrix} 3 <span class="sc">\\</span> -2 \end{bmatrix}$:</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>$$\vec{u} \cdot \vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4$$</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**The Physical Meaning:**</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>The inner product measures **overlap** (or similarity). It tells you how much of Vector A points in the same direction as Vector B. </span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If the inner product is a large positive number, the states overlap significantly.</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If the inner product is exactly **zero**, the vectors are perfectly perpendicular (**orthogonal**). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a $p_x$ and a $p_y$ orbital).</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Matrices (The Operators)</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>If vectors are the "nouns" of linear algebra (the states), matrices are the "verbs" (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian ($\mathbf{H}$) is just a giant matrix that operates on our wavefunction.</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### Matrix-Vector Multiplication</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>To multiply a matrix by a vector, you take the dot product of each *row* of the matrix with the *column* of the vector. </span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>**The Math:**</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>$$\begin{bmatrix} a &amp; b <span class="sc">\\</span> c &amp; d \end{bmatrix} \begin{bmatrix} x <span class="sc">\\</span> y \end{bmatrix} = \begin{bmatrix} ax + by <span class="sc">\\</span> cx + dy \end{bmatrix}$$</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>**The Example:**</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Let's see what happens when an operator acts on a state vector:</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>$$\begin{bmatrix} 2 &amp; 1 <span class="sc">\\</span> 0 &amp; 3 \end{bmatrix} \begin{bmatrix} 4 <span class="sc">\\</span> 2 \end{bmatrix} = \begin{bmatrix} (2)(4) + (1)(2) <span class="sc">\\</span> (0)(4) + (3)(2) \end{bmatrix} = \begin{bmatrix} 8 + 2 <span class="sc">\\</span> 0 + 6 \end{bmatrix} = \begin{bmatrix} 10 <span class="sc">\\</span> 6 \end{bmatrix}$$</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>**The Physical Meaning:**</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>The matrix grabbed the original state $\begin{bmatrix} 4 <span class="sc">\\</span> 2 \end{bmatrix}$ and transformed it into an entirely new state $\begin{bmatrix} 10 <span class="sc">\\</span> 6 \end{bmatrix}$. The only time the matrix *doesn't* change the fundamental direction of the vector is if that vector happens to be an **eigenvector**!</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Determinant</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>The determinant is a single number that summarizes the overall "scaling power" of a square matrix. </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>**The Math ($2 \times 2$ example):**</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>To find the determinant of a $2 \times 2$ matrix, you cross-multiply the diagonals and subtract them.</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>$$\text{det}\left(\begin{bmatrix} a &amp; b <span class="sc">\\</span> c &amp; d \end{bmatrix}\right) = ad - bc$$</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>**The Example:**</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>$$\text{det}\left(\begin{bmatrix} 5 &amp; 2 <span class="sc">\\</span> 1 &amp; 3 \end{bmatrix}\right) = (5)(3) - (2)(1) = 15 - 2 = 13$$</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>**The Physical Meaning:**</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A determinant of $13$ means the matrix stretches 2D space to be 13 times larger. </span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A determinant of $1$ means the volume stays exactly the same (like a simple rotation).</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If the determinant is exactly **zero**, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+</nav>
 </div> <!-- /content -->
 
 
