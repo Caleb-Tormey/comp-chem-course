@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,10 +79,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-82cb5808e81da3454e8042d903791e03.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-343830dee7e81009abd9657442190b55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -113,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -304,12 +307,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#storing-data-lists-and-indexing" id="toc-storing-data-lists-and-indexing" class="nav-link active" data-scroll-target="#storing-data-lists-and-indexing"><span class="header-section-number">3.1</span> 1. Storing Data: Lists and Indexing</a>
+  <li><a href="#storing-data-lists-vs.-numpy-arrays" id="toc-storing-data-lists-vs.-numpy-arrays" class="nav-link active" data-scroll-target="#storing-data-lists-vs.-numpy-arrays"><span class="header-section-number">3.1</span> 1. Storing Data: Lists vs.&nbsp;NumPy Arrays</a>
   <ul class="collapse">
-  <li><a href="#why-do-we-need-numpy-arrays" id="toc-why-do-we-need-numpy-arrays" class="nav-link" data-scroll-target="#why-do-we-need-numpy-arrays"><span class="header-section-number">3.1.1</span> Why do we need NumPy Arrays?</a></li>
+  <li><a href="#the-problem-with-lists" id="toc-the-problem-with-lists" class="nav-link" data-scroll-target="#the-problem-with-lists"><span class="header-section-number">3.1.1</span> The Problem with Lists</a></li>
   </ul></li>
-  <li><a href="#vectorization-and-visualization" id="toc-vectorization-and-visualization" class="nav-link" data-scroll-target="#vectorization-and-visualization"><span class="header-section-number">3.2</span> Vectorization and Visualization</a></li>
-  <li><a href="#working-with-3d-coordinates" id="toc-working-with-3d-coordinates" class="nav-link" data-scroll-target="#working-with-3d-coordinates"><span class="header-section-number">3.3</span> Working with 3D Coordinates</a></li>
+  <li><a href="#building-grids-arrays-and-for-loops" id="toc-building-grids-arrays-and-for-loops" class="nav-link" data-scroll-target="#building-grids-arrays-and-for-loops"><span class="header-section-number">3.2</span> 2. Building Grids: Arrays and <code>for</code> Loops</a></li>
+  <li><a href="#creating-functions" id="toc-creating-functions" class="nav-link" data-scroll-target="#creating-functions"><span class="header-section-number">3.3</span> 3. Creating Functions</a></li>
+  <li><a href="#vectorization-and-plotting" id="toc-vectorization-and-plotting" class="nav-link" data-scroll-target="#vectorization-and-plotting"><span class="header-section-number">3.4</span> 4. Vectorization and Plotting</a>
+  <ul class="collapse">
+  <li><a href="#deconstructing-matplotlib" id="toc-deconstructing-matplotlib" class="nav-link" data-scroll-target="#deconstructing-matplotlib"><span class="header-section-number">3.4.1</span> Deconstructing Matplotlib</a></li>
+  </ul></li>
+  <li><a href="#working-with-3d-coordinates" id="toc-working-with-3d-coordinates" class="nav-link" data-scroll-target="#working-with-3d-coordinates"><span class="header-section-number">3.5</span> 5. Working with 3D Coordinates</a></li>
+  <li><a href="#the-power-of-libraries-dont-reinvent-the-wheel" id="toc-the-power-of-libraries-dont-reinvent-the-wheel" class="nav-link" data-scroll-target="#the-power-of-libraries-dont-reinvent-the-wheel"><span class="header-section-number">3.6</span> 6. The Power of Libraries (Don’t Reinvent the Wheel)</a>
+  <ul class="collapse">
+  <li><a href="#scaling-up-the-nightmare-of-the-5x5" id="toc-scaling-up-the-nightmare-of-the-5x5" class="nav-link" data-scroll-target="#scaling-up-the-nightmare-of-the-5x5"><span class="header-section-number">3.6.1</span> Scaling Up: The Nightmare of the 5x5</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
@@ -336,36 +348,31 @@ window.Quarto = {
 
 
 <p>Welcome to Computational Chemistry! Before we dive into quantum mechanics and molecular dynamics, we need to ensure our basic computational tools are sharp. In this course, Python is our laboratory.</p>
-<p>Today, we will review: 1. <strong>Vectorization with NumPy:</strong> How to do math on arrays quickly. 2. <strong>Plotting with Matplotlib:</strong> Visualizing chemical data. 3. <strong>Coordinate Math:</strong> Calculating atomic distances from 3D space.</p>
-<div id="81b765de" class="cell" data-execution_count="9">
+<p>Today, we will review: 1. <strong>Data Storage:</strong> Lists vs.&nbsp;NumPy arrays. 2. <strong>Loops and Logic:</strong> Building grids step-by-step. 3. <strong>Functions:</strong> Writing reusable code for unit conversions. 4. <strong>Vectorization &amp; Plotting:</strong> Calculating and visualizing chemical data efficiently. 5. <strong>Coordinate Math:</strong> Calculating atomic distances. 6. <strong>The Power of Libraries:</strong> Why we let <code>scipy</code> do the heavy lifting.</p>
+<div id="81b765de" class="cell">
 <details class="code-fold">
 <summary>Click to see the library imports for this chapter</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make our plots look professional</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 'np' and 'plt' are the universal standard nicknames for these libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make our plots look professional (this is optional, but makes the output cleaner)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="storing-data-lists-and-indexing" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="storing-data-lists-and-indexing"><span class="header-section-number">3.1</span> 1. Storing Data: Lists and Indexing</h2>
-<p>Before we do heavy math, we need to know how Python stores information. Imagine you have a rack of test tubes. In Python, the equivalent of this rack is called a <strong>List</strong> (or an Array). It is simply an ordered collection of items.</p>
-<p>Crucially, computers start counting at <strong>zero</strong>. So, the first “test tube” is at position 0, the second is at position 1, and so on. This position is called the <strong>index</strong>.</p>
-<p>Let’s look at a list of atomic masses for the first few noble gases: Helium, Neon, and Argon.</p>
-<div id="017a3009" class="cell" data-execution_count="10">
+<section id="storing-data-lists-vs.-numpy-arrays" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="storing-data-lists-vs.-numpy-arrays"><span class="header-section-number">3.1</span> 1. Storing Data: Lists vs.&nbsp;NumPy Arrays</h2>
+<p>Before we do heavy math, we need to know how Python stores information. The most basic container is a <strong>List</strong>, which is simply an ordered collection of items enclosed in square brackets <code>[]</code>.</p>
+<p>Crucially, computers start counting at <strong>zero</strong>. The first item is at position (index) 0, the second is at 1, and so on. Let’s look at a list of atomic masses for the noble gases: Helium, Neon, and Argon.</p>
+<div id="017a3009" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A standard Python list uses square brackets</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A standard Python list </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>noble_gas_masses <span class="op">=</span> [<span class="fl">4.00</span>, <span class="fl">20.18</span>, <span class="fl">39.95</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Our entire list of masses:"</span>, noble_gas_masses)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To look at a specific item, we use its index in square brackets</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>first_mass <span class="op">=</span> noble_gas_masses[<span class="dv">0</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The mass of Helium (index 0) is:"</span>, first_mass)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>second_mass <span class="op">=</span> noble_gas_masses[<span class="dv">1</span>]</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The mass of Neon (index 1) is:"</span>, second_mass)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing specific items using their index</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mass of Helium (index 0):"</span>, noble_gas_masses[<span class="dv">0</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mass of Neon (index 1):"</span>, noble_gas_masses[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Our entire list of masses: [4.0, 20.18, 39.95]
@@ -373,19 +380,18 @@ The mass of Helium (index 0) is: 4.0
 The mass of Neon (index 1) is: 20.18</code></pre>
 </div>
 </div>
-<section id="why-do-we-need-numpy-arrays" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="why-do-we-need-numpy-arrays"><span class="header-section-number">3.1.1</span> Why do we need NumPy Arrays?</h3>
-<p>Standard Python lists are great for holding stuff, but they are terrible at math. If you try to multiply a standard Python list by 2, it doesn’t double the numbers; it just duplicates the list!</p>
-<p>Because computational chemistry requires doing math on thousands of numbers at once, we use a library called <strong>NumPy</strong>. A NumPy array looks just like a list, but it acts like a mathematical vector.</p>
-<div id="d201f6bd" class="cell" data-execution_count="11">
+<section id="the-problem-with-lists" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="the-problem-with-lists"><span class="header-section-number">3.1.1</span> The Problem with Lists</h3>
+<p>Standard Python lists are great for holding stuff, but they are terrible at math. If you try to multiply a list by 2, it doesn’t double the numbers—it just duplicates the list!</p>
+<p>Because computational chemistry requires doing math on thousands of numbers at once, we use a library called <strong>NumPy</strong>. A NumPy array looks just like a list, but it acts like a true mathematical vector.</p>
+<div id="d201f6bd" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's see the difference between a List and a NumPy Array</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>my_array <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List * 2 gives:  "</span>, my_list <span class="op">*</span> <span class="dv">2</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array * 2 gives: "</span>, my_array <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>my_array <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"List * 2 gives:  "</span>, my_list <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array * 2 gives: "</span>, my_array <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>List * 2 gives:   [1.0, 2.0, 3.0, 1.0, 2.0, 3.0]
@@ -394,35 +400,26 @@ Array * 2 gives:  [2. 4. 6.]</code></pre>
 </div>
 </section>
 </section>
-<section id="vectorization-and-visualization" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="vectorization-and-visualization"><span class="header-section-number">3.2</span> Vectorization and Visualization</h2>
-<p>In computational chemistry, we rarely calculate a single value. We calculate properties over a grid of points or thousands of atoms. <code>numpy</code> allows us to apply mathematical operations to entire arrays at once (vectorization), which is orders of magnitude faster than using a standard Python <code>for</code> loop.</p>
-<p>To see this in action, let’s plot the <strong>Lennard-Jones potential</strong>, which approximates the interaction between two neutral atoms (like Argon). The potential energy <span class="math inline">\(V(r)\)</span> as a function of the distance <span class="math inline">\(r\)</span> is given by:</p>
-<p><span class="math display">\[V(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^6 \right]\]</span></p>
-<p>Where: * <span class="math inline">\(\epsilon\)</span> is the depth of the potential well. * <span class="math inline">\(\sigma\)</span> is the distance at which the potential is zero.</p>
-<div id="23dc25c5" class="cell" data-execution_count="7">
+<section id="building-grids-arrays-and-for-loops" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="building-grids-arrays-and-for-loops"><span class="header-section-number">3.2</span> 2. Building Grids: Arrays and <code>for</code> Loops</h2>
+<p>In quantum mechanics, we often need to build a simulation space (a grid) and assign a potential energy value to every single point. We usually do this by creating an empty array of zeros, and then using a <strong><code>for</code> loop</strong> to visit each point and change its value based on some physical rule.</p>
+<p>Let’s build a simple 1D potential well.</p>
+<div id="23dc25c5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters for Argon</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.997</span> <span class="co"># kJ/mol</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">3.40</span> <span class="co"># Angstroms</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of distances from 3.0 to 10.0 Angstroms</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We use numpy arrays so we can do math on all 100 points simultaneously!</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="fl">3.0</span>, <span class="fl">10.0</span>, <span class="dv">100</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the potential (notice how the formula looks almost identical to the math equation)</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> epsilon <span class="op">*</span> ((sigma <span class="op">/</span> r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (sigma <span class="op">/</span> r)<span class="op">**</span><span class="dv">6</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.plot(r, V, color<span class="op">=</span><span class="st">'crimson'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>) <span class="co"># Add a line at Energy = 0</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Distance $r$ (Å)'</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Potential Energy $V$ (kJ/mol)'</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Lennard-Jones Potential for Argon'</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">1.5</span>, <span class="fl">2.0</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Pre-allocate an array of 5 zeros</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We use np.zeros() because it's much faster than building a list one-by-one</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.zeros(<span class="dv">5</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Starting grid:"</span>, V)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Iterate over the array using a for loop</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># range(5) generates the numbers 0, 1, 2, 3, 4</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let's say the boundaries (index 0 and 4) have a high energy wall of 10.0</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> i <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        V[i] <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Finished potential well:"</span>, V)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -433,36 +430,146 @@ Array * 2 gives:  [2. 4. 6.]</code></pre>
 </div>
 </div>
 </section>
-<section id="working-with-3d-coordinates" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="working-with-3d-coordinates"><span class="header-section-number">3.3</span> Working with 3D Coordinates</h2>
-<p>A massive part of computational chemistry is simply managing where atoms are in 3D space. The standard Euclidean distance <span class="math inline">\(d\)</span> between two atoms at coordinates <span class="math inline">\((x_1, y_1, z_1)\)</span> and <span class="math inline">\((x_2, y_2, z_2)\)</span> is:</p>
-<p><span class="math display">\[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\]</span></p>
-<p>Using <code>numpy</code>, we can calculate this without writing out the individual <span class="math inline">\(x, y, z\)</span> components. We can use the linear algebra norm <code>np.linalg.norm()</code>.</p>
-<div id="ec11e810" class="cell" data-execution_count="12">
+<section id="creating-functions" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="creating-functions"><span class="header-section-number">3.3</span> 3. Creating Functions</h2>
+<p>If you find yourself doing the same calculation multiple times (like converting units), you should wrap it in a <strong>Function</strong> using the <code>def</code> keyword. A function takes an input, applies your logic, and <code>return</code>s the output.</p>
+<div id="ec11e810" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coordinates of a water molecule (Oxygen at the origin)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Format: np.array([x, y, z]) in Angstroms</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>oxygen <span class="op">=</span> np.array([<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.119</span>])</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>hydrogen_1 <span class="op">=</span> np.array([<span class="fl">0.000</span>, <span class="fl">0.763</span>, <span class="op">-</span><span class="fl">0.477</span>])</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>hydrogen_2 <span class="op">=</span> np.array([<span class="fl">0.000</span>, <span class="op">-</span><span class="fl">0.763</span>, <span class="op">-</span><span class="fl">0.477</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to convert Hartrees (Atomic Units) to kcal/mol</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hartree_to_kcal(energy_au):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    conversion_factor <span class="op">=</span> <span class="fl">627.509</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    energy_kcal <span class="op">=</span> energy_au <span class="op">*</span> conversion_factor</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> energy_kcal</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the O-H bond length</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>bond_vector <span class="op">=</span> hydrogen_1 <span class="op">-</span> oxygen</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>bond_length <span class="op">=</span> np.linalg.norm(bond_vector)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The O-H bond length is </span><span class="sc">{</span>bond_length<span class="sc">:.3f}</span><span class="ss"> Å"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the H-H distance</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>hh_vector <span class="op">=</span> hydrogen_1 <span class="op">-</span> hydrogen_2</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>hh_distance <span class="op">=</span> np.linalg.norm(hh_vector)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The H-H distance is </span><span class="sc">{</span>hh_distance<span class="sc">:.3f}</span><span class="ss"> Å"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can use our custom function anywhere</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ground_state_energy <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>  <span class="co"># Energy of Hydrogen in Hartrees</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hydrogen energy in kcal/mol:"</span>, hartree_to_kcal(ground_state_energy))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>The O-H bond length is 0.968 Å
 The H-H distance is 1.526 Å</code></pre>
 </div>
+</div>
+</section>
+<section id="vectorization-and-plotting" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="vectorization-and-plotting"><span class="header-section-number">3.4</span> 4. Vectorization and Plotting</h2>
+<p>While <code>for</code> loops are great for building complex custom grids, they are slow for basic math. <code>numpy</code> allows us to apply math to entire arrays at once (vectorization), which is orders of magnitude faster.</p>
+<p>Let’s calculate the <strong>Lennard-Jones potential</strong> for Argon. This models the interaction between two neutral atoms as they approach each other: <span class="math display">\[V(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^6 \right]\]</span></p>
+<section id="deconstructing-matplotlib" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="deconstructing-matplotlib"><span class="header-section-number">3.4.1</span> Deconstructing Matplotlib</h3>
+<p>Plotting code can look intimidating because it requires a lot of setup. <strong>Do you need all of it?</strong> No.&nbsp;The only strictly required commands are <code>plt.plot()</code> and <code>plt.show()</code>. Everything else is just to make the plot readable for humans.</p>
+<p>Read the comments in the code block below to see exactly what each line controls.</p>
+<div id="8938e7ac" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters for Argon</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.997</span> <span class="co"># kJ/mol</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">3.40</span> <span class="co"># Angstroms</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># np.linspace creates an array of 100 evenly spaced points between 3.0 and 10.0</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="fl">3.0</span>, <span class="fl">10.0</span>, <span class="dv">100</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the potential for all 100 points instantly (Vectorization)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> epsilon <span class="op">*</span> ((sigma <span class="op">/</span> r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (sigma <span class="op">/</span> r)<span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --- PLOTTING ---</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL: Set the canvas size (width=6, height=4)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>)) </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># REQUIRED: Plot the x and y data. We also add a color and line thickness.</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.plot(r, V, color<span class="op">=</span><span class="st">'crimson'</span>, linewidth<span class="op">=</span><span class="dv">2</span>) </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL BUT HELPFUL: </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.axhline draws a horizontal line across the whole graph (useful for seeing where Energy = 0)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>) </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL: Labels and titles so people know what they are looking at</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Distance $r$ (Å)'</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Potential Energy $V$ (kJ/mol)'</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Lennard-Jones Potential for Argon'</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL: Zoom in on the y-axis to see the bottom of the well clearly</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">1.5</span>, <span class="fl">2.0</span>) </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co"># REQUIRED: Actually display the plot to the screen</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="working-with-3d-coordinates" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="working-with-3d-coordinates"><span class="header-section-number">3.5</span> 5. Working with 3D Coordinates</h2>
+<p>A massive part of computational chemistry is managing where atoms are in 3D space. The standard Euclidean distance <span class="math inline">\(d\)</span> between two atoms at <span class="math inline">\((x_1, y_1, z_1)\)</span> and <span class="math inline">\((x_2, y_2, z_2)\)</span> is: <span class="math display">\[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\]</span></p>
+<p>Instead of writing that huge formula out, we use NumPy’s built-in linear algebra tool <code>np.linalg.norm()</code>, which calculates the length of a vector instantly.</p>
+<div id="d0c085f4" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coordinates of a water molecule (x, y, z in Angstroms)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>oxygen <span class="op">=</span> np.array([<span class="fl">0.000</span>, <span class="fl">0.000</span>, <span class="fl">0.119</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hydrogen_1 <span class="op">=</span> np.array([<span class="fl">0.000</span>, <span class="fl">0.763</span>, <span class="op">-</span><span class="fl">0.477</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtracting the points gives a directional vector from Oxygen to Hydrogen</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>bond_vector <span class="op">=</span> hydrogen_1 <span class="op">-</span> oxygen</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The norm (length) of that vector is the bond distance</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>bond_length <span class="op">=</span> np.linalg.norm(bond_vector)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The O-H bond length is </span><span class="sc">{</span>bond_length<span class="sc">:.3f}</span><span class="ss"> Å"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="the-power-of-libraries-dont-reinvent-the-wheel" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="the-power-of-libraries-dont-reinvent-the-wheel"><span class="header-section-number">3.6</span> 6. The Power of Libraries (Don’t Reinvent the Wheel)</h2>
+<p>You might not have realized it, but you are already standing on the shoulders of giants. Every time you type <code>import numpy</code> or <code>import matplotlib.pyplot as plt</code>, you are loading thousands of lines of highly optimized code written by other scientists. You don’t write custom code to tell your computer monitor which pixels to color in to make a graph; you just let <code>matplotlib</code> do it.</p>
+<p>In computational chemistry, we rely heavily on linear algebra. Let’s look at a classic example: calculating the <strong>determinant</strong> of a matrix.</p>
+<p>For a simple <span class="math inline">\(2 \times 2\)</span> matrix, doing this from scratch is easy. The determinant of a matrix <span class="math inline">\(\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is simply <span class="math inline">\((ad - bc)\)</span>.</p>
+<div id="57ae2c17" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple 2x2 matrix</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="fl">3.0</span>, <span class="fl">8.0</span>],</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              [<span class="fl">4.0</span>, <span class="fl">6.0</span>]])</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The "Hard Way" (Manual Calculation using array indexing)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember, Python counts from zero! A[row, column]</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> A[<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> A[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> A[<span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> A[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>det_manual <span class="op">=</span> (a <span class="op">*</span> d) <span class="op">-</span> (b <span class="op">*</span> c)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Manual 2x2 Determinant: </span><span class="sc">{</span>det_manual<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="scaling-up-the-nightmare-of-the-5x5" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="scaling-up-the-nightmare-of-the-5x5"><span class="header-section-number">3.6.1</span> Scaling Up: The Nightmare of the 5x5</h3>
+<p>Now, what if we need the determinant of a <span class="math inline">\(5 \times 5\)</span> matrix? The formula isn’t just a simple cross-multiplication anymore. Using standard mathematical expansion, a <span class="math inline">\(5 \times 5\)</span> determinant expands into <strong>120 different terms</strong> (<span class="math inline">\(5! = 120\)</span>). If you tried to write a custom Python function to calculate that from scratch, it would require recursive loops, it would be slow, and you would almost certainly introduce a bug.</p>
+<p>This is why we import <strong>SciPy</strong> (<code>scipy.linalg</code>). It contains matrix algorithms that have been perfected by mathematicians and computer scientists over decades. We don’t write complex math solvers from scratch; we let the libraries do the heavy lifting so we can focus on the chemistry.</p>
+<p>Look at how SciPy handles that 5x5 nightmare in exactly one line of code:</p>
+<div id="c8866e0f" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the linear algebra module from SciPy</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's use numpy to quickly generate a random 5x5 matrix</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (We use a set 'seed' so the random numbers are the exact same every time you run this)</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.rand(<span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The "Library Way" (Works for any size matrix!)</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>det_2x2_scipy <span class="op">=</span> la.det(A)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>det_5x5_scipy <span class="op">=</span> la.det(B)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SciPy 2x2 Determinant: </span><span class="sc">{</span>det_2x2_scipy<span class="sc">}</span><span class="ss"> (Matches our manual calculation!)"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Our massive 5x5 matrix looks like this:"</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">round</span>(B, <span class="dv">2</span>))  <span class="co"># We use np.round just to make it easier to read on screen</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">SciPy 5x5 Determinant calculated instantly: </span><span class="sc">{</span>det_5x5_scipy<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 
 
@@ -480,6 +587,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -586,16 +694,16 @@ window._ojs.runtime.interpretFromScriptTags();
     }
     function toggleCodeHandler(show) {
       return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
           if (show) {
             details.open = true;
           } else {
             details.removeAttribute("open");
           }
         }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
         const fromCls = show ? "hidden" : "unhidden";
         const toCls = show ? "unhidden" : "hidden";
         for (let i=0; i<cellCodeDivs.length; i++) {
