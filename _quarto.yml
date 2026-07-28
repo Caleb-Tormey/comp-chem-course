@@ -14,6 +14,7 @@ book:
         - notebooks/week_1_physics_chem_review.qmd
         - notebooks/week_1_atomic_units.qmd
         - notebooks/week_1_python_primer.ipynb
+        - notebooks/week_1_problems.ipynb
         
     - part: "Module 2: Finite Difference Methods for Quantum Mechanics" 
       chapters:
