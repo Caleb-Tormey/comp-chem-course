@@ -26,7 +26,10 @@ book:
         - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
         - notebooks/week_2_problem_3_tunneling.ipynb
         - notebooks/week_2_problem_4_ammonia.ipynb
-    
+    - part: "Module 3: Optimization"
+      chapters:
+        - notebooks/week_3_Optimization_1.ipynb
+        - notebooks/week_3_Optimization_2.ipynb
     - part: "Appendices"
       chapters:
         - notebooks/appendix_crash_course.qmd
