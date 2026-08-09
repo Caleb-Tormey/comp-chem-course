@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Chapter 2: The Curse of Dimensionality &amp; The Ansatz – Introduction to Computational Chemistry</title>
+<title>12&nbsp; Chapter 2: The Curse of Dimensionality &amp; The Ansatz – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../notebooks/appendix_crash_course.html" rel="next">
-<link href="../notebooks/week_3_Optimization_1.html" rel="prev">
+<link href="../notebooks/week_3_Optimization_1.ipynb" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,13 +286,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_Optimization_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Moduel 3: The Mathematics of Optimization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_Optimization_2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span></a>
   </div>
 </li>
       </ul>
@@ -309,13 +309,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
       </ul>
@@ -336,19 +336,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-scaling-problem" id="toc-the-scaling-problem" class="nav-link active" data-scroll-target="#the-scaling-problem"><span class="header-section-number">11.1</span> 1. The Scaling Problem</a></li>
-  <li><a href="#the-variational-theorem" id="toc-the-variational-theorem" class="nav-link" data-scroll-target="#the-variational-theorem"><span class="header-section-number">11.2</span> 2. The Variational Theorem</a></li>
-  <li><a href="#building-the-ansatz-the-guess" id="toc-building-the-ansatz-the-guess" class="nav-link" data-scroll-target="#building-the-ansatz-the-guess"><span class="header-section-number">11.3</span> 3. Building the Ansatz (The Guess)</a></li>
-  <li><a href="#preview-the-optimization-loop" id="toc-preview-the-optimization-loop" class="nav-link" data-scroll-target="#preview-the-optimization-loop"><span class="header-section-number">11.4</span> 4. Preview: The Optimization Loop</a></li>
+  <li><a href="#the-scaling-problem" id="toc-the-scaling-problem" class="nav-link active" data-scroll-target="#the-scaling-problem"><span class="header-section-number">12.1</span> 1. The Scaling Problem</a></li>
+  <li><a href="#the-variational-theorem" id="toc-the-variational-theorem" class="nav-link" data-scroll-target="#the-variational-theorem"><span class="header-section-number">12.2</span> 2. The Variational Theorem</a></li>
+  <li><a href="#building-the-ansatz-the-guess" id="toc-building-the-ansatz-the-guess" class="nav-link" data-scroll-target="#building-the-ansatz-the-guess"><span class="header-section-number">12.3</span> 3. Building the Ansatz (The Guess)</a></li>
+  <li><a href="#preview-the-optimization-loop" id="toc-preview-the-optimization-loop" class="nav-link" data-scroll-target="#preview-the-optimization-loop"><span class="header-section-number">12.4</span> 4. Preview: The Optimization Loop</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -367,21 +367,21 @@ window.Quarto = {
 
 <p>In Module 2, you solved the Schrödinger equation exactly by building a grid (finite difference). It felt powerful, right?</p>
 <p>Unfortunately, we have to abandon that method immediately. It is physically impossible to use grid methods for real chemistry. Here is why.</p>
-<section id="the-scaling-problem" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="the-scaling-problem"><span class="header-section-number">11.1</span> 1. The Scaling Problem</h2>
+<section id="the-scaling-problem" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="the-scaling-problem"><span class="header-section-number">12.1</span> 1. The Scaling Problem</h2>
 <p>Suppose we want to simulate a single electron in a 3D box. If we use 100 grid points along the X, Y, and Z axes, our total grid has <span class="math inline">\(100 \times 100 \times 100 = 1,000,000\)</span> points. Our Hamiltonian matrix would be <span class="math inline">\(10^6 \times 10^6\)</span>. That requires about 8 Terabytes of RAM just to store in memory.</p>
 <p>Now, what if we want to simulate the two electrons in a Helium atom? The wavefunction depends on the coordinates of <em>both</em> electrons simultaneously: <span class="math inline">\(\psi(x_1, y_1, z_1, x_2, y_2, z_2)\)</span>. Our grid now requires <span class="math inline">\(100^6 = 1,000,000,000,000\)</span> points.</p>
 <p>This exponential blow-up is called the <strong>Curse of Dimensionality</strong>. Exact numerical grids are dead on arrival for anything larger than a Hydrogen atom.</p>
 </section>
-<section id="the-variational-theorem" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="the-variational-theorem"><span class="header-section-number">11.2</span> 2. The Variational Theorem</h2>
+<section id="the-variational-theorem" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="the-variational-theorem"><span class="header-section-number">12.2</span> 2. The Variational Theorem</h2>
 <p>If we can’t solve for the exact wavefunction, what do we do? We <strong>guess</strong>.</p>
 <p>The Variational Theorem is the most important mathematical safety net in quantum chemistry. It states that if you guess <em>any</em> valid wavefunction (called a trial wavefunction or <strong>Ansatz</strong>), the energy of your guess will ALWAYS be greater than or equal to the true ground state energy:</p>
 <p><span class="math display">\[ E_{\text{guess}} \ge E_{\text{true}} \]</span></p>
 <p>This gives us a brilliant strategy: 1. Guess a mathematical function with a tunable parameter (like the width of the wave). 2. Calculate the energy. 3. Use an optimization algorithm (like we learned in Chapter 1) to tweak the parameter until the energy hits a minimum.</p>
 </section>
-<section id="building-the-ansatz-the-guess" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="building-the-ansatz-the-guess"><span class="header-section-number">11.3</span> 3. Building the Ansatz (The Guess)</h2>
+<section id="building-the-ansatz-the-guess" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="building-the-ansatz-the-guess"><span class="header-section-number">12.3</span> 3. Building the Ansatz (The Guess)</h2>
 <p>We don’t guess blindly. A valid wavefunction must follow physical rules: it must be smooth, and it must decay to zero as it moves infinitely far from the nucleus.</p>
 <p>A <strong>Gaussian function</strong> is the perfect guess. It looks like a bell curve: <span class="math display">\[ \psi(x) = e^{-\alpha x^2} \]</span> Here, <span class="math inline">\(\alpha\)</span> is our tunable parameter. A large <span class="math inline">\(\alpha\)</span> makes the wave narrow; a small <span class="math inline">\(\alpha\)</span> makes it wide. Let’s visualize our guess using Python.</p>
 <div id="98277da7" class="cell">
@@ -411,8 +411,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="preview-the-optimization-loop" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="preview-the-optimization-loop"><span class="header-section-number">11.4</span> 4. Preview: The Optimization Loop</h2>
+<section id="preview-the-optimization-loop" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="preview-the-optimization-loop"><span class="header-section-number">12.4</span> 4. Preview: The Optimization Loop</h2>
 <p>In the upcoming problem set, you are going to take the 1D Harmonic Oscillator from Module 2 and solve it again—but this time, without a matrix!</p>
 <p>You will write a Python function that takes a value for <span class="math inline">\(\alpha\)</span>, computes the kinetic and potential energy of the Gaussian, and returns the total energy. Then, you will hand that function over to <code>scipy.optimize.minimize</code> and ask the computer to find the exact <span class="math inline">\(\alpha\)</span> that yields the lowest possible energy.</p>
 <p>You are about to write your first true variational quantum mechanics solver!</p>
@@ -899,13 +899,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/week_3_Optimization_1.html" class="pagination-link" aria-label="Chapter 1: The Mathematics of Optimization">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></span>
+      <a href="../notebooks/week_3_Optimization_1.ipynb" class="pagination-link" aria-label="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
