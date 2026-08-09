@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -318,7 +353,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -346,16 +381,55 @@ window.Quarto = {
 <h2 data-number="10.2" class="anchored" data-anchor-id="the-landscape-local-vs.-global-minima"><span class="header-section-number">10.2</span> 2. The Landscape: Local vs.&nbsp;Global Minima</h2>
 <p>Imagine dropping a marble onto a rugged, hilly landscape. Gravity pulls it downhill until it settles in a valley.</p>
 <p>But is it the <em>lowest possible</em> valley on the entire map (the <strong>Global Minimum</strong>), or just a shallow crater halfway down a mountain (a <strong>Local Minimum</strong>)?</p>
-<p><img src="image_agent_tag_14764594148508308265" alt="Reaction coordinate diagram showing reactants, transition state, and products at different energy levels." caption="Potential Energy Surfaces are rugged landscapes."></p>
 <ul>
 <li><strong>Global Minimum:</strong> The lowest energy state of the entire system. (e.g., the true ground state of a molecule).</li>
 <li><strong>Local Minimum:</strong> A stable configuration, but not the lowest possible. (e.g., a misfolded protein or a stable intermediate).</li>
 </ul>
 <p>Because numerical algorithms only look at the local area around them, they will blindly walk down into the <em>nearest</em> valley and stop. <strong>A computer algorithm cannot easily tell if it is in a local or global minimum.</strong> This is why your initial starting guess is the most important part of any computational chemistry calculation!</p>
-<hr>
-<p>To get a feel for how different starting parameters affect an optimization, try exploring this interactive surface:</p>
-<p><generatewidget component_placeholder_id="GenerateWidget_c_0a5dc46979603099_r_dcd74fcb4c7f0db4_0" height="700px" title="Function Optimization Explorer"> { “widgetSpec”: { “id”: “optimization-surface-explorer”, “height”: “700px”, “prompt”: “Objective: Create an interactive 3D surface plot to visualize a rugged mathematical function (like Ackley’s or a simple multi-peak function) to demonstrate local vs global minima.State: initialValues: none.: Standard Layout.: Three.js or Plotly.js (if available via D3/Observable).:- Dropdown: Select Function Type (Simple Bowl, Rugged Landscape, Saddle Point).- Slider: X starting guess.- Slider: Y starting guess.- Button: Run Optimization (Gradient Descent).: Display the 3D surface. Show a marker at the starting guess. When ‘Run Optimization’ is clicked, animate the marker rolling downhill to the nearest local minimum. Allow users to rotate the 3D plot to see how different starting points lead to different valleys.” } } </generatewidget></p>
-<hr>
+<p>Let’s use Python to visualize a rugged Potential Energy Surface. The code below plots a mathematical function that has one deep global minimum in the center, but is surrounded by shallow local minima (ripples).</p>
+<div id="3419d445" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;plaintext&quot;}}">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a 2D grid of X and Y coordinates</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We are searching from -5 to 5 on both axes</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Define our "Rugged" Potential Energy Function</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This combines a wide bowl (X^2 + Y^2) with ripples (cos(X) + cos(Y))</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rugged_potential(x, y):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    bowl <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    ripples <span class="op">=</span> <span class="op">-</span>np.cos(<span class="dv">2</span><span class="op">*</span>x) <span class="op">-</span> np.cos(<span class="dv">2</span><span class="op">*</span>y)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> bowl <span class="op">+</span> ripples <span class="op">+</span> <span class="fl">2.0</span> <span class="co"># Add 2 just to keep energy positive</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> rugged_potential(X, Y)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plotting the 3D Surface</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># We set up a figure with 3D projection</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the surface. cmap='viridis' gives it that topographical coloring</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_surface(X, Y, Z, cmap<span class="op">=</span><span class="st">'viridis'</span>, edgecolor<span class="op">=</span><span class="st">'none'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a color bar</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fig.colorbar(surf, shrink<span class="op">=</span><span class="fl">0.5</span>, aspect<span class="op">=</span><span class="dv">10</span>, label<span class="op">=</span><span class="st">'Potential Energy'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Labeling</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Parameter X (e.g., Bond Length)'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Parameter Y (e.g., Bond Angle)'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Energy'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'A Rugged Potential Energy Surface'</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>If you start your optimization algorithm at <span class="math inline">\(X=0, Y=0\)</span>, it will easily find the global minimum. But if you start your guess at <span class="math inline">\(X=4, Y=4\)</span>, the algorithm will slide into one of those outer ripples and get trapped!</p>
+<p>This is exactly why predicting the 3D structure of proteins is so difficult—the energy landscape has millions of local minima, and standard optimizers get stuck almost immediately.</p>
 </section>
 <section id="how-computers-search-the-nelder-mead-downhill-simplex-method" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="how-computers-search-the-nelder-mead-downhill-simplex-method"><span class="header-section-number">10.3</span> 3. How Computers Search: The Nelder-Mead (Downhill Simplex) Method</h2>
