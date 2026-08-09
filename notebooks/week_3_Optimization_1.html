@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; 📥 Download This Assignment – Introduction to Computational Chemistry</title>
+<title>10&nbsp; Chapter 1: The Mathematics of Optimization – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -71,8 +36,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/week_2_problem_3_tunneling.html" rel="next">
-<link href="../notebooks/week_2_problem_1_finite_well.html" rel="prev">
+<link href="../notebooks/week_3_Optimization_2.html" rel="next">
+<link href="../notebooks/week_2_problem_4_ammonia.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -156,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_1_finite_well.html">Module 2: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_2_harmonic_oscillator.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -256,7 +221,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/week_2_problem_2_harmonic_oscillator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span></a>
   </div>
 </li>
@@ -285,7 +250,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_Optimization_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/week_3_Optimization_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></span></a>
   </div>
 </li>
@@ -336,33 +301,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" id="toc-assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" class="nav-link active" data-scroll-target="#assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials"><span class="header-section-number">8</span> Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</a>
+  <li><a href="#analytical-vs.-numerical-optimization" id="toc-analytical-vs.-numerical-optimization" class="nav-link active" data-scroll-target="#analytical-vs.-numerical-optimization"><span class="header-section-number">10.1</span> 1. Analytical vs.&nbsp;Numerical Optimization</a></li>
+  <li><a href="#the-landscape-local-vs.-global-minima" id="toc-the-landscape-local-vs.-global-minima" class="nav-link" data-scroll-target="#the-landscape-local-vs.-global-minima"><span class="header-section-number">10.2</span> 2. The Landscape: Local vs.&nbsp;Global Minima</a></li>
+  <li><a href="#how-computers-search-the-nelder-mead-downhill-simplex-method" id="toc-how-computers-search-the-nelder-mead-downhill-simplex-method" class="nav-link" data-scroll-target="#how-computers-search-the-nelder-mead-downhill-simplex-method"><span class="header-section-number">10.3</span> 3. How Computers Search: The Nelder-Mead (Downhill Simplex) Method</a></li>
+  <li><a href="#optimization-in-chemical-practice" id="toc-optimization-in-chemical-practice" class="nav-link" data-scroll-target="#optimization-in-chemical-practice"><span class="header-section-number">10.4</span> 4. Optimization in Chemical Practice</a>
   <ul class="collapse">
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">8.0.1</span> Objectives</a></li>
-  <li><a href="#part-1-the-quantum-harmonic-oscillator-qho" id="toc-part-1-the-quantum-harmonic-oscillator-qho" class="nav-link" data-scroll-target="#part-1-the-quantum-harmonic-oscillator-qho"><span class="header-section-number">8.1</span> Part 1: The Quantum Harmonic Oscillator (QHO)</a>
-  <ul class="collapse">
-  <li><a href="#your-task" id="toc-your-task" class="nav-link" data-scroll-target="#your-task"><span class="header-section-number">8.1.1</span> Your Task</a></li>
+  <li><a href="#example-a-geometry-optimization-molecular-mechanics" id="toc-example-a-geometry-optimization-molecular-mechanics" class="nav-link" data-scroll-target="#example-a-geometry-optimization-molecular-mechanics"><span class="header-section-number">10.4.1</span> Example A: Geometry Optimization (Molecular Mechanics)</a></li>
+  <li><a href="#example-b-data-fitting-kinetics" id="toc-example-b-data-fitting-kinetics" class="nav-link" data-scroll-target="#example-b-data-fitting-kinetics"><span class="header-section-number">10.4.2</span> Example B: Data Fitting (Kinetics)</a></li>
   </ul></li>
-  <li><a href="#part-2-energy-spacing-analysis" id="toc-part-2-energy-spacing-analysis" class="nav-link" data-scroll-target="#part-2-energy-spacing-analysis"><span class="header-section-number">8.2</span> Part 2: Energy Spacing Analysis</a>
-  <ul class="collapse">
-  <li><a href="#your-task-1" id="toc-your-task-1" class="nav-link" data-scroll-target="#your-task-1"><span class="header-section-number">8.2.1</span> Your Task</a></li>
-  <li><a href="#conceptual-question-1-isotope-effects-and-mass" id="toc-conceptual-question-1-isotope-effects-and-mass" class="nav-link" data-scroll-target="#conceptual-question-1-isotope-effects-and-mass"><span class="header-section-number">8.2.2</span> Conceptual Question 1: Isotope Effects and Mass</a></li>
-  </ul></li>
-  <li><a href="#part-3-the-morse-potential-anharmonicity" id="toc-part-3-the-morse-potential-anharmonicity" class="nav-link" data-scroll-target="#part-3-the-morse-potential-anharmonicity"><span class="header-section-number">8.3</span> Part 3: The Morse Potential (Anharmonicity)</a></li>
-  <li><a href="#part-4-morse-energy-spacing-vs.-quantum-number" id="toc-part-4-morse-energy-spacing-vs.-quantum-number" class="nav-link" data-scroll-target="#part-4-morse-energy-spacing-vs.-quantum-number"><span class="header-section-number">8.4</span> Part 4: Morse Energy Spacing vs.&nbsp;Quantum Number</a>
-  <ul class="collapse">
-  <li><a href="#conceptual-questions-qho-vs.-morse" id="toc-conceptual-questions-qho-vs.-morse" class="nav-link" data-scroll-target="#conceptual-questions-qho-vs.-morse"><span class="header-section-number">8.4.1</span> Conceptual Questions: QHO vs.&nbsp;Morse</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#a-field-guide-to-optimization-algorithms" id="toc-a-field-guide-to-optimization-algorithms" class="nav-link" data-scroll-target="#a-field-guide-to-optimization-algorithms"><span class="header-section-number">10.5</span> 5. A Field Guide to Optimization Algorithms</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_1_finite_well.html">Module 2: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_2_problem_2_harmonic_oscillator.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html">Module 3: Optimization</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_Optimization_1.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 1: The Mathematics of Optimization</span></h1>
 </div>
 
 
@@ -379,204 +335,95 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>To complete this assignment, do not work on this webpage. Instead, download the raw notebook file, open it locally in VS Code or Jupyter, and fill in your code. * <strong><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/week_2_problem_2_harmonic_oscillator.ipynb">Click Here to Download week_2_finite_well.ipynb</a></strong></p>
-</div>
-</div>
-</div>
-<section id="assignment-vibrational-spectroscopy-from-harmonic-to-morse-potentials" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Assignment: Vibrational Spectroscopy — From Harmonic to Morse Potentials</h1>
-<p><strong>Student Name:</strong> [TYPE YOUR NAME HERE]<br>
-<strong>Date:</strong> [TYPE DATE HERE]</p>
-<section id="objectives" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">8.0.1</span> Objectives</h3>
-<ol type="1">
-<li>Implement the <strong>Quantum Harmonic Oscillator (QHO)</strong> using matrix diagonalization.</li>
-<li>Calculate and analyze the energy level spacing (<span class="math inline">\(\Delta E_n\)</span>) to verify equal energy quantization.</li>
-<li>Explore how reduced mass (<span class="math inline">\(\mu\)</span>) and force constant (<span class="math inline">\(k\)</span>) govern vibrational frequencies.</li>
-<li>Implement the <strong>Morse Potential</strong> to model a realistic, breakable chemical bond, observing how anharmonicity alters energy spacing at higher quantum numbers.</li>
-</ol>
+<p>Whether you are finding the most stable 3D geometry of a drug molecule, locating a transition state for a chemical reaction, or fitting experimental kinetic data to a rate law, you are doing the exact same mathematical task: <strong>Optimization</strong>.</p>
+<p>In computational chemistry, optimization almost always means finding the <strong>minimum</strong> of a function (usually the Potential Energy).</p>
+<section id="analytical-vs.-numerical-optimization" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="analytical-vs.-numerical-optimization"><span class="header-section-number">10.1</span> 1. Analytical vs.&nbsp;Numerical Optimization</h2>
+<p>You already know the analytical way to find a minimum from standard calculus: take the derivative of the function, set it to zero (<span class="math inline">\(f'(x) = 0\)</span>), and solve for <span class="math inline">\(x\)</span>. We used SymPy to do exactly this in the previous module.</p>
+<p>However, analytical solutions are only possible for simple equations (like the Harmonic Oscillator). What if your “function” is the energy of a 50-atom protein folding in water? There is no analytical derivative for that. We have to use <strong>Numerical Optimization</strong>—algorithmic searching where the computer essentially “feels” its way down the energy landscape.</p>
+</section>
+<section id="the-landscape-local-vs.-global-minima" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-landscape-local-vs.-global-minima"><span class="header-section-number">10.2</span> 2. The Landscape: Local vs.&nbsp;Global Minima</h2>
+<p>Imagine dropping a marble onto a rugged, hilly landscape. Gravity pulls it downhill until it settles in a valley.</p>
+<p>But is it the <em>lowest possible</em> valley on the entire map (the <strong>Global Minimum</strong>), or just a shallow crater halfway down a mountain (a <strong>Local Minimum</strong>)?</p>
+<p><img src="image_agent_tag_14764594148508308265" alt="Reaction coordinate diagram showing reactants, transition state, and products at different energy levels." caption="Potential Energy Surfaces are rugged landscapes."></p>
+<ul>
+<li><strong>Global Minimum:</strong> The lowest energy state of the entire system. (e.g., the true ground state of a molecule).</li>
+<li><strong>Local Minimum:</strong> A stable configuration, but not the lowest possible. (e.g., a misfolded protein or a stable intermediate).</li>
+</ul>
+<p>Because numerical algorithms only look at the local area around them, they will blindly walk down into the <em>nearest</em> valley and stop. <strong>A computer algorithm cannot easily tell if it is in a local or global minimum.</strong> This is why your initial starting guess is the most important part of any computational chemistry calculation!</p>
 <hr>
-<div id="a4766b70" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- RUN THIS CELL FIRST ---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot formatting</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">11</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.linewidth'</span>: <span class="fl">1.2</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="fl">2.0</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment ready!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<p>To get a feel for how different starting parameters affect an optimization, try exploring this interactive surface:</p>
+<p><generatewidget component_placeholder_id="GenerateWidget_c_0a5dc46979603099_r_dcd74fcb4c7f0db4_0" height="700px" title="Function Optimization Explorer"> { “widgetSpec”: { “id”: “optimization-surface-explorer”, “height”: “700px”, “prompt”: “Objective: Create an interactive 3D surface plot to visualize a rugged mathematical function (like Ackley’s or a simple multi-peak function) to demonstrate local vs global minima.State: initialValues: none.: Standard Layout.: Three.js or Plotly.js (if available via D3/Observable).:- Dropdown: Select Function Type (Simple Bowl, Rugged Landscape, Saddle Point).- Slider: X starting guess.- Slider: Y starting guess.- Button: Run Optimization (Gradient Descent).: Display the 3D surface. Show a marker at the starting guess. When ‘Run Optimization’ is clicked, animate the marker rolling downhill to the nearest local minimum. Allow users to rotate the 3D plot to see how different starting points lead to different valleys.” } } </generatewidget></p>
+<hr>
 </section>
-<section id="part-1-the-quantum-harmonic-oscillator-qho" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="part-1-the-quantum-harmonic-oscillator-qho"><span class="header-section-number">8.1</span> Part 1: The Quantum Harmonic Oscillator (QHO)</h2>
-<p>For small displacements near equilibrium, a covalent bond acts like a quantum spring with potential energy: <span class="math display">\[V(x) = \frac{1}{2} k x^2\]</span></p>
-<p>where <span class="math inline">\(x = 0\)</span> represents the equilibrium bond length (<span class="math inline">\(r = r_e\)</span>).</p>
-<section id="your-task" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="your-task"><span class="header-section-number">8.1.1</span> Your Task</h3>
-<ol type="1">
-<li>Set up a grid from <span class="math inline">\(x = -4.0\)</span> to <span class="math inline">\(x = 4.0\)</span> atomic units.</li>
-<li>Define <span class="math inline">\(V(x) = \frac{1}{2} k x^2\)</span> with force constant <span class="math inline">\(k = 1.0\)</span> and mass <span class="math inline">\(m = 1.0\)</span>.</li>
-<li>Complete the matrix solver (reusing your kinetic energy scaling <span class="math inline">\(t = \frac{\hbar^2}{2 m \Delta x^2}\)</span>).</li>
-</ol>
-<div id="e068850c" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Parameters</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>L_grid <span class="op">=</span> <span class="fl">8.0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>N_points <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span>L_grid<span class="op">/</span><span class="dv">2</span>, L_grid<span class="op">/</span><span class="dv">2</span>, N_points)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Physical Parameters (Atomic Units: hbar = 1)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Potential Array</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Define the harmonic potential array V_qho </span><span class="al">###</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># V_qho = ...</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Hamiltonian Construction</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> (<span class="fl">2.0</span> <span class="op">*</span> m <span class="op">*</span> dx<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros((N_points, N_points))</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Fill main diagonal (2*t + V_qho) and off-diagonals (-t) </span><span class="al">###</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Solve for Eigenvalues and Eigenvectors</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>energies_qho, wavefunctions_qho <span class="op">=</span> la.eigh(H)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"QHO calculation complete!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<section id="how-computers-search-the-nelder-mead-downhill-simplex-method" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="how-computers-search-the-nelder-mead-downhill-simplex-method"><span class="header-section-number">10.3</span> 3. How Computers Search: The Nelder-Mead (Downhill Simplex) Method</h2>
+<p>How exactly does a computer “walk downhill” if it doesn’t know the derivative of the function? One of the most intuitive and robust algorithms is the <strong>Nelder-Mead Method</strong> (often called the Downhill Simplex).</p>
+<p>A “simplex” is just a geometric shape with <span class="math inline">\(N+1\)</span> corners, where <span class="math inline">\(N\)</span> is the number of variables you are optimizing. If you are optimizing 2 variables (like bond length and bond angle), the simplex is a triangle.</p>
+<p>Instead of rolling a single marble, Nelder-Mead drops a flexible triangle onto the landscape. It evaluates the energy at all three corners, finds the <em>highest</em> energy point (the worst one), and then morphs the triangle away from that bad point.</p>
+<p><img src="image_agent_tag_14764594148508309036" alt="Diagram showing the reflection, expansion, contraction, and shrink steps of a triangle in the Nelder-Mead algorithm." caption="The four moves of the Nelder-Mead algorithm."></p>
+<p>The algorithm uses four basic moves to crawl downhill like an amoeba: 1. <strong>Reflect:</strong> Flip the worst point across the center of the other points (moving away from the high energy). 2. <strong>Expand:</strong> If the reflection finds a steep downhill slope, stretch the triangle further in that direction. 3. <strong>Contract:</strong> If the reflection hits a wall, pull the point closer in. 4. <strong>Shrink:</strong> If all else fails, shrink the entire triangle around the best known point.</p>
+<p>The Downhill Simplex is incredibly useful because it <strong>does not require derivatives</strong>. It only needs to know the energy at specific points, making it perfect for messy, noisy chemical data.</p>
+</section>
+<section id="optimization-in-chemical-practice" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="optimization-in-chemical-practice"><span class="header-section-number">10.4</span> 4. Optimization in Chemical Practice</h2>
+<p>When will you actually use these tools?</p>
+<section id="example-a-geometry-optimization-molecular-mechanics" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="example-a-geometry-optimization-molecular-mechanics"><span class="header-section-number">10.4.1</span> Example A: Geometry Optimization (Molecular Mechanics)</h3>
+<p>Suppose you are modeling a cluster of three Argon atoms. The energy is governed by the Lennard-Jones potential. You have 9 total coordinates (the <span class="math inline">\(x, y, z\)</span> of each atom). You feed these 9 coordinates into an optimizer. The algorithm moves the atoms around (evaluating the energy at each step) until the net force on every atom is zero.</p>
+</section>
+<section id="example-b-data-fitting-kinetics" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="example-b-data-fitting-kinetics"><span class="header-section-number">10.4.2</span> Example B: Data Fitting (Kinetics)</h3>
+<p>You run an experiment measuring concentration vs.&nbsp;time, and you suspect the reaction follows a complex rate law: <span class="math inline">\([A] = [A]_0 e^{-kt^2}\)</span>. You don’t know <span class="math inline">\(k\)</span>. You can write a function that calculates the error (the difference) between your experimental data and a guessed <span class="math inline">\(k\)</span>. You then run an optimizer to find the <span class="math inline">\(k\)</span> that <strong>minimizes the error</strong>.</p>
+<hr>
 </section>
 </section>
-<section id="part-2-energy-spacing-analysis" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="part-2-energy-spacing-analysis"><span class="header-section-number">8.2</span> Part 2: Energy Spacing Analysis</h2>
-<p>Analytical quantum mechanics predicts that the QHO energy levels are given by <span class="math inline">\(E_n = \hbar \omega \left(n + \frac{1}{2}\right)\)</span>, meaning the gap between adjacent energy levels (<span class="math inline">\(\Delta E_n = E_{n+1} - E_n\)</span>) is strictly constant.</p>
-<section id="your-task-1" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="your-task-1"><span class="header-section-number">8.2.1</span> Your Task</h3>
-<p>Calculate the energy differences between adjacent states for the first 8 states and verify if <span class="math inline">\(\Delta E\)</span> remains constant.</p>
-<div id="3a80ab87" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate energy gaps for the first 8 states</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>num_states <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>delta_E_qho <span class="op">=</span> []</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Calculate E[n+1] - E[n] for n from 0 to num_states-2 </span><span class="al">###</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use a loop over range(num_states - 1)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(delta_E_qho)):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ΔE from state </span><span class="sc">{</span>n<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>n<span class="op">+</span><span class="dv">2</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>delta_E_qho[n]<span class="sc">:.5f}</span><span class="ss"> atomic units"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="conceptual-question-1-isotope-effects-and-mass" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="conceptual-question-1-isotope-effects-and-mass"><span class="header-section-number">8.2.2</span> Conceptual Question 1: Isotope Effects and Mass</h3>
-<p><strong>Question:</strong> In Infrared (IR) spectroscopy, substituting an atom with a heavier isotope (e.g., replacing Hydrogen with Deuterium, <span class="math inline">\(H \to D\)</span>) shifts the vibrational absorption frequency. Based on the classical frequency <span class="math inline">\(\omega = \sqrt{\frac{k}{\mu}}\)</span>, if you <strong>double the mass</strong> (<span class="math inline">\(m = 2.0\)</span>) while keeping <span class="math inline">\(k = 1.0\)</span>, what do you expect to happen to: 1. The energy spacing <span class="math inline">\(\Delta E\)</span>? 2. The zero-point energy (ground state energy, <span class="math inline">\(E_0\)</span>)?</p>
-<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
-</section>
-</section>
-<section id="part-3-the-morse-potential-anharmonicity" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="part-3-the-morse-potential-anharmonicity"><span class="header-section-number">8.3</span> Part 3: The Morse Potential (Anharmonicity)</h2>
-<p>While the harmonic oscillator is a great approximation near equilibrium, real molecules can <strong>dissociate</strong> if given enough energy. A harmonic bond would require infinite energy to break!</p>
-<p>To accurately model real bonds, we use the <strong>Morse Potential</strong>: <span class="math display">\[V_{\text{Morse}}(x) = D_e \left( 1 - e^{-a x} \right)^2\]</span></p>
-<p>where: * <span class="math inline">\(D_e\)</span> is the bond dissociation energy. * <span class="math inline">\(a = \sqrt{\frac{k}{2 D_e}}\)</span> controls the width of the potential well. * <span class="math inline">\(x\)</span> is the displacement from equilibrium.</p>
-<p>Notice that for small <span class="math inline">\(x\)</span>, <span class="math inline">\(V_{\text{Morse}}(x) \approx \frac{1}{2} k x^2\)</span>, but for large positive <span class="math inline">\(x\)</span>, <span class="math inline">\(V_{\text{Morse}}(x) \to D_e\)</span> (the bond breaks!).</p>
-<div id="d16f9a8c" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for Morse Potential</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>De <span class="op">=</span> <span class="fl">10.0</span>   <span class="co"># Dissociation energy</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.sqrt(k <span class="op">/</span> (<span class="fl">2.0</span> <span class="op">*</span> De))  <span class="co"># Matched to QHO force constant k=1.0</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build Morse Potential Array</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Build V_morse using np.exp() </span><span class="al">###</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># V_morse = ...</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Build Hamiltonian for Morse</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>H_morse <span class="op">=</span> np.zeros((N_points, N_points))</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">### YOUR CODE HERE: Construct the Morse Hamiltonian </span><span class="al">###</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Diagonalize Morse Hamiltonian</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>energies_morse, wavefunctions_morse <span class="op">=</span> la.eigh(H_morse)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># --- PLOTTING COMPARISON (DO NOT MODIFY) ---</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>plt.plot(x, V_qho, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Harmonic $V(x)$'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x, V_morse, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Morse $V(x)$'</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay Morse wavefunctions</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    E <span class="op">=</span> energies_morse[n]</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    psi <span class="op">=</span> wavefunctions_morse[:, n]</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, (psi <span class="op">*</span> <span class="dv">8</span>) <span class="op">+</span> E, label<span class="op">=</span><span class="ss">f'Morse $n=</span><span class="sc">{</span>n<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">$'</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    plt.axhline(E, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">12</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Displacement from Equilibrium, $x$"</span>)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Energy (a.u.)"</span>)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Harmonic vs. Morse Potential Well"</span>)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="part-4-morse-energy-spacing-vs.-quantum-number" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="part-4-morse-energy-spacing-vs.-quantum-number"><span class="header-section-number">8.4</span> Part 4: Morse Energy Spacing vs.&nbsp;Quantum Number</h2>
-<p>Now let’s compute the energy differences <span class="math inline">\(\Delta E_n\)</span> for the Morse potential and contrast them directly with the Harmonic Oscillator.</p>
-<div id="c89b5302" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate delta_E for Morse potential</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>delta_E_morse <span class="op">=</span> [energies_morse[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> energies_morse[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>delta_E_harmonic <span class="op">=</span> [energies_qho[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> energies_qho[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>state_indices <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">8</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(state_indices, delta_E_harmonic, <span class="st">'ro--'</span>, label<span class="op">=</span><span class="st">'Harmonic Spacing ($</span><span class="er">\</span><span class="st">Delta E$)'</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.plot(state_indices, delta_E_morse, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'Morse Spacing ($</span><span class="er">\</span><span class="st">Delta E$)'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Transition ($n </span><span class="ch">\t</span><span class="st">o n+1$)"</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Energy Gap, $</span><span class="er">\</span><span class="st">Delta E$ (a.u.)"</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Vibrational Energy Spacing: Harmonic vs. Anharmonic"</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<section id="conceptual-questions-qho-vs.-morse" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="conceptual-questions-qho-vs.-morse"><span class="header-section-number">8.4.1</span> Conceptual Questions: QHO vs.&nbsp;Morse</h3>
-<p><strong>Question 2:</strong> Look at the plot of <span class="math inline">\(\Delta E\)</span> versus transition level generated in Part 4. 1. Describe what happens to the energy spacing between adjacent states in the Morse potential as <span class="math inline">\(n\)</span> increases. 2. Why is the Harmonic Oscillator a suitable approximation for low vibrational states (e.g., <span class="math inline">\(n=1 \to n=2\)</span>), but a terrible approximation for higher vibrational energy levels?</p>
-<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
-<p><strong>Question 3:</strong> What physical phenomenon does the flattening out of the Morse energy levels represent as <span class="math inline">\(E \to D_e\)</span>? (Hint: Think about what happens to a chemical bond when a molecule absorbs too much thermal or light energy).</p>
-<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
+<section id="a-field-guide-to-optimization-algorithms" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="a-field-guide-to-optimization-algorithms"><span class="header-section-number">10.5</span> 5. A Field Guide to Optimization Algorithms</h2>
+<p>When using <code>scipy.optimize.minimize</code>, you can choose the specific algorithm the computer uses. Here is a cheat sheet for the most common ones you will encounter in computational chemistry:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Algorithm</th>
+<th style="text-align: left;">Needs Derivatives?</th>
+<th style="text-align: left;">Best Used For</th>
+<th style="text-align: left;">Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nelder-Mead (Simplex)</strong></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Noisy data, functions where derivatives are impossible to calculate.</td>
+<td style="text-align: left;">Slow for problems with many variables (&gt;10).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Gradient Descent</strong></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Simple, smooth surfaces. Good for introductory machine learning.</td>
+<td style="text-align: left;">Often zig-zags and converges very slowly near the minimum.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BFGS (Quasi-Newton)</strong></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The workhorse of quantum chemistry. Geometry optimizations and transition states.</td>
+<td style="text-align: left;">Can fail catastrophically if the starting guess is very bad.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Simulated Annealing</strong></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Escaping local minima. It intentionally takes “bad” uphill steps based on a simulated temperature.</td>
+<td style="text-align: left;">Very computationally expensive.</td>
+</tr>
+</tbody>
+</table>
 
 
 <script type="ojs-module-contents">
@@ -593,8 +440,6 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1062,13 +907,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/week_2_problem_1_finite_well.html" class="pagination-link" aria-label="📥 Download This Assignment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📥 Download This Assignment</span></span>
+      <a href="../notebooks/week_2_problem_4_ammonia.html" class="pagination-link" aria-label="Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Problem 4 Capstone: Ammonia Inversion and Quantum Tunneling Rates</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/week_2_problem_3_tunneling.html" class="pagination-link" aria-label="Assignment 3: Quantum Tunneling and Scattering">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Assignment 3: Quantum Tunneling and Scattering</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/week_3_Optimization_2.html" class="pagination-link" aria-label="Chapter 2: The Curse of Dimensionality &amp; The Ansatz">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
