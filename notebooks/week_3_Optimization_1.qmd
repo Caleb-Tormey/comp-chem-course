@@ -137,9 +137,11 @@ def f(pos):
 
 # Custom mini Nelder-Mead generator just to save the triangle states
 def get_simplex_path():
-    simplex = np.array([[3.0, 3.0], [4.0, 2.0], [2.0, 4.0]])
+    # Start with a large triangle far from the minimum (0,0)
+    simplex = np.array([[-4.0, 4.0], [-2.0, 4.5], [-3.0, 2.0]])
     path = [np.copy(simplex)]
-    for _ in range(12):
+    # Testing shows 18 steps finds reasonable minimum
+    for _ in range(18):
         # Sort vertices by energy
         order = np.argsort([f(p) for p in simplex])
         simplex = simplex[order]
@@ -175,12 +177,12 @@ def get_simplex_path():
 path = get_simplex_path()
 
 # Setup the plot
-fig, ax = plt.subplots(figsize=(6, 6))
+fig, ax = plt.subplots(figsize=(8, 6))
 x_grid = np.linspace(-1, 5, 100)
 y_grid = np.linspace(-1, 5, 100)
 X, Y = np.meshgrid(x_grid, y_grid)
 Z = X**2 + 2*Y**2
-ax.contourf(X, Y, Z, levels=15, cmap='Blues', alpha=0.5)
+ax.contourf(X, Y, Z, levels=20, cmap='Blues', alpha=0.6)
 ax.plot(0, 0, marker='*', color='gold', markersize=15, markeredgecolor='black', label="Minimum")
 
 # Initialize the triangle patch
