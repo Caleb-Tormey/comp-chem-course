@@ -178,8 +178,8 @@ path = get_simplex_path()
 
 # Setup the plot
 fig, ax = plt.subplots(figsize=(8, 6))
-x_grid = np.linspace(-1, 5, 100)
-y_grid = np.linspace(-1, 5, 100)
+x_grid = np.linspace(-5, 5, 100)
+y_grid = np.linspace(-5, 5, 100)
 X, Y = np.meshgrid(x_grid, y_grid)
 Z = X**2 + 2*Y**2
 ax.contourf(X, Y, Z, levels=20, cmap='Blues', alpha=0.6)
