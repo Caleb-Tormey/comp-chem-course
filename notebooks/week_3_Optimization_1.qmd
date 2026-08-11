@@ -118,6 +118,92 @@ Instead of rolling a single marble, Nelder-Mead drops a flexible triangle onto t
 4.  **Shrink:** If all else fails, shrink the entire triangle around the best known point.
 
 The Downhill Simplex is incredibly useful in chemistry because it **does not require derivatives**, making it perfect for messy, noisy experimental data or complex quantum wavefunctions.
+Below is an animation of the Nelder-Mead simplex hunting for the minimum of a 2D energy well. Notice how the triangle flips (reflects) to walk downhill, stretches (expands) when it finds a steep slope, and shrinks tightly around the center when it hits the bottom!
+```{python}
+#| echo: false
+#| message: false
+#| warning: false
+# This block runs at build time. The echo: false tag hides this code from the textbook,
+# leaving only the beautiful animation output!
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+# Define a simple 2D well
+def f(pos):
+    return pos[0]**2 + 2*pos[1]**2
+
+# Custom mini Nelder-Mead generator just to save the triangle states
+def get_simplex_path():
+    simplex = np.array([[3.0, 3.0], [4.0, 2.0], [2.0, 4.0]])
+    path = [np.copy(simplex)]
+    for _ in range(12):
+        # Sort vertices by energy
+        order = np.argsort([f(p) for p in simplex])
+        simplex = simplex[order]
+        best, good, worst = simplex[0], simplex[1], simplex[2]
+        centroid = (best + good) / 2.0
+        
+        # Reflect
+        ref = centroid + 1.0 * (centroid - worst)
+        if f(best) <= f(ref) < f(good):
+            simplex[2] = ref
+        elif f(ref) < f(best):
+            # Expand
+            exp = centroid + 2.0 * (ref - centroid)
+            if f(exp) < f(ref): simplex[2] = exp
+            else: simplex[2] = ref
+        else:
+            # Contract
+            if f(ref) < f(worst):
+                con = centroid + 0.5 * (ref - centroid)
+                if f(con) < f(ref): simplex[2] = con
+                else:
+                    simplex[1] = best + 0.5*(good - best)
+                    simplex[2] = best + 0.5*(worst - best)
+            else:
+                con = centroid + 0.5 * (worst - centroid)
+                if f(con) < f(worst): simplex[2] = con
+                else:
+                    simplex[1] = best + 0.5*(good - best)
+                    simplex[2] = best + 0.5*(worst - best)
+        path.append(np.copy(simplex))
+    return path
+
+path = get_simplex_path()
+
+# Setup the plot
+fig, ax = plt.subplots(figsize=(6, 6))
+x_grid = np.linspace(-1, 5, 100)
+y_grid = np.linspace(-1, 5, 100)
+X, Y = np.meshgrid(x_grid, y_grid)
+Z = X**2 + 2*Y**2
+ax.contourf(X, Y, Z, levels=15, cmap='Blues', alpha=0.5)
+ax.plot(0, 0, marker='*', color='gold', markersize=15, markeredgecolor='black', label="Minimum")
+
+# Initialize the triangle patch
+triangle, = ax.plot([], [], 'o-', color='crimson', linewidth=2, markersize=8)
+
+def init():
+    triangle.set_data([], [])
+    return triangle,
+
+def animate(i):
+    # To close the triangle, we append the first point to the end
+    xs = np.append(path[i][:, 0], path[i][0, 0])
+    ys = np.append(path[i][:, 1], path[i][0, 1])
+    triangle.set_data(xs, ys)
+    ax.set_title(f"Nelder-Mead Search: Step {i}")
+    return triangle,
+
+anim = FuncAnimation(fig, animate, init_func=init, frames=len(path), interval=800, blit=True)
+plt.close() # Prevent static plot from showing
+
+# Display as an interactive HTML5 video player in the book
+HTML(anim.to_jshtml())
+```
 
 ## 5. A Field Guide to Optimization Algorithms
 
