@@ -104,7 +104,7 @@ print(f"Path 1 stopped at Energy = {res_1.fun:.3f}")
 print(f"Path 2 stopped at Energy = {res_2.fun:.3f}")
 ```
 
-## 4. How Computers Search: The Nelder-Mead (Downhill Simplex) Method
+## 4. An Example of How Computers Search: The Nelder-Mead (Downhill Simplex) Method
 
 If you look closely at the code above, you'll see we told `scipy` to use `method='Nelder-Mead'`. How exactly does a computer "walk downhill" without knowing the analytical derivative of the function? 
 
@@ -206,8 +206,76 @@ plt.close() # Prevent static plot from showing
 # Display as an interactive HTML5 video player in the book
 HTML(anim.to_jshtml())
 ```
+##  Applied Example: Fitting the Non-Ideal Gas Law
 
-## 5. A Field Guide to Optimization Algorithms
+While we have focused on potential energy surfaces, we don't only use optimization for energy minimzation! We use exactly the same algorithms to fit mathematical models to experimental data.
+
+For this case, the "energy landscape" we are exploring is the Error Landscape (often called a Loss Function). Our coordinates are the unknown parameters we want to find, and the height of the landscape is how wrong our guess is.
+
+Suppose we collect Pressure-Volume data for Carbon Dioxide at $T = 300\text{ K}$. At high pressures, molecules are crammed closely together, and the Ideal Gas Law ($P = RT/V$) begins to fail. We need to fit the Van der Waals Equation of State:
+$$P = \frac{RT}{V - b} - \frac{a}{V^2}$$
+
+We have two unknown parameters to find:
+
+- $a$: Accounts for intermolecular attractive forces.
+
+- $b$: Accounts for the physical volume taken up by the atoms.
+
+Run the code below. It uses the Nelder-Mead algorithm to tweak the $a$ and $b$ parameters until the calculated curve perfectly matches the experimental data points. It does this by continually calculating the "Sum of Squared Errors" and walking downhill to minimize it!
+
+```{pyodide}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+
+# 1. Experimental PV data for CO2 at T = 300 K
+# Volume in L/mol, Pressure in atm
+V_exp = np.array([0.3, 0.4, 0.5, 0.6, 0.8, 1.0, 1.5])
+P_exp = np.array([55.8, 46.5, 39.5, 34.2, 26.9, 22.1, 15.3])
+
+R = 0.08206 # L*atm/(mol*K)
+T = 300 # K
+
+# 2. Define the Error (Loss) Function
+# This takes our guesses for a and b, calculates the theoretical pressure, 
+# and returns the sum of squared differences from the experimental data.
+def calculate_error(guess):
+    a, b = guess[0], guess[1]
+    
+    # Calculate what the pressure WOULD be with these a,b parameters
+    P_calc = (R * T) / (V_exp - b) - (a / V_exp**2)
+    
+    # Calculate the sum of squared differences (This is our "landscape" height!)
+    error = np.sum((P_calc - P_exp)**2)
+    return error
+
+# 3. Run the Nelder-Mead Optimization
+initial_guess = [1.0, 0.01] 
+result = minimize(calculate_error, initial_guess, method='Nelder-Mead')
+a_opt, b_opt = result.x
+
+print(f"Optimization Successful!")
+print(f"Recovered 'a': {a_opt:.3f} L^2*atm/mol^2")
+print(f"Recovered 'b': {b_opt:.4f} L/mol")
+
+# --- Plotting the Results ---
+V_smooth = np.linspace(0.28, 1.6, 100)
+P_ideal = (R * T) / V_smooth
+P_vdw = (R * T) / (V_smooth - b_opt) - (a_opt / V_smooth**2)
+
+plt.figure(figsize=(8, 5))
+plt.scatter(V_exp, P_exp, color='black', label='Experimental CO2 Data', zorder=5)
+plt.plot(V_smooth, P_ideal, 'r--', label='Ideal Gas Law (Terrible fit)')
+plt.plot(V_smooth, P_vdw, 'b-', label='Van der Waals (Optimized fit)')
+
+plt.xlabel('Molar Volume (L/mol)')
+plt.ylabel('Pressure (atm)')
+plt.title('Fitting the Van der Waals Equation of State')
+plt.legend()
+plt.show()
+```
+
+## A Field Guide to Optimization Algorithms
 
 When using `scipy.optimize.minimize`, you can choose the specific algorithm the computer uses. Here is a cheat sheet for the most common ones you will encounter in computational chemistry:
 
