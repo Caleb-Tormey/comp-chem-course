@@ -265,7 +265,7 @@ P_vdw = (R * T) / (V_smooth - b_opt) - (a_opt / V_smooth**2)
 
 plt.figure(figsize=(8, 5))
 plt.scatter(V_exp, P_exp, color='black', label='Experimental CO2 Data', zorder=5)
-plt.plot(V_smooth, P_ideal, 'r--', label='Ideal Gas Law (Terrible fit)')
+plt.plot(V_smooth, P_ideal, 'r--', label='Ideal Gas Law')
 plt.plot(V_smooth, P_vdw, 'b-', label='Van der Waals (Optimized fit)')
 
 plt.xlabel('Molar Volume (L/mol)')
