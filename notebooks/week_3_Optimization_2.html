@@ -336,10 +336,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-scaling-problem" id="toc-the-scaling-problem" class="nav-link active" data-scroll-target="#the-scaling-problem"><span class="header-section-number">12.1</span> 1. The Scaling Problem</a></li>
-  <li><a href="#the-variational-theorem" id="toc-the-variational-theorem" class="nav-link" data-scroll-target="#the-variational-theorem"><span class="header-section-number">12.2</span> 2. The Variational Theorem</a></li>
-  <li><a href="#building-the-ansatz-the-guess" id="toc-building-the-ansatz-the-guess" class="nav-link" data-scroll-target="#building-the-ansatz-the-guess"><span class="header-section-number">12.3</span> 3. Building the Ansatz (The Guess)</a></li>
-  <li><a href="#preview-the-optimization-loop" id="toc-preview-the-optimization-loop" class="nav-link" data-scroll-target="#preview-the-optimization-loop"><span class="header-section-number">12.4</span> 4. Preview: The Optimization Loop</a></li>
+  <li><a href="#the-scaling-problem" id="toc-the-scaling-problem" class="nav-link active" data-scroll-target="#the-scaling-problem"><span class="header-section-number">12.1</span> The Scaling Problem</a></li>
+  <li><a href="#simplifying-the-physics-the-born-oppenheimer-approximation" id="toc-simplifying-the-physics-the-born-oppenheimer-approximation" class="nav-link" data-scroll-target="#simplifying-the-physics-the-born-oppenheimer-approximation"><span class="header-section-number">12.2</span> Simplifying the Physics: The Born-Oppenheimer Approximation</a></li>
+  <li><a href="#simplifying-the-math-the-variational-theorem" id="toc-simplifying-the-math-the-variational-theorem" class="nav-link" data-scroll-target="#simplifying-the-math-the-variational-theorem"><span class="header-section-number">12.3</span> Simplifying the Math: The Variational Theorem</a></li>
+  <li><a href="#let-python-do-the-calculus" id="toc-let-python-do-the-calculus" class="nav-link" data-scroll-target="#let-python-do-the-calculus"><span class="header-section-number">12.4</span> Let Python Do the Calculus</a></li>
+  <li><a href="#building-the-ansatz-slater-vs.-gaussian" id="toc-building-the-ansatz-slater-vs.-gaussian" class="nav-link" data-scroll-target="#building-the-ansatz-slater-vs.-gaussian"><span class="header-section-number">12.5</span> Building the Ansatz: Slater vs.&nbsp;Gaussian</a></li>
+  <li><a href="#preview-the-optimization-loop" id="toc-preview-the-optimization-loop" class="nav-link" data-scroll-target="#preview-the-optimization-loop"><span class="header-section-number">12.6</span> 4. Preview: The Optimization Loop</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
@@ -368,51 +370,120 @@ window.Quarto = {
 <p>In Module 2, you solved the Schrödinger equation exactly by building a grid (finite difference). It felt powerful, right?</p>
 <p>Unfortunately, we have to abandon that method immediately. It is physically impossible to use grid methods for real chemistry. Here is why.</p>
 <section id="the-scaling-problem" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="the-scaling-problem"><span class="header-section-number">12.1</span> 1. The Scaling Problem</h2>
+<h2 data-number="12.1" class="anchored" data-anchor-id="the-scaling-problem"><span class="header-section-number">12.1</span> The Scaling Problem</h2>
 <p>Suppose we want to simulate a single electron in a 3D box. If we use 100 grid points along the X, Y, and Z axes, our total grid has <span class="math inline">\(100 \times 100 \times 100 = 1,000,000\)</span> points. Our Hamiltonian matrix would be <span class="math inline">\(10^6 \times 10^6\)</span>. That requires about 8 Terabytes of RAM just to store in memory.</p>
 <p>Now, what if we want to simulate the two electrons in a Helium atom? The wavefunction depends on the coordinates of <em>both</em> electrons simultaneously: <span class="math inline">\(\psi(x_1, y_1, z_1, x_2, y_2, z_2)\)</span>. Our grid now requires <span class="math inline">\(100^6 = 1,000,000,000,000\)</span> points.</p>
 <p>This exponential blow-up is called the <strong>Curse of Dimensionality</strong>. Exact numerical grids are dead on arrival for anything larger than a Hydrogen atom.</p>
 </section>
-<section id="the-variational-theorem" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="the-variational-theorem"><span class="header-section-number">12.2</span> 2. The Variational Theorem</h2>
-<p>If we can’t solve for the exact wavefunction, what do we do? We <strong>guess</strong>.</p>
+<section id="simplifying-the-physics-the-born-oppenheimer-approximation" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="simplifying-the-physics-the-born-oppenheimer-approximation"><span class="header-section-number">12.2</span> Simplifying the Physics: The Born-Oppenheimer Approximation</h2>
+<p>To survive, computational chemists have to make approximations. The first major approximation targets the <strong>Hamiltonian operator</strong> (<span class="math inline">\(\hat{H}\)</span>).</p>
+<p>A true molecule consists of moving electrons and moving nuclei. The total Kinetic Energy (<span class="math inline">\(\hat{T}\)</span>) would include the movement of everything. But protons and neutrons are thousands of times heavier than electrons. From the perspective of a zipping electron, the massive nuclei appear to be completely frozen in place.</p>
+<p>This is the <strong>Born-Oppenheimer (BO) Approximation</strong>. We assume the nuclear kinetic energy is zero (<span class="math inline">\(\hat{T}_{Nuc} = 0\)</span>). We “freeze” the nuclei at specific 3D coordinates, calculate the energy of the electrons zipping around that static framework, and then slowly move the nuclei to new positions (Geometry Optimization!).</p>
+</section>
+<section id="simplifying-the-math-the-variational-theorem" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="simplifying-the-math-the-variational-theorem"><span class="header-section-number">12.3</span> Simplifying the Math: The Variational Theorem</h2>
+<p>Even with frozen nuclei, we still cannot exactly solve <span class="math inline">\(\hat{H}\psi = E\psi\)</span> for multiple electrons. So, what do we do? We <strong>guess</strong>.</p>
 <p>The Variational Theorem is the most important mathematical safety net in quantum chemistry. It states that if you guess <em>any</em> valid wavefunction (called a trial wavefunction or <strong>Ansatz</strong>), the energy of your guess will ALWAYS be greater than or equal to the true ground state energy:</p>
+<p><span class="math display">\[ E_{\text{guess}} \ge E_{\text{true}} \]</span></p>
+<p>But how do we calculate the energy of a guess? Because our guess isn’t the true eigenfunction, we can’t just pull <span class="math inline">\(E\)</span> out of <span class="math inline">\(\hat{H}\psi = E\psi\)</span>. Instead, we calculate the <strong>Expectation Value</strong> (the quantum mechanical average) by sandwiching the Hamiltonian between our guessed wavefunction and integrating over all space:</p>
+<p><span class="math display">\[ E_{\text{guess}} = \frac{\int \psi^* \hat{H} \psi \, d\tau}{\int \psi^* \psi \, d\tau} = \frac{\langle \psi | \hat{H} | \psi \rangle}{\langle \psi | \psi \rangle} \]</span></p>
+<p>Notice the denominator! In Week 2, you spent a lot of time manually normalizing your wavefunctions so that <span class="math inline">\(\int \psi^* \psi \, d\tau = 1\)</span>. By including the overlap integral <span class="math inline">\(\langle \psi | \psi \rangle\)</span> in the denominator of our energy equation, the math automatically scales the answer. <strong>You never have to manually normalize a Variational guess!</strong></p>
+<p>The Variational Theorem (we will not prove this theorem in this course) is the most important mathematical safety net in quantum chemistry. It states that if you guess <em>any</em> valid wavefunction (called a trial wavefunction or <strong>Ansatz</strong>), the energy of your guess will ALWAYS be greater than or equal to the true ground state energy:</p>
 <p><span class="math display">\[ E_{\text{guess}} \ge E_{\text{true}} \]</span></p>
 <p>This gives us a brilliant strategy: 1. Guess a mathematical function with a tunable parameter (like the width of the wave). 2. Calculate the energy. 3. Use an optimization algorithm (like we learned in Chapter 1) to tweak the parameter until the energy hits a minimum.</p>
 </section>
-<section id="building-the-ansatz-the-guess" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="building-the-ansatz-the-guess"><span class="header-section-number">12.3</span> 3. Building the Ansatz (The Guess)</h2>
-<p>We don’t guess blindly. A valid wavefunction must follow physical rules: it must be smooth, and it must decay to zero as it moves infinitely far from the nucleus.</p>
-<p>A <strong>Gaussian function</strong> is the perfect guess. It looks like a bell curve: <span class="math display">\[ \psi(x) = e^{-\alpha x^2} \]</span> Here, <span class="math inline">\(\alpha\)</span> is our tunable parameter. A large <span class="math inline">\(\alpha\)</span> makes the wave narrow; a small <span class="math inline">\(\alpha\)</span> makes it wide. Let’s visualize our guess using Python.</p>
-<div id="98277da7" class="cell">
+<section id="let-python-do-the-calculus" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="let-python-do-the-calculus"><span class="header-section-number">12.4</span> Let Python Do the Calculus</h2>
+<p>Looking at that equation above, you might be panicking. It requires taking the second derivative of a complex guess (to apply the Kinetic Energy operator inside <span class="math inline">\(\hat{H}\)</span>) and then doing a massive integral from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>.</p>
+<p>You will <em>not</em> be looking up integral tables in this course. You already learned how to use <code>SymPy</code> in Week 1. You can hand your guessed wavefunction and your Hamiltonian directly to the computer, and it will do the analytical calculus for you.</p>
+<p>Look at how easily SymPy handles the normalization denominator for a Gaussian guess <span class="math inline">\(\psi(x) = e^{-\alpha x^2}\)</span>:</p>
+<div id="fbe5f481" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our grid just for plotting</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our symbolic variables. </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We tell SymPy they are positive and real so it can simplify the math!</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x, alpha <span class="op">=</span> sp.symbols(<span class="st">'x alpha'</span>, real<span class="op">=</span><span class="va">True</span>, positive<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our Gaussian guess function</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial_wavefunction(x, alpha):</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>alpha <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the guess with different values of alpha</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">0.2</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 0</span><span class="dv">.</span><span class="vs">2</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Wide</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">1.0</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 1</span><span class="dv">.</span><span class="vs">0</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Medium</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">3.0</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 3</span><span class="dv">.</span><span class="vs">0</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Narrow</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Our Trial Wavefunctions (Gaussians)'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Position (x)'</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="er">\</span><span class="vs">psi</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our guess</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>psi <span class="op">=</span> sp.exp(<span class="op">-</span>alpha <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the denominator: integral of (psi * psi) from -infinity to infinity</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>overlap_integral <span class="op">=</span> sp.integrate(psi <span class="op">*</span> psi, (x, <span class="op">-</span>sp.oo, sp.oo))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The analytical overlap integral is:"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>display(overlap_integral)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="preview-the-optimization-loop" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="preview-the-optimization-loop"><span class="header-section-number">12.4</span> 4. Preview: The Optimization Loop</h2>
+<section id="building-the-ansatz-slater-vs.-gaussian" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="building-the-ansatz-slater-vs.-gaussian"><span class="header-section-number">12.5</span> Building the Ansatz: Slater vs.&nbsp;Gaussian</h2>
+<p>We don’t guess blindly. A valid wavefunction must follow physical rules: it must decay to zero as it moves infinitely far from the nucleus, and it must be smooth so its kinetic energy doesn’t explode.</p>
+<p>Because we know the exact analytical solution for the Hydrogen atom, we know exactly what an electron orbital <em>should</em> look like. The exact spatial ground state of Hydrogen is a <strong>Slater-type orbital</strong>, which decays exponentially: <span class="math display">\[ \psi_{\text{Slater}}(r) \propto e^{-r} \]</span></p>
+<p>However, Slater orbitals have a major computational flaw: calculating the energy integrals for two Slater orbitals on different atoms is mathematically excruciating for a computer.</p>
+<p>To speed up the computer, computational chemists made a compromise. Instead of the exact <span class="math inline">\(e^{-r}\)</span>, we guess a <strong>Gaussian function</strong>: <span class="math display">\[ \psi_{\text{Gaussian}}(r) \propto e^{-\alpha r^2} \]</span> Here, <span class="math inline">\(\alpha\)</span> is our tunable parameter. Gaussian integrals are magically easy for computers to solve analytically. But this speed comes at a physical cost. Let’s visualize our guess compared to the true analytical answer.</p>
+<div id="1a51ea98" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance from the nucleus (r = 0 is the nucleus)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The Exact Analytical Hydrogen Wavefunction (Slater)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>psi_slater <span class="op">=</span> np.exp(<span class="op">-</span>r)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Our Trial Wavefunction (Gaussian) with a tuned alpha parameter</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.28</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>psi_gaussian <span class="op">=</span> <span class="fl">0.7</span> <span class="op">*</span> np.exp(<span class="op">-</span>alpha <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>) <span class="co"># Scaled slightly for visual comparison</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.plot(r, psi_slater, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'True Answer (Slater: $e^{-r}$)'</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.plot(r, psi_gaussian, color<span class="op">=</span><span class="st">'crimson'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="vs">r'Our Guess </span><span class="kw">(</span><span class="vs">Gaussian: </span><span class="dv">$</span><span class="vs">e</span><span class="dv">^</span><span class="vs">{-</span><span class="ch">\a</span><span class="vs">lpha r</span><span class="dv">^</span><span class="vs">2}</span><span class="dv">$</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight the nucleus</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparing the True Wavefunction to a Gaussian Guess'</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Distance from Nucleus $r$ (Bohr)'</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Wavefunction Amplitude $</span><span class="er">\</span><span class="st">psi(r)$'</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="98277da7" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our grid just for plotting</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our Gaussian guess function</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial_wavefunction(x, alpha):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>alpha <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the guess with different values of alpha</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">0.2</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 0</span><span class="dv">.</span><span class="vs">2</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Wide</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">1.0</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 1</span><span class="dv">.</span><span class="vs">0</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Medium</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, trial_wavefunction(x, <span class="fl">3.0</span>), label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha = 3</span><span class="dv">.</span><span class="vs">0</span><span class="dv">$</span><span class="vs"> </span><span class="kw">(</span><span class="vs">Narrow</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Our Trial Wavefunctions (Gaussians)'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Position (x)'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="er">\</span><span class="vs">psi</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="preview-the-optimization-loop" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="preview-the-optimization-loop"><span class="header-section-number">12.6</span> 4. Preview: The Optimization Loop</h2>
 <p>In the upcoming problem set, you are going to take the 1D Harmonic Oscillator from Module 2 and solve it again—but this time, without a matrix!</p>
 <p>You will write a Python function that takes a value for <span class="math inline">\(\alpha\)</span>, computes the kinetic and potential energy of the Gaussian, and returns the total energy. Then, you will hand that function over to <code>scipy.optimize.minimize</code> and ask the computer to find the exact <span class="math inline">\(\alpha\)</span> that yields the lowest possible energy.</p>
 <p>You are about to write your first true variational quantum mechanics solver!</p>

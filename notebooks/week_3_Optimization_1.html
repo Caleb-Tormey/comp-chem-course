@@ -412,7 +412,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5w
 <li><strong>Shrink:</strong> If all else fails, shrink the entire triangle around the best known point.</li>
 </ol>
 <p>The Downhill Simplex is incredibly useful in chemistry because it <strong>does not require derivatives</strong>, making it perfect for messy, noisy experimental data or complex quantum wavefunctions. Below is an animation of the Nelder-Mead simplex hunting for the minimum of a 2D energy well. Notice how the triangle flips (reflects) to walk downhill, stretches (expands) when it finds a steep slope, and shrinks tightly around the center when it hits the bottom!</p>
-<div id="b51d4376" class="cell" data-message="false" data-execution_count="1">
+<div id="491d59f7" class="cell" data-message="false" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -598,36 +598,36 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img220158d719054ccca1f53acb6817f602">
+  <img id="_anim_imgcd50accb82cf4f439f8402efcb4a2b5f">
   <div class="anim-controls">
-    <input id="_anim_slider220158d719054ccca1f53acb6817f602" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim220158d719054ccca1f53acb6817f602.set_frame(parseInt(this.value));">
+    <input id="_anim_slidercd50accb82cf4f439f8402efcb4a2b5f" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="animcd50accb82cf4f439f8402efcb4a2b5f.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim220158d719054ccca1f53acb6817f602.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim220158d719054ccca1f53acb6817f602.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim220158d719054ccca1f53acb6817f602.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim220158d719054ccca1f53acb6817f602.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim220158d719054ccca1f53acb6817f602.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim220158d719054ccca1f53acb6817f602.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim220158d719054ccca1f53acb6817f602.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim220158d719054ccca1f53acb6817f602.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim220158d719054ccca1f53acb6817f602.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animcd50accb82cf4f439f8402efcb4a2b5f.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select220158d719054ccca1f53acb6817f602" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_220158d719054ccca1f53acb6817f602">
-      <label for="_anim_radio1_220158d719054ccca1f53acb6817f602">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_220158d719054ccca1f53acb6817f602" checked="">
-      <label for="_anim_radio2_220158d719054ccca1f53acb6817f602">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_220158d719054ccca1f53acb6817f602">
-      <label for="_anim_radio3_220158d719054ccca1f53acb6817f602">Reflect</label>
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectcd50accb82cf4f439f8402efcb4a2b5f" class="anim-state">
+      <input type="radio" name="state" value="once" id="_anim_radio1_cd50accb82cf4f439f8402efcb4a2b5f">
+      <label for="_anim_radio1_cd50accb82cf4f439f8402efcb4a2b5f">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_cd50accb82cf4f439f8402efcb4a2b5f" checked="">
+      <label for="_anim_radio2_cd50accb82cf4f439f8402efcb4a2b5f">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_cd50accb82cf4f439f8402efcb4a2b5f">
+      <label for="_anim_radio3_cd50accb82cf4f439f8402efcb4a2b5f">Reflect</label>
     </form>
   </div>
 </div>
@@ -637,9 +637,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img220158d719054ccca1f53acb6817f602";
-    var slider_id = "_anim_slider220158d719054ccca1f53acb6817f602";
-    var loop_select_id = "_anim_loop_select220158d719054ccca1f53acb6817f602";
+    var img_id = "_anim_imgcd50accb82cf4f439f8402efcb4a2b5f";
+    var slider_id = "_anim_slidercd50accb82cf4f439f8402efcb4a2b5f";
+    var loop_select_id = "_anim_loop_selectcd50accb82cf4f439f8402efcb4a2b5f";
     var frames = new Array(19);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwAAAAJACAYAAAA6rgFWAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -11569,7 +11569,7 @@ AAAAgIBQAAAAAICAUAAAAACAgFAAAAAAgID8Pwgwv0wDIPjTAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim220158d719054ccca1f53acb6817f602 = new Animation(frames, img_id, slider_id, 800.0,
+        animcd50accb82cf4f439f8402efcb4a2b5f = new Animation(frames, img_id, slider_id, 800.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -11593,7 +11593,7 @@ AAAAgIBQAAAAAICAUAAAAACAgFAAAAAAgID8Pwgwv0wDIPjTAAAAAElFTkSuQmCC\
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5mcm9tIHNjaXB5Lm9wdGltaXplIGltcG9ydCBtaW5pbWl6ZVxuXG4jIDEuIEV4cGVyaW1lbnRhbCBQViBkYXRhIGZvciBDTzIgYXQgVCA9IDMwMCBLXG4jIFZvbHVtZSBpbiBML21vbCwgUHJlc3N1cmUgaW4gYXRtXG5WX2V4cCA9IG5wLmFycmF5KFswLjMsIDAuNCwgMC41LCAwLjYsIDAuOCwgMS4wLCAxLjVdKVxuUF9leHAgPSBucC5hcnJheShbNTUuOCwgNDYuNSwgMzkuNSwgMzQuMiwgMjYuOSwgMjIuMSwgMTUuM10pXG5cblIgPSAwLjA4MjA2ICMgTCphdG0vKG1vbCpLKVxuVCA9IDMwMCAjIEtcblxuIyAyLiBEZWZpbmUgdGhlIEVycm9yIChMb3NzKSBGdW5jdGlvblxuIyBUaGlzIHRha2VzIG91ciBndWVzc2VzIGZvciBhIGFuZCBiLCBjYWxjdWxhdGVzIHRoZSB0aGVvcmV0aWNhbCBwcmVzc3VyZSwgXG4jIGFuZCByZXR1cm5zIHRoZSBzdW0gb2Ygc3F1YXJlZCBkaWZmZXJlbmNlcyBmcm9tIHRoZSBleHBlcmltZW50YWwgZGF0YS5cbmRlZiBjYWxjdWxhdGVfZXJyb3IoZ3Vlc3MpOlxuICAgIGEsIGIgPSBndWVzc1swXSwgZ3Vlc3NbMV1cbiAgICBcbiAgICAjIENhbGN1bGF0ZSB3aGF0IHRoZSBwcmVzc3VyZSBXT1VMRCBiZSB3aXRoIHRoZXNlIGEsYiBwYXJhbWV0ZXJzXG4gICAgUF9jYWxjID0gKFIgKiBUKSAvIChWX2V4cCAtIGIpIC0gKGEgLyBWX2V4cCoqMilcbiAgICBcbiAgICAjIENhbGN1bGF0ZSB0aGUgc3VtIG9mIHNxdWFyZWQgZGlmZmVyZW5jZXMgKFRoaXMgaXMgb3VyIFwibGFuZHNjYXBlXCIgaGVpZ2h0ISlcbiAgICBlcnJvciA9IG5wLnN1bSgoUF9jYWxjIC0gUF9leHApKioyKVxuICAgIHJldHVybiBlcnJvclxuXG4jIDMuIFJ1biB0aGUgTmVsZGVyLU1lYWQgT3B0aW1pemF0aW9uXG5pbml0aWFsX2d1ZXNzID0gWzEuMCwgMC4wMV0gXG5yZXN1bHQgPSBtaW5pbWl6ZShjYWxjdWxhdGVfZXJyb3IsIGluaXRpYWxfZ3Vlc3MsIG1ldGhvZD0nTmVsZGVyLU1lYWQnKVxuYV9vcHQsIGJfb3B0ID0gcmVzdWx0LnhcblxucHJpbnQoZlwiT3B0aW1pemF0aW9uIFN1Y2Nlc3NmdWwhXCIpXG5wcmludChmXCJSZWNvdmVyZWQgJ2EnOiB7YV9vcHQ6LjNmfSBMXjIqYXRtL21vbF4yXCIpXG5wcmludChmXCJSZWNvdmVyZWQgJ2InOiB7Yl9vcHQ6LjRmfSBML21vbFwiKVxuXG4jIC0tLSBQbG90dGluZyB0aGUgUmVzdWx0cyAtLS1cblZfc21vb3RoID0gbnAubGluc3BhY2UoMC4yOCwgMS42LCAxMDApXG5QX2lkZWFsID0gKFIgKiBUKSAvIFZfc21vb3RoXG5QX3ZkdyA9IChSICogVCkgLyAoVl9zbW9vdGggLSBiX29wdCkgLSAoYV9vcHQgLyBWX3Ntb290aCoqMilcblxucGx0LmZpZ3VyZShmaWdzaXplPSg4LCA1KSlcbnBsdC5zY2F0dGVyKFZfZXhwLCBQX2V4cCwgY29sb3I9J2JsYWNrJywgbGFiZWw9J0V4cGVyaW1lbnRhbCBDTzIgRGF0YScsIHpvcmRlcj01KVxucGx0LnBsb3QoVl9zbW9vdGgsIFBfaWRlYWwsICdyLS0nLCBsYWJlbD0nSWRlYWwgR2FzIExhdyAoVGVycmlibGUgZml0KScpXG5wbHQucGxvdChWX3Ntb290aCwgUF92ZHcsICdiLScsIGxhYmVsPSdWYW4gZGVyIFdhYWxzIChPcHRpbWl6ZWQgZml0KScpXG5cbnBsdC54bGFiZWwoJ01vbGFyIFZvbHVtZSAoTC9tb2wpJylcbnBsdC55bGFiZWwoJ1ByZXNzdXJlIChhdG0pJylcbnBsdC50aXRsZSgnRml0dGluZyB0aGUgVmFuIGRlciBXYWFscyBFcXVhdGlvbiBvZiBTdGF0ZScpXG5wbHQubGVnZW5kKClcbnBsdC5zaG93KCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5mcm9tIHNjaXB5Lm9wdGltaXplIGltcG9ydCBtaW5pbWl6ZVxuXG4jIDEuIEV4cGVyaW1lbnRhbCBQViBkYXRhIGZvciBDTzIgYXQgVCA9IDMwMCBLXG4jIFZvbHVtZSBpbiBML21vbCwgUHJlc3N1cmUgaW4gYXRtXG5WX2V4cCA9IG5wLmFycmF5KFswLjMsIDAuNCwgMC41LCAwLjYsIDAuOCwgMS4wLCAxLjVdKVxuUF9leHAgPSBucC5hcnJheShbNTUuOCwgNDYuNSwgMzkuNSwgMzQuMiwgMjYuOSwgMjIuMSwgMTUuM10pXG5cblIgPSAwLjA4MjA2ICMgTCphdG0vKG1vbCpLKVxuVCA9IDMwMCAjIEtcblxuIyAyLiBEZWZpbmUgdGhlIEVycm9yIChMb3NzKSBGdW5jdGlvblxuIyBUaGlzIHRha2VzIG91ciBndWVzc2VzIGZvciBhIGFuZCBiLCBjYWxjdWxhdGVzIHRoZSB0aGVvcmV0aWNhbCBwcmVzc3VyZSwgXG4jIGFuZCByZXR1cm5zIHRoZSBzdW0gb2Ygc3F1YXJlZCBkaWZmZXJlbmNlcyBmcm9tIHRoZSBleHBlcmltZW50YWwgZGF0YS5cbmRlZiBjYWxjdWxhdGVfZXJyb3IoZ3Vlc3MpOlxuICAgIGEsIGIgPSBndWVzc1swXSwgZ3Vlc3NbMV1cbiAgICBcbiAgICAjIENhbGN1bGF0ZSB3aGF0IHRoZSBwcmVzc3VyZSBXT1VMRCBiZSB3aXRoIHRoZXNlIGEsYiBwYXJhbWV0ZXJzXG4gICAgUF9jYWxjID0gKFIgKiBUKSAvIChWX2V4cCAtIGIpIC0gKGEgLyBWX2V4cCoqMilcbiAgICBcbiAgICAjIENhbGN1bGF0ZSB0aGUgc3VtIG9mIHNxdWFyZWQgZGlmZmVyZW5jZXMgKFRoaXMgaXMgb3VyIFwibGFuZHNjYXBlXCIgaGVpZ2h0ISlcbiAgICBlcnJvciA9IG5wLnN1bSgoUF9jYWxjIC0gUF9leHApKioyKVxuICAgIHJldHVybiBlcnJvclxuXG4jIDMuIFJ1biB0aGUgTmVsZGVyLU1lYWQgT3B0aW1pemF0aW9uXG5pbml0aWFsX2d1ZXNzID0gWzEuMCwgMC4wMV0gXG5yZXN1bHQgPSBtaW5pbWl6ZShjYWxjdWxhdGVfZXJyb3IsIGluaXRpYWxfZ3Vlc3MsIG1ldGhvZD0nTmVsZGVyLU1lYWQnKVxuYV9vcHQsIGJfb3B0ID0gcmVzdWx0LnhcblxucHJpbnQoZlwiT3B0aW1pemF0aW9uIFN1Y2Nlc3NmdWwhXCIpXG5wcmludChmXCJSZWNvdmVyZWQgJ2EnOiB7YV9vcHQ6LjNmfSBMXjIqYXRtL21vbF4yXCIpXG5wcmludChmXCJSZWNvdmVyZWQgJ2InOiB7Yl9vcHQ6LjRmfSBML21vbFwiKVxuXG4jIC0tLSBQbG90dGluZyB0aGUgUmVzdWx0cyAtLS1cblZfc21vb3RoID0gbnAubGluc3BhY2UoMC4yOCwgMS42LCAxMDApXG5QX2lkZWFsID0gKFIgKiBUKSAvIFZfc21vb3RoXG5QX3ZkdyA9IChSICogVCkgLyAoVl9zbW9vdGggLSBiX29wdCkgLSAoYV9vcHQgLyBWX3Ntb290aCoqMilcblxucGx0LmZpZ3VyZShmaWdzaXplPSg4LCA1KSlcbnBsdC5zY2F0dGVyKFZfZXhwLCBQX2V4cCwgY29sb3I9J2JsYWNrJywgbGFiZWw9J0V4cGVyaW1lbnRhbCBDTzIgRGF0YScsIHpvcmRlcj01KVxucGx0LnBsb3QoVl9zbW9vdGgsIFBfaWRlYWwsICdyLS0nLCBsYWJlbD0nSWRlYWwgR2FzIExhdycpXG5wbHQucGxvdChWX3Ntb290aCwgUF92ZHcsICdiLScsIGxhYmVsPSdWYW4gZGVyIFdhYWxzIChPcHRpbWl6ZWQgZml0KScpXG5cbnBsdC54bGFiZWwoJ01vbGFyIFZvbHVtZSAoTC9tb2wpJylcbnBsdC55bGFiZWwoJ1ByZXNzdXJlIChhdG0pJylcbnBsdC50aXRsZSgnRml0dGluZyB0aGUgVmFuIGRlciBXYWFscyBFcXVhdGlvbiBvZiBTdGF0ZScpXG5wbHQubGVnZW5kKClcbnBsdC5zaG93KCkifQ==
 </script>
 </div>
 </section>
@@ -12407,7 +12407,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
 <span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>plt.scatter(V_exp, P_exp, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'Experimental CO2 Data'</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>plt.plot(V_smooth, P_ideal, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Ideal Gas Law (Terrible fit)'</span>)</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>plt.plot(V_smooth, P_ideal, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Ideal Gas Law'</span>)</span>
 <span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>plt.plot(V_smooth, P_vdw, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Van der Waals (Optimized fit)'</span>)</span>
 <span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Molar Volume (L/mol)'</span>)</span>
