@@ -1,0 +1,124 @@
+---
+title: "Chapter 3: Linear Combinations and Hückel Theory"
+format: live-html
+engine: knitr
+---
+
+# Building Molecules: The LCAO Approach
+
+In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?
+
+We use a principle called **Linear Combination of Atomic Orbitals (LCAO)**. 
+The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs). 
+
+If we have two atoms, A and B, the molecular wavefunction $\Psi$ is just a mixture of their atomic wavefunctions $\phi$:
+$$ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B $$
+
+Our optimization problem has completely changed! We are no longer tweaking the *width* of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the **coefficients** ($c_A$ and $c_B$). 
+* If $c_A$ and $c_B$ are both positive, the waves add together (Constructive Interference = **Bonding Orbital**).
+* If $c_A$ is positive and $c_B$ is negative, the waves cancel out (Destructive Interference = **Anti-Bonding Orbital**).
+
+## 1. The Math Becomes a Matrix
+
+Through the magic of linear algebra, optimizing those $c$ coefficients turns the Schrödinger equation into a matrix eigenvalue problem:
+
+$$ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} $$
+
+* $\mathbf{H}$ is the Hamiltonian Matrix (representing energy).
+* $\mathbf{S}$ is the Overlap Matrix (representing how much the atomic orbitals physically overlap).
+* $E$ are the eigenvalues (The Energy of the Molecular Orbitals).
+* $\mathbf{c}$ are the eigenvectors (The coefficients telling us what the orbital looks like).
+
+Calculating the exact values for $\mathbf{H}$ and $\mathbf{S}$ requires solving those nightmare two-electron integrals we discussed previously. But what if we just... didn't?
+
+## 2. The Hückel Approximation
+
+In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices. 
+
+Hückel theory focuses entirely on the **$\pi$ (pi) electrons** moving through the unhybridized $p$-orbitals of a carbon backbone.
+
+Here are the famous Hückel Rules for building the $\mathbf{H}$ matrix:
+1. **The Diagonal (Self-Energy):** For any carbon atom, the energy of an electron sitting on that atom is represented by $\alpha$. We set this as our baseline, so we define $\alpha = 0$.
+2. **The Neighbors (Bonding Energy):** If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called $\beta$. Because it's stabilizing, $\beta$ is a negative number (usually we just set $\beta = -1$).
+3. **The Distant Atoms:** If two carbon atoms are NOT connected, their interaction is zero.
+4. **The Overlap:** We assume orbitals only overlap with themselves. $\mathbf{S}$ becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!
+
+Our terrifying calculus equation simply becomes:
+$$ \mathbf{H} \mathbf{c} = E \mathbf{c} $$
+
+## 3. Example: Ethylene ($C_2H_4$)
+
+Ethylene has two carbon atoms connected by a double bond (one $\sigma$ bond, one $\pi$ bond). We only care about the two $p$-orbitals making the $\pi$ bond.
+
+* Atom 1 is bonded to Atom 2.
+* Matrix size: 2x2.
+
+$$
+\mathbf{H} = \begin{pmatrix} 
+0 & -1 \\ 
+-1 & 0 
+\end{pmatrix}
+$$
+* *Row 1, Col 1 is 0 ($\alpha$)*
+* *Row 1, Col 2 is -1 ($\beta$) because Atom 1 and 2 are bonded.*
+
+If we use `scipy.linalg.eigh` on this matrix, it will spit out two energies: $E = -1$ (Bonding) and $E = +1$ (Anti-bonding). 
+
+## 4. Interactive Sandbox: The Hückel Solver
+
+Let's put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.
+
+Currently, the matrix is set up for **Linear Butadiene** ($C_4H_6$). 
+It has 4 carbon atoms in a row: $C_1 - C_2 - C_3 - C_4$.
+Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.
+
+**Your Mission:** 
+1. Run the code to see the energy levels of Butadiene. (Notice there are 4 $\pi$ electrons, so they fill the bottom two energy levels!).
+2. Modify the `H` matrix to turn this molecule into **Cyclobutadiene** (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! 
+3. Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)
+
+```{pyodide}
+import numpy as np
+import scipy.linalg as la
+import matplotlib.pyplot as plt
+
+# 1. Define the Hamiltonian Matrix for Linear Butadiene
+# 4 carbons = 4x4 matrix
+# alpha = 0, beta = -1
+
+#      C1  C2  C3  C4
+H = np.array([
+    [ 0, -1,  0,  0], # C1 is bonded to C2
+    [-1,  0, -1,  0], # C2 is bonded to C1 and C3
+    [ 0, -1,  0, -1], # C3 is bonded to C2 and C4
+    [ 0,  0, -1,  0]  # C4 is bonded to C3
+])
+
+# 2. Solve for the Eigenvalues (Energies)
+energies, wavefunctions = la.eigh(H)
+
+# Print the raw numbers
+print("Calculated Energy Levels (in units of Beta):")
+for i, E in enumerate(energies):
+    print(f"MO {i+1}: {E:.3f}")
+
+# 3. Plot the Energy Level Diagram
+plt.figure(figsize=(4, 6))
+
+# Plot each energy level as a horizontal line
+for E in energies:
+    # If energy is negative (bonding), color it blue. If positive, red.
+    color = 'blue' if E < 0 else 'red'
+    plt.axhline(E, xmin=0.2, xmax=0.8, color=color, linewidth=3)
+    plt.text(0.85, E, f"{E:.3f} $\\beta$", va='center', fontsize=12)
+
+# Formatting the plot
+plt.axhline(0, color='black', linestyle='--', alpha=0.5) # Non-bonding line
+plt.ylabel(r'Energy ($\alpha$ + $x\beta$)')
+plt.title('Hückel MO Energy Levels')
+plt.xlim(0, 1)
+plt.xticks([]) # Hide x-axis ticks
+plt.ylim(-2.5, 2.5)
+
+plt.show()
+```
