@@ -1,7 +1,7 @@
 ---
 title: "Module 3: Solving Hard Problems by Guessing"
 format: live-html
-engine: knitr
+engine: jupyter
 ---
 
 # Solving Hard Problems by Guessing: A Rigorous Approach to Solving Equations with Computers
