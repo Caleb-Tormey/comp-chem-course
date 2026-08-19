@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Module 3, Problem Set 1: Optimization and Data Fitting – Introduction to Computational Chemistry</title>
+<title>17&nbsp; Module 3, Problem Set 1: Optimization and Data Fitting – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/appendix_crash_course.html" rel="next">
+<link href="../notebooks/week_3_problem_2_variational.html" rel="next">
 <link href="../notebooks/week_3_HF.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -321,19 +321,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_Optimization_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_huckel_lcao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_HF.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span></a>
   </div>
 </li>
       </ul>
@@ -350,7 +350,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_problem_1_optimization.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/week_3_problem_2_variational.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 2: The Variational Method</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/week_3_problem_3_huckel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 3: Hückel MO Theory and LCAO</span></span></a>
   </div>
 </li>
       </ul>
@@ -367,13 +379,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
       </ul>
@@ -394,19 +406,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">18.0.1</span> Objectives</a></li>
-  <li><a href="#problem-1-the-guess-and-check-landscape" id="toc-problem-1-the-guess-and-check-landscape" class="nav-link" data-scroll-target="#problem-1-the-guess-and-check-landscape"><span class="header-section-number">18.1</span> Problem 1: The “Guess and Check” Landscape</a></li>
-  <li><a href="#problem-2-fitting-first-order-kinetics" id="toc-problem-2-fitting-first-order-kinetics" class="nav-link" data-scroll-target="#problem-2-fitting-first-order-kinetics"><span class="header-section-number">18.2</span> Problem 2: Fitting First-Order Kinetics</a></li>
-  <li><a href="#problem-3-the-michaelis-menten-nightmare" id="toc-problem-3-the-michaelis-menten-nightmare" class="nav-link" data-scroll-target="#problem-3-the-michaelis-menten-nightmare"><span class="header-section-number">18.3</span> Problem 3: The Michaelis-Menten Nightmare</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">17.0.1</span> Objectives</a></li>
+  <li><a href="#problem-1-the-guess-and-check-landscape" id="toc-problem-1-the-guess-and-check-landscape" class="nav-link" data-scroll-target="#problem-1-the-guess-and-check-landscape"><span class="header-section-number">17.1</span> Problem 1: The “Guess and Check” Landscape</a></li>
+  <li><a href="#problem-2-fitting-first-order-kinetics" id="toc-problem-2-fitting-first-order-kinetics" class="nav-link" data-scroll-target="#problem-2-fitting-first-order-kinetics"><span class="header-section-number">17.2</span> Problem 2: Fitting First-Order Kinetics</a></li>
+  <li><a href="#problem-3-the-michaelis-menten-nightmare" id="toc-problem-3-the-michaelis-menten-nightmare" class="nav-link" data-scroll-target="#problem-3-the-michaelis-menten-nightmare"><span class="header-section-number">17.3</span> Problem 3: The Michaelis-Menten Nightmare</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -425,8 +437,8 @@ window.Quarto = {
 
 <p><strong>Student Name:</strong> [TYPE YOUR NAME HERE]<br>
 <strong>Date:</strong> [TYPE DATE HERE]</p>
-<section id="objectives" class="level3" data-number="18.0.1">
-<h3 data-number="18.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">18.0.1</span> Objectives</h3>
+<section id="objectives" class="level3" data-number="17.0.1">
+<h3 data-number="17.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">17.0.1</span> Objectives</h3>
 <ol type="1">
 <li>Understand how numerical algorithms navigate complex mathematical landscapes.</li>
 <li>Observe the danger of getting trapped in local minima.</li>
@@ -447,8 +459,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="problem-1-the-guess-and-check-landscape" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="problem-1-the-guess-and-check-landscape"><span class="header-section-number">18.1</span> Problem 1: The “Guess and Check” Landscape</h2>
+<section id="problem-1-the-guess-and-check-landscape" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="problem-1-the-guess-and-check-landscape"><span class="header-section-number">17.1</span> Problem 1: The “Guess and Check” Landscape</h2>
 <p>In computational chemistry, potential energy surfaces often have dozens of “valleys” (local minima). To illustrate how numerical algorithms can be “blind,” we will optimize a rugged 1D mathematical function: <span class="math display">\[f(x) = x^2 + 10\sin(x)\]</span></p>
 <p><strong>Your Task:</strong> 1. Complete the <code>rugged_function(x)</code> code below. 2. Use <code>minimize</code> to find the minimum of this function, but run it <strong>three times</strong> using three different initial guesses: <span class="math inline">\(x_0 = -6\)</span>, <span class="math inline">\(x_0 = 2\)</span>, and <span class="math inline">\(x_0 = 7\)</span>. 3. Print the final optimized <span class="math inline">\(x\)</span> value for each guess. 4. The plotting code is provided for you. It will plot the curve and place a red star where each of your optimization runs ended up.</p>
 <div id="e6550cf9" class="cell">
@@ -499,8 +511,8 @@ window.Quarto = {
 <p><strong>Conceptual Question 1:</strong> Look at the plot generated above. Did all three starting guesses find the <em>global</em> minimum? If you were running a geometry optimization to find the most stable structure of a drug molecule, what does this tell you about the importance of your initial 3D drawing?</p>
 <p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
 </section>
-<section id="problem-2-fitting-first-order-kinetics" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="problem-2-fitting-first-order-kinetics"><span class="header-section-number">18.2</span> Problem 2: Fitting First-Order Kinetics</h2>
+<section id="problem-2-fitting-first-order-kinetics" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="problem-2-fitting-first-order-kinetics"><span class="header-section-number">17.2</span> Problem 2: Fitting First-Order Kinetics</h2>
 <p>Optimization algorithms aren’t just for potential energy! They are also how computers fit lines and curves to experimental data.</p>
 <p>Below is experimental data for the radioactive decay of a nuclear isotope. It follows first-order kinetics: <span class="math display">\[[A] = [A]_0 e^{-kt}\]</span></p>
 <p><strong>Your Task:</strong> 1. Complete the <code>calculate_sse</code> function. It should take a list of two guesses <code>[A0_guess, k_guess]</code>, calculate the theoretical concentration at every time point, and return the <strong>Sum of Squared Errors (SSE)</strong> compared to the experimental data. <span class="math display">\[SSE = \sum ([A]_{calc} - [A]_{exp})^2\]</span> 2. Use <code>minimize</code> to find the <span class="math inline">\(A_0\)</span> and <span class="math inline">\(k\)</span> that result in the smallest possible error. 3. Plot the experimental data as a scatter plot and the optimized theoretical curve as a solid line.</p>
@@ -545,8 +557,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="problem-3-the-michaelis-menten-nightmare" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="problem-3-the-michaelis-menten-nightmare"><span class="header-section-number">18.3</span> Problem 3: The Michaelis-Menten Nightmare</h2>
+<section id="problem-3-the-michaelis-menten-nightmare" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="problem-3-the-michaelis-menten-nightmare"><span class="header-section-number">17.3</span> Problem 3: The Michaelis-Menten Nightmare</h2>
 <p>In biochemistry, enzymes follow Michaelis-Menten kinetics. The reaction velocity (<span class="math inline">\(v\)</span>) depends on the substrate concentration (<span class="math inline">\([S]\)</span>):</p>
 <p><span class="math display">\[v = \frac{V_{max} [S]}{K_M + [S]}\]</span></p>
 <p>This equation is notoriously difficult to fit. If your initial guess for <span class="math inline">\(K_M\)</span> is negative, the denominator might become zero during the optimization loop, and the algorithm will crash!</p>
@@ -1069,12 +1081,12 @@ window._ojs.runtime.interpretFromScriptTags();
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../notebooks/week_3_HF.html" class="pagination-link" aria-label="The Hartree-Fock Approximation: A Conceptual Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/week_3_problem_2_variational.html" class="pagination-link" aria-label="Module 3, Problem Set 2: The Variational Method">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 2: The Variational Method</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

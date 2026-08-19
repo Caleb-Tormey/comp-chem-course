@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>16&nbsp; The Hartree-Fock Approximation: A Conceptual Overview – Introduction to Computational Chemistry</title>
+<title>19&nbsp; Module 3, Problem Set 3: Hückel MO Theory and LCAO – Introduction to Computational Chemistry</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,8 +71,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/week_3_problem_1_optimization.html" rel="next">
-<link href="../notebooks/week_3_huckel_lcao.html" rel="prev">
+<link href="../notebooks/appendix_crash_course.html" rel="next">
+<link href="../notebooks/week_3_problem_2_variational.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,6 +115,35 @@ ul.task-list li input[type="checkbox"] {
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_HF.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_3_huckel.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 3: Hückel MO Theory and LCAO</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -268,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_HF.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/week_3_HF.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span></a>
   </div>
 </li>
@@ -297,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_problem_3_huckel.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/week_3_problem_3_huckel.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 3: Hückel MO Theory and LCAO</span></span></a>
   </div>
 </li>
@@ -342,19 +406,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-mean-field-approximation" id="toc-the-mean-field-approximation" class="nav-link active" data-scroll-target="#the-mean-field-approximation"><span class="header-section-number">16.1</span> 1. The Mean-Field Approximation</a></li>
-  <li><a href="#the-self-consistent-field-scf-loop" id="toc-the-self-consistent-field-scf-loop" class="nav-link" data-scroll-target="#the-self-consistent-field-scf-loop"><span class="header-section-number">16.2</span> 2. The Self-Consistent Field (SCF) Loop</a></li>
-  <li><a href="#the-pauli-exclusion-principle" id="toc-the-pauli-exclusion-principle" class="nav-link" data-scroll-target="#the-pauli-exclusion-principle"><span class="header-section-number">16.3</span> 3. The Pauli Exclusion Principle</a></li>
-  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next"><span class="header-section-number">16.4</span> 4. Where to Go Next?</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">19.0.1</span> Objectives</a></li>
+  <li><a href="#problem-1-the-allyl-system" id="toc-problem-1-the-allyl-system" class="nav-link" data-scroll-target="#problem-1-the-allyl-system"><span class="header-section-number">19.1</span> Problem 1: The Allyl System</a></li>
+  <li><a href="#problem-2-benzene-and-delocalization-energy" id="toc-problem-2-benzene-and-delocalization-energy" class="nav-link" data-scroll-target="#problem-2-benzene-and-delocalization-energy"><span class="header-section-number">19.2</span> Problem 2: Benzene and Delocalization Energy</a></li>
+  <li><a href="#problem-3-what-does-an-orbital-look-like-nodes" id="toc-problem-3-what-does-an-orbital-look-like-nodes" class="nav-link" data-scroll-target="#problem-3-what-does-an-orbital-look-like-nodes"><span class="header-section-number">19.3</span> Problem 3: What Does an Orbital Look Like? (Nodes)</a></li>
+  <li><a href="#problem-4-breaking-the-symmetry-heteroatoms---outline-only" id="toc-problem-4-breaking-the-symmetry-heteroatoms---outline-only" class="nav-link" data-scroll-target="#problem-4-breaking-the-symmetry-heteroatoms---outline-only"><span class="header-section-number">19.4</span> Problem 4: Breaking the Symmetry (Heteroatoms) - Outline Only</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/{path}"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_HF.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_1_optimization.html">Module 3: Problem Set</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_problem_3_huckel.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 3: Hückel MO Theory and LCAO</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 3: Hückel MO Theory and LCAO</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -371,46 +436,123 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In the previous chapters, we used the Variational Method to guess the shape of a single electron orbital. But what happens when we move to a real molecule with dozens of electrons?</p>
-<p>The exact Hamiltonian for a multi-electron system contains a terrifying term: <strong>Electron-Electron Repulsion</strong>. Because electrons repel each other, their motions are <em>correlated</em>. You cannot know the exact energy of Electron 1 without knowing the exact, instantaneous position of Electron 2, Electron 3, and so on.</p>
-<p>Mathematically, this makes the Schrödinger equation unsolvable for anything larger than a Hydrogen atom. To survive, we need a new approximation: <strong>Hartree-Fock (HF) Theory</strong>.</p>
-<section id="the-mean-field-approximation" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="the-mean-field-approximation"><span class="header-section-number">16.1</span> 1. The Mean-Field Approximation</h2>
-<p>The core idea of Hartree-Fock is the “Mean-Field” approximation.</p>
-<p>Instead of trying to track the exact, instantaneous repulsion between every single pair of electrons, we make a compromise: <strong>We assume each electron moves in an average, smeared-out “cloud” of negative charge created by all the other electrons.</strong></p>
-<p>Imagine walking through a crowded hallway. The exact physical math would require you to calculate the gravitational and physical interaction with every single person dodging you in real-time. The Hartree-Fock approximation says: “Just treat the crowd as a single, uniform fluid flowing in the opposite direction and walk through that.”</p>
-</section>
-<section id="the-self-consistent-field-scf-loop" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="the-self-consistent-field-scf-loop"><span class="header-section-number">16.2</span> 2. The Self-Consistent Field (SCF) Loop</h2>
-<p>This creates a paradoxical chicken-and-egg problem: * To calculate the orbitals for the electrons, you need to know the shape of the average repulsion cloud. * But to know the shape of the average repulsion cloud, you need to already know the electron orbitals!</p>
-<p>How does a computer solve this? By guessing and looping. This algorithm is called the <strong>Self-Consistent Field (SCF)</strong> procedure:</p>
+<p><strong>Student Name:</strong> [TYPE YOUR NAME HERE]<br>
+<strong>Date:</strong> [TYPE DATE HERE]</p>
+<section id="objectives" class="level3" data-number="19.0.1">
+<h3 data-number="19.0.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">19.0.1</span> Objectives</h3>
 <ol type="1">
-<li><strong>The Initial Guess:</strong> The computer makes a wild guess at the electron orbitals (usually using the Variational Method and a basis set of Gaussians).</li>
-<li><strong>Build the Cloud:</strong> Using those guessed orbitals, it calculates the “average” repulsion cloud (the Fock Matrix).</li>
-<li><strong>Solve the Math:</strong> It solves the matrix eigenvalue problem to find a <em>new</em>, better set of electron orbitals.</li>
-<li><strong>Compare:</strong> Are the new orbitals exactly the same as the old orbitals?
-<ul>
-<li>If <strong>NO</strong>: The guess was wrong. Take the new orbitals, go back to Step 2, and build a new cloud.</li>
-<li>If <strong>YES</strong>: The orbitals and the cloud are in harmony. The system is <strong>Self-Consistent</strong>.</li>
-</ul></li>
-<li><strong>Stop:</strong> The computer stops the loop and prints out the final Molecular Orbitals and the total energy.</li>
+<li>Translate 2D chemical structures into mathematical connectivity matrices.</li>
+<li>Use SciPy’s eigenvalue solver to find Molecular Orbital (MO) energy levels.</li>
+<li>Mathematically prove the existence of Resonance / Aromaticity (Delocalization Energy).</li>
+<li>Interpret eigenvectors to visualize constructive and destructive interference (nodes).</li>
 </ol>
-<p>Whenever you see a computational chemistry program print out a list of “Iterations” where the energy slowly drops until it stops changing—you are watching an SCF loop in action!</p>
+<div id="c0842c1a" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- RUN THIS CELL FIRST --- </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment ready! Let's build some molecules."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="the-pauli-exclusion-principle" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="the-pauli-exclusion-principle"><span class="header-section-number">16.3</span> 3. The Pauli Exclusion Principle</h2>
-<p>Hartree-Fock also enforces a strict rule of quantum mechanics: electrons are fermions, meaning no two electrons can have the exact same quantum numbers (the Pauli Exclusion Principle).</p>
-<p>HF enforces this mathematically by packing the guessed electron orbitals into a giant matrix called a <strong>Slater Determinant</strong>. If you try to put two identical electrons into the same state, the mathematics of the determinant forces the entire wavefunction to collapse to zero (a physical impossibility).</p>
+<section id="problem-1-the-allyl-system" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="problem-1-the-allyl-system"><span class="header-section-number">19.1</span> Problem 1: The Allyl System</h2>
+<p>In Organic Chemistry, a double bond (<span class="math inline">\(C=C\)</span>) next to a carbocation, radical, or carbanion allows the electrons to smear out across all three atoms. This is called the <strong>Allyl System</strong>.</p>
+<p>The system consists of three carbon atoms in a row: <span class="math inline">\(C_1 - C_2 - C_3\)</span>. Because we only care about the unhybridized <span class="math inline">\(p\)</span>-orbitals participating in the <span class="math inline">\(\pi\)</span> system, we can use the Hückel approximation to build our Hamiltonian matrix (<span class="math inline">\(\mathbf{H}\)</span>): * <strong>Diagonal elements (<span class="math inline">\(\alpha\)</span>):</strong> The energy of an electron on a free carbon atom. We set this to <code>0</code>. * <strong>Off-diagonal elements (<span class="math inline">\(\beta\)</span>):</strong> The stabilizing energy when two carbons are bonded. We set this to <code>-1</code>. * <strong>Unbonded atoms:</strong> If two atoms don’t touch (like <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_3\)</span>), their interaction is <code>0</code>.</p>
+<p><strong>Your Task:</strong> 1. Build the <span class="math inline">\(3 \times 3\)</span> Hamiltonian matrix for the linear Allyl system. 2. Use <code>la.eigh()</code> to find the energy levels (eigenvalues). 3. Print the energy levels from lowest (most stable) to highest.</p>
+<div id="a58ab20e" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define the 3x3 Hamiltonian Matrix for C1 - C2 - C3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember: Rows and Columns represent Atom 1, Atom 2, Atom 3.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>H_allyl <span class="op">=</span> np.array([</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># C1, C2, C3</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>], <span class="co"># C1 is only bonded to C2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE: Fill in the row for C2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE: Fill in the row for C3</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Solve for eigenvalues (energies) and eigenvectors (wavefunctions)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># energies_allyl, wavefunctions_allyl = ...</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Print the energies</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Allyl Energy Levels (in units of beta):", energies_allyl)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="where-to-go-next" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="where-to-go-next"><span class="header-section-number">16.4</span> 4. Where to Go Next?</h2>
-<p>In this course, we will not code a full Hartree-Fock SCF loop from scratch. Calculating the electron-electron repulsion integrals requires thousands of lines of complex calculus and linear algebra. Instead, we will use professional “black box” libraries (like PySCF) that have already optimized this math.</p>
-<p>However, if you want to look under the hood and learn how to code Hartree-Fock yourself, here are the best resources in the field:</p>
+<section id="problem-2-benzene-and-delocalization-energy" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="problem-2-benzene-and-delocalization-energy"><span class="header-section-number">19.2</span> Problem 2: Benzene and Delocalization Energy</h2>
+<p>Why is Benzene (<span class="math inline">\(C_6H_6\)</span>) so incredibly stable? It is a ring of 6 carbon atoms, with alternating single and double bonds. But really, all 6 <span class="math inline">\(\pi\)</span> electrons are smeared evenly around the whole ring.</p>
+<p>Let’s prove this mathematically. If Benzene were just three isolated, non-interacting double bonds (three ethylenes), its total <span class="math inline">\(\pi\)</span> energy would be <span class="math inline">\(3 \times (-2.0\beta) = -6.0\beta\)</span>.</p>
+<p><strong>Your Task:</strong> 1. Build the <span class="math inline">\(6 \times 6\)</span> matrix for Benzene. (Hint: It is a ring, so <span class="math inline">\(C_1\)</span> is bonded to <span class="math inline">\(C_2\)</span>, but it is <em>also</em> bonded to <span class="math inline">\(C_6\)</span>!). 2. Calculate the eigenvalues. 3. Calculate the <strong>Total <span class="math inline">\(\pi\)</span> Energy</strong> of Benzene. Remember that each Molecular Orbital can hold <strong>two</strong> electrons. Benzene has 6 <span class="math inline">\(\pi\)</span> electrons total. Therefore, you must put 2 electrons into the lowest energy level, 2 into the next, and 2 into the next. 4. Calculate the <strong>Delocalization Energy</strong>: (Total Benzene Energy) - (Energy of 3 isolated ethylenes).</p>
+<div id="6f167475" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build the 6x6 Benzene Matrix</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>H_benzene <span class="op">=</span> np.array([</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], <span class="co"># C1 is bonded to C2 AND C6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>,  <span class="dv">0</span>], <span class="co"># C2</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE: Finish the matrix</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Solve for eigenvalues</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># energies_benzene, wavefunctions_benzene = ...</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Benzene Energy Levels:", np.round(energies_benzene, 3))</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculate Total Pi Energy</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Benzene has 6 pi electrons. Fill the bottom 3 orbitals with 2 electrons each.</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># E_total = 2 * energies_benzene[0] + 2 * energies_benzene[1] + 2 * energies_benzene[2]</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Total Pi Energy: {E_total:.3f} beta")</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Calculate Delocalization (Resonance) Energy</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># E_isolated = -6.0</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># E_deloc = E_total - E_isolated</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Delocalization Energy: {E_deloc:.3f} beta")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="problem-3-what-does-an-orbital-look-like-nodes" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="problem-3-what-does-an-orbital-look-like-nodes"><span class="header-section-number">19.3</span> Problem 3: What Does an Orbital Look Like? (Nodes)</h2>
+<p>The <code>la.eigh()</code> function doesn’t just return energies; it returns <strong>eigenvectors</strong>. These vectors contain the coefficients (<span class="math inline">\(c_1, c_2, c_3...\)</span>) that tell us how much each atomic <span class="math inline">\(p\)</span>-orbital contributes to the molecular orbital, and whether the wave is pointing “up” (positive) or “down” (negative).</p>
 <ul>
-<li><strong>The Textbook:</strong> <em>Modern Quantum Chemistry</em> by Szabo and Ostlund. This is the undisputed bible of computational chemistry. It contains the exact equations needed to code HF from scratch.</li>
-<li><strong>The Tutorial:</strong> The <em>Crawford Group Programming Projects</em> (available on GitHub). Dr.&nbsp;T. Daniel Crawford provides a step-by-step guide for undergrads to write their own HF SCF program in Python or C++.</li>
-<li><strong>The Next Step (Post-HF):</strong> Hartree-Fock is only an approximation. Because it treats electrons as an average cloud, it ignores “electron correlation” (how electrons actively dodge each other). To get highly accurate energies, chemists use “Post-HF” methods like Møller–Plesset perturbation theory (MP2) or Coupled Cluster (CCSD), which add mathematical corrections to the HF answer.</li>
+<li>If adjacent atoms have the <strong>same sign</strong> (+ and +), the waves add together (constructive interference = bonding).</li>
+<li>If adjacent atoms have <strong>opposite signs</strong> (+ and -), the waves cancel out. This creates a “Node” (destructive interference = anti-bonding).</li>
 </ul>
+<p><strong>Your Task:</strong> 1. Look at the <code>wavefunctions_allyl</code> you calculated in Problem 1. 2. Print the coefficients for the <strong>lowest</strong> energy MO (Index 0). Notice how many times the sign flips from positive to negative. 3. Print the coefficients for the <strong>highest</strong> energy MO (Index 2). Notice how many times the sign flips.</p>
+<div id="582de387" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The eigenvectors are stored in columns. </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># To get the lowest energy MO (column 0), we use wavefunctions_allyl[:, 0]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># lowest_MO = wavefunctions_allyl[:, 0]</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># highest_MO = wavefunctions_allyl[:, 2]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Lowest Energy MO Coefficients:", np.round(lowest_MO, 3))</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Highest Energy MO Coefficients:", np.round(highest_MO, 3))</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional visual aid: Run this to see a bar chart of the signs!</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.bar(['C1', 'C2', 'C3'], lowest_MO, color='blue', alpha=0.6, label='Lowest MO')</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.bar(['C1', 'C2', 'C3'], highest_MO, color='red', alpha=0.6, label='Highest MO')</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.axhline(0, color='black')</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.legend()</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.title("Orbital Phase (Constructive vs Destructive)")</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Conceptual Question 1:</strong> Look at the signs of the coefficients you just printed. The lowest energy state has zero nodes (the sign never flips). How many nodes does the highest energy state have? Why does having more nodes result in a higher (less stable) energy?</p>
+<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
+</section>
+<section id="problem-4-breaking-the-symmetry-heteroatoms---outline-only" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="problem-4-breaking-the-symmetry-heteroatoms---outline-only"><span class="header-section-number">19.4</span> Problem 4: Breaking the Symmetry (Heteroatoms) - Outline Only</h2>
+<p>So far, we have only looked at pure hydrocarbons (Carbon-only backbones).</p>
+<p>Imagine we want to model <strong>Pyridine</strong>, which is a benzene ring where one of the Carbon atoms has been replaced by a <strong>Nitrogen</strong> atom. Nitrogen is more electronegative than Carbon, meaning it holds onto its electrons much tighter.</p>
+<p><strong>Conceptual Question 2:</strong> If you had to build the <span class="math inline">\(6 \times 6\)</span> Hückel matrix for Pyridine, how would you modify the rules? Specifically: 1. What would happen to the diagonal value (<span class="math inline">\(\alpha\)</span>) for the Nitrogen atom? (Would it stay 0, become negative, or become positive?) 2. If you ran <code>la.eigh()</code> on this new matrix, would the molecular orbitals still be perfectly symmetrical across the ring? Why or why not?</p>
+<p><strong>[DOUBLE CLICK THIS CELL TO TYPE YOUR ANSWER]</strong></p>
 
 
 <script type="ojs-module-contents">
@@ -894,13 +1036,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/week_3_huckel_lcao.html" class="pagination-link" aria-label="Chapter 3: Linear Combinations and Hückel Theory">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></span>
+      <a href="../notebooks/week_3_problem_2_variational.html" class="pagination-link" aria-label="Module 3, Problem Set 2: The Variational Method">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 2: The Variational Method</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/week_3_problem_1_optimization.html" class="pagination-link" aria-label="Module 3, Problem Set 1: Optimization and Data Fitting">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Module 3, Problem Set 1: Optimization and Data Fitting</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/appendix_crash_course.html" class="pagination-link" aria-label="Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
