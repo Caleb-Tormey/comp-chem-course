@@ -34,13 +34,16 @@ book:
       chapters:
         - notebooks/week_3_introduction.qmd
         - notebooks/week_3_Optimization_1.qmd
-        - notebooks/week_3_Optimization_1.ipynb
         - notebooks/week_3_Optimization_2.ipynb
         - notebooks/week_3_huckel_lcao.qmd
         - notebooks/week_3_HF.ipynb
     - part: "Module 3: Problem Set"
       chapters:
-        - notebooks/week_3_problem_1_optimization.ipynb          
+        - notebooks/week_3_problem_1_optimization.ipynb
+        - notebooks/week_3_problem_2_variational.ipynb
+        - notebooks/week_3_problem_3_huckel.ipynb
+
+
     
     - part: "Appendices"
       chapters:
