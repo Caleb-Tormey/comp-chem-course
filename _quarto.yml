@@ -7,6 +7,9 @@ book:
   title: "Computing Chemistry with Code: A Beginner's Guide "
   author: "Caleb A. Tormey"
   date: "4/30/2026"
+  repo-url: "https://github.com/Caleb-Tormey/comp-chem-course"
+  repo-branch: master
+  repo-actions: [source, issue]
   
   chapters:
     - index.qmd
