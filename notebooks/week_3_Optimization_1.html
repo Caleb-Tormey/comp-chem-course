@@ -419,7 +419,7 @@ window.Quarto = {
   <li><a href="#applied-example-fitting-the-non-ideal-gas-law" id="toc-applied-example-fitting-the-non-ideal-gas-law" class="nav-link" data-scroll-target="#applied-example-fitting-the-non-ideal-gas-law"><span class="header-section-number">13.5</span> Applied Example: Fitting the Non-Ideal Gas Law</a></li>
   <li><a href="#a-field-guide-to-optimization-algorithms" id="toc-a-field-guide-to-optimization-algorithms" class="nav-link" data-scroll-target="#a-field-guide-to-optimization-algorithms"><span class="header-section-number">13.6</span> A Field Guide to Optimization Algorithms</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/week_3_Optimization_1.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/week_3_Optimization_1.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/master"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -485,7 +485,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5w
 <li><strong>Shrink:</strong> If all else fails, shrink the entire triangle around the best known point.</li>
 </ol>
 <p>The Downhill Simplex is incredibly useful in chemistry because it <strong>does not require derivatives</strong>, making it perfect for messy, noisy experimental data or complex quantum wavefunctions. Below is an animation of the Nelder-Mead simplex hunting for the minimum of a 2D energy well. Notice how the triangle flips (reflects) to walk downhill, stretches (expands) when it finds a steep slope, and shrinks tightly around the center when it hits the bottom!</p>
-<div id="cc42ed60" class="cell" data-message="false" data-execution_count="1">
+<div id="c4f81b0e" class="cell" data-message="false" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -671,36 +671,36 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgbd5d59b99cc14a89905b97c1864cf681">
+  <img id="_anim_img3664c529e1914408a962ea8934000844">
   <div class="anim-controls">
-    <input id="_anim_sliderbd5d59b99cc14a89905b97c1864cf681" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="animbd5d59b99cc14a89905b97c1864cf681.set_frame(parseInt(this.value));">
+    <input id="_anim_slider3664c529e1914408a962ea8934000844" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim3664c529e1914408a962ea8934000844.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animbd5d59b99cc14a89905b97c1864cf681.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim3664c529e1914408a962ea8934000844.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animbd5d59b99cc14a89905b97c1864cf681.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim3664c529e1914408a962ea8934000844.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animbd5d59b99cc14a89905b97c1864cf681.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim3664c529e1914408a962ea8934000844.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animbd5d59b99cc14a89905b97c1864cf681.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim3664c529e1914408a962ea8934000844.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animbd5d59b99cc14a89905b97c1864cf681.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim3664c529e1914408a962ea8934000844.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animbd5d59b99cc14a89905b97c1864cf681.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim3664c529e1914408a962ea8934000844.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animbd5d59b99cc14a89905b97c1864cf681.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim3664c529e1914408a962ea8934000844.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animbd5d59b99cc14a89905b97c1864cf681.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim3664c529e1914408a962ea8934000844.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animbd5d59b99cc14a89905b97c1864cf681.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim3664c529e1914408a962ea8934000844.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectbd5d59b99cc14a89905b97c1864cf681" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_bd5d59b99cc14a89905b97c1864cf681">
-      <label for="_anim_radio1_bd5d59b99cc14a89905b97c1864cf681">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_bd5d59b99cc14a89905b97c1864cf681" checked="">
-      <label for="_anim_radio2_bd5d59b99cc14a89905b97c1864cf681">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_bd5d59b99cc14a89905b97c1864cf681">
-      <label for="_anim_radio3_bd5d59b99cc14a89905b97c1864cf681">Reflect</label>
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select3664c529e1914408a962ea8934000844" class="anim-state">
+      <input type="radio" name="state" value="once" id="_anim_radio1_3664c529e1914408a962ea8934000844">
+      <label for="_anim_radio1_3664c529e1914408a962ea8934000844">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_3664c529e1914408a962ea8934000844" checked="">
+      <label for="_anim_radio2_3664c529e1914408a962ea8934000844">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_3664c529e1914408a962ea8934000844">
+      <label for="_anim_radio3_3664c529e1914408a962ea8934000844">Reflect</label>
     </form>
   </div>
 </div>
@@ -710,9 +710,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgbd5d59b99cc14a89905b97c1864cf681";
-    var slider_id = "_anim_sliderbd5d59b99cc14a89905b97c1864cf681";
-    var loop_select_id = "_anim_loop_selectbd5d59b99cc14a89905b97c1864cf681";
+    var img_id = "_anim_img3664c529e1914408a962ea8934000844";
+    var slider_id = "_anim_slider3664c529e1914408a962ea8934000844";
+    var loop_select_id = "_anim_loop_select3664c529e1914408a962ea8934000844";
     var frames = new Array(19);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwAAAAJACAYAAAA6rgFWAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -11642,7 +11642,7 @@ AAAAgIBQAAAAAICAUAAAAACAgFAAAAAAgID8Pwgwv0wDIPjTAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animbd5d59b99cc14a89905b97c1864cf681 = new Animation(frames, img_id, slider_id, 800.0,
+        anim3664c529e1914408a962ea8934000844 = new Animation(frames, img_id, slider_id, 800.0,
                                  loop_select_id);
     }, 0);
   })()
