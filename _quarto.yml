@@ -20,21 +20,13 @@ book:
         - notebooks/week_1_physics_chem_review.qmd
         - notebooks/week_1_atomic_units.qmd
         - notebooks/week_1_python_primer.ipynb
-    - part: "Module 1: Problem Set"
-      chapters:
-        - notebooks/week_1_problems.ipynb
-        
+           
     - part: "Module 2: Finite Difference Methods for Quantum Mechanics" 
       chapters:
         - notebooks/week_2_introduction.qmd
         - notebooks/week_2_1D_Quantum.ipynb
 
-    - part: "Module 2: Problem Set"
-      chapters:
-        - notebooks/week_2_problem_1_finite_well.ipynb
-        - notebooks/week_2_problem_2_harmonic_oscillator.ipynb
-        - notebooks/week_2_problem_3_tunneling.ipynb
-        - notebooks/week_2_problem_4_ammonia.ipynb
+    
     - part: "Module 3: Solving Hard Problems by Guessing"
       chapters:
         - notebooks/week_3_introduction.qmd
@@ -42,11 +34,7 @@ book:
         - notebooks/week_3_Optimization_2.ipynb
         - notebooks/week_3_huckel_lcao.qmd
         - notebooks/week_3_HF.ipynb
-    - part: "Module 3: Problem Set"
-      chapters:
-        - notebooks/week_3_problem_1_optimization.ipynb
-        - notebooks/week_3_problem_2_variational.ipynb
-        - notebooks/week_3_problem_3_huckel.ipynb
+
 
 
     
@@ -68,4 +56,4 @@ format:
     code-links:
       - text: "Download Notebook Source"
         icon: file-code
-        href: https://github.com/Caleb-Tormey/comp-chem-course/master
+        href: https://github.com/Caleb-Tormey/comp-chem-course/blob/master
