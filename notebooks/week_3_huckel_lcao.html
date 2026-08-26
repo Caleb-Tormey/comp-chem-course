@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Chapter 3: Linear Combinations and Hückel Theory – Computing Chemistry with Code: A Beginner's Guide </title>
+<title>10&nbsp; Building Molecules: The LCAO Approach – Computing Chemistry with Code: A Beginner's Guide </title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -202,7 +202,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_1_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">week_1_introduction.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modluel 1: Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -237,7 +237,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_2_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">week_2_introduction.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module 2: Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -260,7 +260,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 3: Solving Hard Problems by Guessing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 3 : Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -278,7 +278,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/week_3_huckel_lcao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -328,22 +328,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#building-molecules-the-lcao-approach" id="toc-building-molecules-the-lcao-approach" class="nav-link active" data-scroll-target="#building-molecules-the-lcao-approach"><span class="header-section-number">11</span> Building Molecules: The LCAO Approach</a>
-  <ul class="collapse">
-  <li><a href="#the-math-becomes-a-matrix" id="toc-the-math-becomes-a-matrix" class="nav-link" data-scroll-target="#the-math-becomes-a-matrix"><span class="header-section-number">11.1</span> 1. The Math Becomes a Matrix</a></li>
-  <li><a href="#the-hückel-approximation" id="toc-the-hückel-approximation" class="nav-link" data-scroll-target="#the-hückel-approximation"><span class="header-section-number">11.2</span> 2. The Hückel Approximation</a></li>
-  <li><a href="#example-ethylene-c_2h_4" id="toc-example-ethylene-c_2h_4" class="nav-link" data-scroll-target="#example-ethylene-c_2h_4"><span class="header-section-number">11.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</a></li>
-  <li><a href="#interactive-sandbox-the-hückel-solver" id="toc-interactive-sandbox-the-hückel-solver" class="nav-link" data-scroll-target="#interactive-sandbox-the-hückel-solver"><span class="header-section-number">11.4</span> 4. Interactive Sandbox: The Hückel Solver</a></li>
-  </ul></li>
+  <li><a href="#the-math-becomes-a-matrix" id="toc-the-math-becomes-a-matrix" class="nav-link active" data-scroll-target="#the-math-becomes-a-matrix"><span class="header-section-number">10.1</span> 1. The Math Becomes a Matrix</a></li>
+  <li><a href="#the-hückel-approximation" id="toc-the-hückel-approximation" class="nav-link" data-scroll-target="#the-hückel-approximation"><span class="header-section-number">10.2</span> 2. The Hückel Approximation</a></li>
+  <li><a href="#example-ethylene-c_2h_4" id="toc-example-ethylene-c_2h_4" class="nav-link" data-scroll-target="#example-ethylene-c_2h_4"><span class="header-section-number">10.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</a></li>
+  <li><a href="#interactive-sandbox-the-hückel-solver" id="toc-interactive-sandbox-the-hückel-solver" class="nav-link" data-scroll-target="#interactive-sandbox-the-hückel-solver"><span class="header-section-number">10.4</span> 4. Interactive Sandbox: The Hückel Solver</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/week_3_huckel_lcao.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 3: Linear Combinations and Hückel Theory</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -360,14 +357,12 @@ window.Quarto = {
 </header>
 
 
-<section id="building-molecules-the-lcao-approach" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Building Molecules: The LCAO Approach</h1>
 <p>In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?</p>
 <p>We use a principle called <strong>Linear Combination of Atomic Orbitals (LCAO)</strong>. The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs).</p>
 <p>If we have two atoms, A and B, the molecular wavefunction <span class="math inline">\(\Psi\)</span> is just a mixture of their atomic wavefunctions <span class="math inline">\(\phi\)</span>: <span class="math display">\[ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B \]</span></p>
 <p>Our optimization problem has completely changed! We are no longer tweaking the <em>width</em> of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the <strong>coefficients</strong> (<span class="math inline">\(c_A\)</span> and <span class="math inline">\(c_B\)</span>). * If <span class="math inline">\(c_A\)</span> and <span class="math inline">\(c_B\)</span> are both positive, the waves add together (Constructive Interference = <strong>Bonding Orbital</strong>). * If <span class="math inline">\(c_A\)</span> is positive and <span class="math inline">\(c_B\)</span> is negative, the waves cancel out (Destructive Interference = <strong>Anti-Bonding Orbital</strong>).</p>
-<section id="the-math-becomes-a-matrix" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="the-math-becomes-a-matrix"><span class="header-section-number">11.1</span> 1. The Math Becomes a Matrix</h2>
+<section id="the-math-becomes-a-matrix" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="the-math-becomes-a-matrix"><span class="header-section-number">10.1</span> 1. The Math Becomes a Matrix</h2>
 <p>Through the magic of linear algebra, optimizing those <span class="math inline">\(c\)</span> coefficients turns the Schrödinger equation into a matrix eigenvalue problem:</p>
 <p><span class="math display">\[ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} \]</span></p>
 <ul>
@@ -378,15 +373,15 @@ window.Quarto = {
 </ul>
 <p>Calculating the exact values for <span class="math inline">\(\mathbf{H}\)</span> and <span class="math inline">\(\mathbf{S}\)</span> requires solving those nightmare two-electron integrals we discussed previously. But what if we just… didn’t?</p>
 </section>
-<section id="the-hückel-approximation" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="the-hückel-approximation"><span class="header-section-number">11.2</span> 2. The Hückel Approximation</h2>
+<section id="the-hückel-approximation" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-hückel-approximation"><span class="header-section-number">10.2</span> 2. The Hückel Approximation</h2>
 <p>In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices.</p>
 <p>Hückel theory focuses entirely on the <strong><span class="math inline">\(\pi\)</span> (pi) electrons</strong> moving through the unhybridized <span class="math inline">\(p\)</span>-orbitals of a carbon backbone.</p>
 <p>Here are the famous Hückel Rules for building the <span class="math inline">\(\mathbf{H}\)</span> matrix: 1. <strong>The Diagonal (Self-Energy):</strong> For any carbon atom, the energy of an electron sitting on that atom is represented by <span class="math inline">\(\alpha\)</span>. We set this as our baseline, so we define <span class="math inline">\(\alpha = 0\)</span>. 2. <strong>The Neighbors (Bonding Energy):</strong> If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called <span class="math inline">\(\beta\)</span>. Because it’s stabilizing, <span class="math inline">\(\beta\)</span> is a negative number (usually we just set <span class="math inline">\(\beta = -1\)</span>). 3. <strong>The Distant Atoms:</strong> If two carbon atoms are NOT connected, their interaction is zero. 4. <strong>The Overlap:</strong> We assume orbitals only overlap with themselves. <span class="math inline">\(\mathbf{S}\)</span> becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!</p>
 <p>Our terrifying calculus equation simply becomes: <span class="math display">\[ \mathbf{H} \mathbf{c} = E \mathbf{c} \]</span></p>
 </section>
-<section id="example-ethylene-c_2h_4" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="example-ethylene-c_2h_4"><span class="header-section-number">11.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</h2>
+<section id="example-ethylene-c_2h_4" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="example-ethylene-c_2h_4"><span class="header-section-number">10.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</h2>
 <p>Ethylene has two carbon atoms connected by a double bond (one <span class="math inline">\(\sigma\)</span> bond, one <span class="math inline">\(\pi\)</span> bond). We only care about the two <span class="math inline">\(p\)</span>-orbitals making the <span class="math inline">\(\pi\)</span> bond.</p>
 <ul>
 <li>Atom 1 is bonded to Atom 2.</li>
@@ -400,8 +395,8 @@ window.Quarto = {
 \]</span> * <em>Row 1, Col 1 is 0 (<span class="math inline">\(\alpha\)</span>)</em> * <em>Row 1, Col 2 is -1 (<span class="math inline">\(\beta\)</span>) because Atom 1 and 2 are bonded.</em></p>
 <p>If we use <code>scipy.linalg.eigh</code> on this matrix, it will spit out two energies: <span class="math inline">\(E = -1\)</span> (Bonding) and <span class="math inline">\(E = +1\)</span> (Anti-bonding).</p>
 </section>
-<section id="interactive-sandbox-the-hückel-solver" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="interactive-sandbox-the-hückel-solver"><span class="header-section-number">11.4</span> 4. Interactive Sandbox: The Hückel Solver</h2>
+<section id="interactive-sandbox-the-hückel-solver" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="interactive-sandbox-the-hückel-solver"><span class="header-section-number">10.4</span> 4. Interactive Sandbox: The Hückel Solver</h2>
 <p>Let’s put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.</p>
 <p>Currently, the matrix is set up for <strong>Linear Butadiene</strong> (<span class="math inline">\(C_4H_6\)</span>). It has 4 carbon atoms in a row: <span class="math inline">\(C_1 - C_2 - C_3 - C_4\)</span>. Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.</p>
 <p><strong>Your Mission:</strong> 1. Run the code to see the energy levels of Butadiene. (Notice there are 4 <span class="math inline">\(\pi\)</span> electrons, so they fill the bottom two energy levels!). 2. Modify the <code>H</code> matrix to turn this molecule into <strong>Cyclobutadiene</strong> (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! 3. Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)</p>
@@ -434,7 +429,6 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -912,130 +906,124 @@ window._ojs.runtime.interpretFromScriptTags();
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Chapter 3: Linear Combinations and Hückel Theory"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> live-html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Building Molecules: The LCAO Approach</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Building Molecules: The LCAO Approach</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>We use a principle called **Linear Combination of Atomic Orbitals (LCAO)**. </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs). </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>If we have two atoms, A and B, the molecular wavefunction $\Psi$ is just a mixture of their atomic wavefunctions $\phi$:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>$$ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B $$</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>We use a principle called **Linear Combination of Atomic Orbitals (LCAO)**. </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs). </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>If we have two atoms, A and B, the molecular wavefunction $\Psi$ is just a mixture of their atomic wavefunctions $\phi$:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>$$ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B $$</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Our optimization problem has completely changed! We are no longer tweaking the *width* of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the **coefficients** ($c_A$ and $c_B$). </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ and $c_B$ are both positive, the waves add together (Constructive Interference = **Bonding Orbital**).</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ is positive and $c_B$ is negative, the waves cancel out (Destructive Interference = **Anti-Bonding Orbital**).</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. The Math Becomes a Matrix</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Our optimization problem has completely changed! We are no longer tweaking the *width* of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the **coefficients** ($c_A$ and $c_B$). </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ and $c_B$ are both positive, the waves add together (Constructive Interference = **Bonding Orbital**).</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ is positive and $c_B$ is negative, the waves cancel out (Destructive Interference = **Anti-Bonding Orbital**).</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Through the magic of linear algebra, optimizing those $c$ coefficients turns the Schrödinger equation into a matrix eigenvalue problem:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} $$</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. The Math Becomes a Matrix</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Through the magic of linear algebra, optimizing those $c$ coefficients turns the Schrödinger equation into a matrix eigenvalue problem:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} $$</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{H}$ is the Hamiltonian Matrix (representing energy).</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{S}$ is the Overlap Matrix (representing how much the atomic orbitals physically overlap).</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$E$ are the eigenvalues (The Energy of the Molecular Orbitals).</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{c}$ are the eigenvectors (The coefficients telling us what the orbital looks like).</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{H}$ is the Hamiltonian Matrix (representing energy).</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{S}$ is the Overlap Matrix (representing how much the atomic orbitals physically overlap).</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$E$ are the eigenvalues (The Energy of the Molecular Orbitals).</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{c}$ are the eigenvectors (The coefficients telling us what the orbital looks like).</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Calculating the exact values for $\mathbf{H}$ and $\mathbf{S}$ requires solving those nightmare two-electron integrals we discussed previously. But what if we just... didn't?</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. The Hückel Approximation</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices. </span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Calculating the exact values for $\mathbf{H}$ and $\mathbf{S}$ requires solving those nightmare two-electron integrals we discussed previously. But what if we just... didn't?</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Hückel theory focuses entirely on the **$\pi$ (pi) electrons** moving through the unhybridized $p$-orbitals of a carbon backbone.</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. The Hückel Approximation</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices. </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Hückel theory focuses entirely on the **$\pi$ (pi) electrons** moving through the unhybridized $p$-orbitals of a carbon backbone.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Here are the famous Hückel Rules for building the $\mathbf{H}$ matrix:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Diagonal (Self-Energy):** For any carbon atom, the energy of an electron sitting on that atom is represented by $\alpha$. We set this as our baseline, so we define $\alpha = 0$.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Neighbors (Bonding Energy):** If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called $\beta$. Because it's stabilizing, $\beta$ is a negative number (usually we just set $\beta = -1$).</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**The Distant Atoms:** If two carbon atoms are NOT connected, their interaction is zero.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**The Overlap:** We assume orbitals only overlap with themselves. $\mathbf{S}$ becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Here are the famous Hückel Rules for building the $\mathbf{H}$ matrix:</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Diagonal (Self-Energy):** For any carbon atom, the energy of an electron sitting on that atom is represented by $\alpha$. We set this as our baseline, so we define $\alpha = 0$.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Neighbors (Bonding Energy):** If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called $\beta$. Because it's stabilizing, $\beta$ is a negative number (usually we just set $\beta = -1$).</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**The Distant Atoms:** If two carbon atoms are NOT connected, their interaction is zero.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**The Overlap:** We assume orbitals only overlap with themselves. $\mathbf{S}$ becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>Our terrifying calculus equation simply becomes:</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{c} $$</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Example: Ethylene ($C_2H_4$)</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>Ethylene has two carbon atoms connected by a double bond (one $\sigma$ bond, one $\pi$ bond). We only care about the two $p$-orbitals making the $\pi$ bond.</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Atom 1 is bonded to Atom 2.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Matrix size: 2x2.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>\mathbf{H} = \begin{pmatrix} </span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>0 &amp; -1 <span class="sc">\\</span> </span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>-1 &amp; 0 </span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\end{pmatrix}</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 1 is 0 ($\alpha$)*</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 2 is -1 ($\beta$) because Atom 1 and 2 are bonded.*</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Our terrifying calculus equation simply becomes:</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{c} $$</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Example: Ethylene ($C_2H_4$)</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>Ethylene has two carbon atoms connected by a double bond (one $\sigma$ bond, one $\pi$ bond). We only care about the two $p$-orbitals making the $\pi$ bond.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Atom 1 is bonded to Atom 2.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Matrix size: 2x2.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>\mathbf{H} = \begin{pmatrix} </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>0 &amp; -1 <span class="sc">\\</span> </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>-1 &amp; 0 </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>\end{pmatrix}</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 1 is 0 ($\alpha$)*</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 2 is -1 ($\beta$) because Atom 1 and 2 are bonded.*</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>If we use <span class="in">`scipy.linalg.eigh`</span> on this matrix, it will spit out two energies: $E = -1$ (Bonding) and $E = +1$ (Anti-bonding). </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Interactive Sandbox: The Hückel Solver</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>Let's put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>If we use <span class="in">`scipy.linalg.eigh`</span> on this matrix, it will spit out two energies: $E = -1$ (Bonding) and $E = +1$ (Anti-bonding). </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Interactive Sandbox: The Hückel Solver</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Currently, the matrix is set up for **Linear Butadiene** ($C_4H_6$). </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>It has 4 carbon atoms in a row: $C_1 - C_2 - C_3 - C_4$.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.</span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Let's put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Currently, the matrix is set up for **Linear Butadiene** ($C_4H_6$). </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>It has 4 carbon atoms in a row: $C_1 - C_2 - C_3 - C_4$.</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>**Your Mission:** </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run the code to see the energy levels of Butadiene. (Notice there are 4 $\pi$ electrons, so they fill the bottom two energy levels!).</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Modify the <span class="in">`H`</span> matrix to turn this molecule into **Cyclobutadiene** (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! </span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define the Hamiltonian Matrix for Linear Butadiene</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 carbons = 4x4 matrix</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha = 0, beta = -1</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co">#      C1  C2  C3  C4</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.array([</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>], <span class="co"># C1 is bonded to C2</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>], <span class="co"># C2 is bonded to C1 and C3</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], <span class="co"># C3 is bonded to C2 and C4</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>]  <span class="co"># C4 is bonded to C3</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Solve for the Eigenvalues (Energies)</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>energies, wavefunctions <span class="op">=</span> la.eigh(H)</span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the raw numbers</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calculated Energy Levels (in units of Beta):"</span>)</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, E <span class="kw">in</span> <span class="bu">enumerate</span>(energies):</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plot the Energy Level Diagram</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">6</span>))</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each energy level as a horizontal line</span></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> E <span class="kw">in</span> energies:</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If energy is negative (bonding), color it blue. If positive, red.</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">'blue'</span> <span class="cf">if</span> E <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">'red'</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    plt.axhline(E, xmin<span class="op">=</span><span class="fl">0.2</span>, xmax<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>color, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="fl">0.85</span>, E, <span class="ss">f"</span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss"> $</span><span class="ch">\\</span><span class="ss">beta$"</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatting the plot</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># Non-bonding line</span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Energy </span><span class="kw">(</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha</span><span class="dv">$</span><span class="vs"> </span><span class="op">+</span><span class="vs"> </span><span class="dv">$</span><span class="vs">x</span><span class="dv">\b</span><span class="vs">eta</span><span class="dv">$</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hückel MO Energy Levels'</span>)</span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>plt.xticks([]) <span class="co"># Hide x-axis ticks</span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>)</span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>**Your Mission:** </span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run the code to see the energy levels of Butadiene. (Notice there are 4 $\pi$ electrons, so they fill the bottom two energy levels!).</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Modify the <span class="in">`H`</span> matrix to turn this molecule into **Cyclobutadiene** (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! </span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define the Hamiltonian Matrix for Linear Butadiene</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 carbons = 4x4 matrix</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha = 0, beta = -1</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">#      C1  C2  C3  C4</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.array([</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>], <span class="co"># C1 is bonded to C2</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>], <span class="co"># C2 is bonded to C1 and C3</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], <span class="co"># C3 is bonded to C2 and C4</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>]  <span class="co"># C4 is bonded to C3</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Solve for the Eigenvalues (Energies)</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>energies, wavefunctions <span class="op">=</span> la.eigh(H)</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the raw numbers</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calculated Energy Levels (in units of Beta):"</span>)</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, E <span class="kw">in</span> <span class="bu">enumerate</span>(energies):</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plot the Energy Level Diagram</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">6</span>))</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each energy level as a horizontal line</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> E <span class="kw">in</span> energies:</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If energy is negative (bonding), color it blue. If positive, red.</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">'blue'</span> <span class="cf">if</span> E <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">'red'</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    plt.axhline(E, xmin<span class="op">=</span><span class="fl">0.2</span>, xmax<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>color, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="fl">0.85</span>, E, <span class="ss">f"</span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss"> $</span><span class="ch">\\</span><span class="ss">beta$"</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatting the plot</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># Non-bonding line</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Energy </span><span class="kw">(</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha</span><span class="dv">$</span><span class="vs"> </span><span class="op">+</span><span class="vs"> </span><span class="dv">$</span><span class="vs">x</span><span class="dv">\b</span><span class="vs">eta</span><span class="dv">$</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hückel MO Energy Levels'</span>)</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>plt.xticks([]) <span class="co"># Hide x-axis ticks</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>)</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

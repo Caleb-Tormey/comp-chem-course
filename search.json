@@ -12,12 +12,34 @@
   {
     "objectID": "notebooks/week_1_introduction.html",
     "href": "notebooks/week_1_introduction.html",
-    "title": "",
+    "title": "1  Modluel 1: Introduction",
     "section": "",
-    "text": "Code",
+    "text": "1.1 Building the Toolkit\nWelcome to Computational Chemistry!\nComputational chemistry sits at the exact intersection of three different worlds: chemistry, physics, and computer science. Because of this, it is very rare for anyone to walk into this field knowing everything. When I tell people I am a computational chemist I tell them, half joking, I feel like a fraud three times over.",
     "crumbs": [
       "Module 1: Introduction to Python and Computational Chemistry",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>week_1_introduction.html</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modluel 1: Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_1_introduction.html#two-paths-but-one-destination",
+    "href": "notebooks/week_1_introduction.html#two-paths-but-one-destination",
+    "title": "1  Modluel 1: Introduction",
+    "section": "1.2 Two Paths But One Destination",
+    "text": "1.2 Two Paths But One Destination\nIn this class, we have a mix of backgrounds:\nThe Chemists 1: You might feel very comfortable talking about energy wells, kinetics, and orbitals, but you might feel intimidated by for loops, arrays, and Python syntax.\nThe Computer Scientists: You might be completely at home debugging algorithms, optimizing matrices, and writing scripts, but you might feel out of your depth when we start talking about Hamiltonians, wavefunctions, and zero-point energy.\nThis is a feature, not a bug.\nMy advice for this “textbook” and especially this first module, is to focus heavily on the stuff you have the least experience with. If you are a CS student, use this module to really solidify your mental model of chemical potential energy. If you are a Chemistry student, use this time to get comfortable reading Python error messages. (And if you get stuck, collaborate! You each have the exact expertise the other needs). Also, don’t just do the bare minimum. If you are a CS major and you are confused about the Schrödinger equation, spend a little time to understand its importance to chemistry and physics. If you are a chemistry or physics major read up on useful programming and computer science strategies for writing good code.\nWhat We Will Cover in Module 1\nBefore we can start simulating molecules, we need to make sure everyone’s toolbelts are packed with the exact same gear. In this module, we will cover: - The Physics & Chemistry Refresher: We will review the fundamental concepts of forces, potential energy surfaces, and classical mechanics so we understand the physical rules our simulations must follow. - Atomic Units: In the real world, we measure mass in kilograms and energy in Joules. In quantum mechanics, those numbers become so absurdly small (like \\(10^{-34}\\)) that they cause computers to crash due to floating-point rounding errors. We will learn how to switch to “Atomic Units” (Hartrees and Bohrs) to permanently get rid of messy constants like Planck’s constant and the mass of an electron. - The Python Primer: We aren’t going to build software from scratch, but we are going to use professional scientific libraries. You will learn the basics of NumPy for handling large grids of numbers, SymPy for doing calculus automatically, and Matplotlib for graphing our results.\nThis module is all about setting the stage. Once you understand the physics, the units, and the code, we will be ready to open Module 2 and actually solve some differential equations and eventually the Schrödinger equation!",
+    "crumbs": [
+      "Module 1: Introduction to Python and Computational Chemistry",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modluel 1: Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_1_introduction.html#footnotes",
+    "href": "notebooks/week_1_introduction.html#footnotes",
+    "title": "1  Modluel 1: Introduction",
+    "section": "",
+    "text": "Technically this group also includes physicists but they are just misguided chemsits.↩︎",
+    "crumbs": [
+      "Module 1: Introduction to Python and Computational Chemistry",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modluel 1: Introduction</span>"
     ]
   },
   {
@@ -232,12 +254,23 @@
   {
     "objectID": "notebooks/week_2_introduction.html",
     "href": "notebooks/week_2_introduction.html",
-    "title": "",
+    "title": "5  Module 2: Introduction",
     "section": "",
-    "text": "Code",
+    "text": "5.1 Exact Solutions on a Numerical Grid\nn Module 1, you learned how to translate basic physical concepts into Python code. Now, we are going to use those tools to tackle the most famous differential equation in chemistry: the Schrödinger Equation.\n\\[\\hat{H}\\psi = E\\psi\\]\nIn traditional quantum chemistry classes, you spend weeks doing agonizing differential equations by hand to solve this for a simple “Particle in a Box.” In this class, we are going to make the computer do it.",
     "crumbs": [
       "Module 2: Finite Difference Methods for Quantum Mechanics",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>week_2_introduction.html</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Module 2: Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/week_2_introduction.html#exact-solutions-on-a-numerical-grid",
+    "href": "notebooks/week_2_introduction.html#exact-solutions-on-a-numerical-grid",
+    "title": "5  Module 2: Introduction",
+    "section": "",
+    "text": "5.1.1 The Strategy: The Finite Difference Method\nComputers are terrible at abstract calculus. They cannot easily solve continuous differential equations. However, they are incredibly fast at addition, subtraction, and matrix algebra.\nTo bridge this gap, we use The Finite Difference Method. Instead of dealing with continuous, smooth space, we chop space up into a discrete “Grid” (an array of points). We can approximate the behavior of functions defined by complex differential equations simply by thinking about how adjacent points on that grid relate to one another.\nBy controlling how close or far apart these points are (our step size in the \\(x\\)-direction), we can visually and mathematically simulate the rules of the equation. We transform the terrifying calculus operators (like the second derivative for Kinetic Energy) into simple algebra.\n\n\n5.1.2 A Toolkit of Methods\nIn this module, you won’t just learn one way to do this. You will explore two different finite difference methods.\nThis introduces a very common theme in computational science: there is rarely one “perfect” algorithm. Instead, computational scientists rely on having multiple methods in their toolkit, because different methods are uniquely suited for specific types of problems. Part of your job will be learning how to pick the right tool for the system you are studying.\nWhat We Will Cover in Module 1\n\nBuilding the Grid: You will learn how to turn continuous 1D space into an array of discrete points and visualize the step size (\\(\\Delta x\\)).\nTwo Finite Difference Approaches: You will learn the numerical tricks to calculate derivatives of a wave without doing any calculus, applying different methods to different physical boundaries.\nThe Eigenvalue Problem: We will use SciPy to diagonalize our Hamiltonian matrix. The computer will spit out exactly what we want: the allowed energy levels (eigenvalues, \\(E\\)) and the shape of the electron clouds (eigenvectors, \\(\\psi\\)).\nVisualizing the Unseen: You will plot these wavefunctions and energy levels over various physical models (like the Particle in a Box and the Harmonic Oscillator) to see quantum tunneling and zero-point energy with your own eyes.\n\nBy the end of this module, you will have a working quantum engine. You will be able to draw any 1D potential energy well you want, and your code will instantly be able to approximate a reasonably close solution for the quantum mechanical solution.",
+    "crumbs": [
+      "Module 2: Finite Difference Methods for Quantum Mechanics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Module 2: Introduction</span>"
     ]
   },
   {
@@ -298,34 +331,23 @@
   {
     "objectID": "notebooks/week_3_introduction.html",
     "href": "notebooks/week_3_introduction.html",
-    "title": "7  Module 3: Solving Hard Problems by Guessing",
+    "title": "7  Module 3 : Introduction",
     "section": "",
-    "text": "8 Solving Hard Problems by Guessing: A Rigorous Approach to Solving Equations with Computers\nWelcome to Module 3!\nIn the previous module, you used the Finite Difference method to solve the Schrödinger equation exactly on a grid. It felt powerful, but there is a catch: almost nothing in the real universe can be solved analytically or on an exact grid.\nAs soon as you add a second electron to an atom, the exact mathematical equations become impossible to solve. A 3D numerical grid for even a small molecule would require trillions of grid points—more memory than all the supercomputers on Earth combined.\nDoes this mean computational chemistry is dead on arrival? Absolutely not. It just means we have to change our strategy.\nTo survive real chemistry, we have to abandon exact grids and embrace Approximation and Optimization.",
+    "text": "7.1 The Philosophy: Rigorous Guessing\nIn the previous module, you used the Finite Difference method to solve the Schrödinger equation exactly on a grid. It felt powerful, but there is a catch: almost nothing in the real universe can be solved analytically or on an exact grid.\nAs soon as you add a second electron to an atom, the exact mathematical equations become impossible to solve. A 3D numerical grid for even a small molecule would require trillions of grid points—more memory than all the supercomputers on Earth combined.\nDoes this mean computational chemistry is dead on arrival? Absolutely not. It just means we have to change our strategy.\nTo survive real chemistry, we have to abandon exact grids and embrace Approximation and Optimization.\nWhen exact solutions are out of reach, our goal shifts: out of an infinite number of possible answers, how do we find “the best” one?\nWe do this by making educated mathematical guesses (called an Ansatz) and using algorithms to systematically tweak those guesses until we reach the lowest possible energy state.\nWhile “guessing” might sound unscientific, these techniques are grounded in rigorous mathematics. Physics provides safety nets—like the Variational Theorem—which mathematically guarantee that our guesses will never give us an energy lower than the true ground state. Furthermore, because these tools are rigorous, we can quantitatively measure how good our approximations are and systematically improve them.",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 3: Solving Hard Problems by Guessing</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/week_3_introduction.html#the-philosophy-rigorous-guessing",
-    "href": "notebooks/week_3_introduction.html#the-philosophy-rigorous-guessing",
-    "title": "7  Module 3: Solving Hard Problems by Guessing",
-    "section": "8.1 The Philosophy: Rigorous Guessing",
-    "text": "8.1 The Philosophy: Rigorous Guessing\nWhen exact solutions are out of reach, our goal shifts: out of an infinite number of possible answers, how do we find “the best” one?\nWe do this by making educated mathematical guesses (called an Ansatz) and using algorithms to systematically tweak those guesses until we reach the lowest possible energy state.\nWhile “guessing” might sound unscientific, these techniques are grounded in rigorous mathematics. Physics provides safety nets—like the Variational Theorem—which mathematically guarantee that our guesses will never give us an energy lower than the true ground state. Furthermore, because these tools are rigorous, we can quantitatively measure how good our approximations are and systematically improve them.",
-    "crumbs": [
-      "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 3: Solving Hard Problems by Guessing</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 3 : Introduction</span>"
     ]
   },
   {
     "objectID": "notebooks/week_3_introduction.html#the-journey-of-this-module",
     "href": "notebooks/week_3_introduction.html#the-journey-of-this-module",
-    "title": "7  Module 3: Solving Hard Problems by Guessing",
-    "section": "8.2 The Journey of this Module",
-    "text": "8.2 The Journey of this Module\nIn this module, you will learn the core toolkit that powers modern computational chemistry, building from abstract algorithms up to professional-grade quantum software:\n\nNumerical Optimization (Chapter 1): You will first learn how computers explore complex energy landscapes. You will see how algorithms like the Downhill Simplex (Nelder-Mead) “walk downhill” to find a minimum, and you will navigate the challenge of getting trapped in local vs. global minima.\nThe Variational Method (Chapter 2): You will apply optimization directly to quantum mechanics. By guessing wavefunctions that mirror the physical behavior of real electron clouds (such as Gaussians), you will use Python to optimize parameters and extract remarkably accurate energies.\nLinear Combinations & Hückel Theory (Chapter 3): You will see optimization take a form that might look familiar from Organic Chemistry! Instead of tweaking a single wave, we will optimize the mixture (linear combination) of atomic orbitals to build molecular orbitals (\\(\\pi\\)-systems) using simple matrix algebra.\nThe Professional Standard: Hartree-Fock (Chapter 4): Finally, we will look at how professional software packages handle the ultimate computational nightmare: electron-electron repulsion. We will discuss the Self-Consistent Field (SCF) iterative loop—a rigorous, adaptable model applied to multi-electron atoms and molecules. Because coding these integrals from scratch requires thousands of lines of advanced calculus, we won’t build this engine ourselves, but we will explore how it works under the hood and run pre-built Python code to see it in action.\n\nBy the end of this module, you will understand how computational chemists take unsolvable physical problems, frame them as mathematical optimization tasks, and use computers to extract meaningful chemical insight from educated guesses. Let’s get started!",
+    "title": "7  Module 3 : Introduction",
+    "section": "7.2 The Journey of this Module",
+    "text": "7.2 The Journey of this Module\nIn this module, you will learn the core toolkit that powers modern computational chemistry, building from abstract algorithms up to professional-grade quantum software:\n\nNumerical Optimization (Chapter 1): You will first learn how computers explore complex energy landscapes. You will see how algorithms like the Downhill Simplex (Nelder-Mead) “walk downhill” to find a minimum, and you will navigate the challenge of getting trapped in local vs. global minima.\nThe Variational Method (Chapter 2): You will apply optimization directly to quantum mechanics. By guessing wavefunctions that mirror the physical behavior of real electron clouds (such as Gaussians), you will use Python to optimize parameters and extract remarkably accurate energies.\nLinear Combinations & Hückel Theory (Chapter 3): You will see optimization take a form that might look familiar from Organic Chemistry! Instead of tweaking a single wave, we will optimize the mixture (linear combination) of atomic orbitals to build molecular orbitals (\\(\\pi\\)-systems) using simple matrix algebra.\nThe Professional Standard: Hartree-Fock (Chapter 4): Finally, we will look at how professional software packages handle the ultimate computational nightmare: electron-electron repulsion. We will discuss the Self-Consistent Field (SCF) iterative loop—a rigorous, adaptable model applied to multi-electron atoms and molecules. Because coding these integrals from scratch requires thousands of lines of advanced calculus, we won’t build this engine ourselves, but we will explore how it works under the hood and run pre-built Python code to see it in action.\n\nBy the end of this module, you will understand how computational chemists take unsolvable physical problems, frame them as mathematical optimization tasks, and use computers to extract meaningful chemical insight from educated guesses. Let’s get started!",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 3: Solving Hard Problems by Guessing</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 3 : Introduction</span>"
     ]
   },
   {
@@ -463,56 +485,56 @@
   {
     "objectID": "notebooks/week_3_huckel_lcao.html",
     "href": "notebooks/week_3_huckel_lcao.html",
-    "title": "10  Chapter 3: Linear Combinations and Hückel Theory",
+    "title": "10  Building Molecules: The LCAO Approach",
     "section": "",
-    "text": "11 Building Molecules: The LCAO Approach\nIn the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?\nWe use a principle called Linear Combination of Atomic Orbitals (LCAO). The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs).\nIf we have two atoms, A and B, the molecular wavefunction \\(\\Psi\\) is just a mixture of their atomic wavefunctions \\(\\phi\\): \\[ \\Psi_{\\text{molecule}} = c_A \\phi_A + c_B \\phi_B \\]\nOur optimization problem has completely changed! We are no longer tweaking the width of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the coefficients (\\(c_A\\) and \\(c_B\\)). * If \\(c_A\\) and \\(c_B\\) are both positive, the waves add together (Constructive Interference = Bonding Orbital). * If \\(c_A\\) is positive and \\(c_B\\) is negative, the waves cancel out (Destructive Interference = Anti-Bonding Orbital).",
+    "text": "10.1 1. The Math Becomes a Matrix\nIn the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?\nWe use a principle called Linear Combination of Atomic Orbitals (LCAO). The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs).\nIf we have two atoms, A and B, the molecular wavefunction \\(\\Psi\\) is just a mixture of their atomic wavefunctions \\(\\phi\\): \\[ \\Psi_{\\text{molecule}} = c_A \\phi_A + c_B \\phi_B \\]\nOur optimization problem has completely changed! We are no longer tweaking the width of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the coefficients (\\(c_A\\) and \\(c_B\\)). * If \\(c_A\\) and \\(c_B\\) are both positive, the waves add together (Constructive Interference = Bonding Orbital). * If \\(c_A\\) is positive and \\(c_B\\) is negative, the waves cancel out (Destructive Interference = Anti-Bonding Orbital).\nThrough the magic of linear algebra, optimizing those \\(c\\) coefficients turns the Schrödinger equation into a matrix eigenvalue problem:\n\\[ \\mathbf{H} \\mathbf{c} = E \\mathbf{S} \\mathbf{c} \\]\nCalculating the exact values for \\(\\mathbf{H}\\) and \\(\\mathbf{S}\\) requires solving those nightmare two-electron integrals we discussed previously. But what if we just… didn’t?",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chapter 3: Linear Combinations and Hückel Theory</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Building Molecules: The LCAO Approach</span>"
     ]
   },
   {
     "objectID": "notebooks/week_3_huckel_lcao.html#the-math-becomes-a-matrix",
     "href": "notebooks/week_3_huckel_lcao.html#the-math-becomes-a-matrix",
-    "title": "10  Chapter 3: Linear Combinations and Hückel Theory",
-    "section": "11.1 1. The Math Becomes a Matrix",
-    "text": "11.1 1. The Math Becomes a Matrix\nThrough the magic of linear algebra, optimizing those \\(c\\) coefficients turns the Schrödinger equation into a matrix eigenvalue problem:\n\\[ \\mathbf{H} \\mathbf{c} = E \\mathbf{S} \\mathbf{c} \\]\n\n\\(\\mathbf{H}\\) is the Hamiltonian Matrix (representing energy).\n\\(\\mathbf{S}\\) is the Overlap Matrix (representing how much the atomic orbitals physically overlap).\n\\(E\\) are the eigenvalues (The Energy of the Molecular Orbitals).\n\\(\\mathbf{c}\\) are the eigenvectors (The coefficients telling us what the orbital looks like).\n\nCalculating the exact values for \\(\\mathbf{H}\\) and \\(\\mathbf{S}\\) requires solving those nightmare two-electron integrals we discussed previously. But what if we just… didn’t?",
+    "title": "10  Building Molecules: The LCAO Approach",
+    "section": "",
+    "text": "\\(\\mathbf{H}\\) is the Hamiltonian Matrix (representing energy).\n\\(\\mathbf{S}\\) is the Overlap Matrix (representing how much the atomic orbitals physically overlap).\n\\(E\\) are the eigenvalues (The Energy of the Molecular Orbitals).\n\\(\\mathbf{c}\\) are the eigenvectors (The coefficients telling us what the orbital looks like).",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chapter 3: Linear Combinations and Hückel Theory</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Building Molecules: The LCAO Approach</span>"
     ]
   },
   {
     "objectID": "notebooks/week_3_huckel_lcao.html#the-hückel-approximation",
     "href": "notebooks/week_3_huckel_lcao.html#the-hückel-approximation",
-    "title": "10  Chapter 3: Linear Combinations and Hückel Theory",
-    "section": "11.2 2. The Hückel Approximation",
-    "text": "11.2 2. The Hückel Approximation\nIn the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices.\nHückel theory focuses entirely on the \\(\\pi\\) (pi) electrons moving through the unhybridized \\(p\\)-orbitals of a carbon backbone.\nHere are the famous Hückel Rules for building the \\(\\mathbf{H}\\) matrix: 1. The Diagonal (Self-Energy): For any carbon atom, the energy of an electron sitting on that atom is represented by \\(\\alpha\\). We set this as our baseline, so we define \\(\\alpha = 0\\). 2. The Neighbors (Bonding Energy): If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called \\(\\beta\\). Because it’s stabilizing, \\(\\beta\\) is a negative number (usually we just set \\(\\beta = -1\\)). 3. The Distant Atoms: If two carbon atoms are NOT connected, their interaction is zero. 4. The Overlap: We assume orbitals only overlap with themselves. \\(\\mathbf{S}\\) becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!\nOur terrifying calculus equation simply becomes: \\[ \\mathbf{H} \\mathbf{c} = E \\mathbf{c} \\]",
+    "title": "10  Building Molecules: The LCAO Approach",
+    "section": "10.2 2. The Hückel Approximation",
+    "text": "10.2 2. The Hückel Approximation\nIn the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices.\nHückel theory focuses entirely on the \\(\\pi\\) (pi) electrons moving through the unhybridized \\(p\\)-orbitals of a carbon backbone.\nHere are the famous Hückel Rules for building the \\(\\mathbf{H}\\) matrix: 1. The Diagonal (Self-Energy): For any carbon atom, the energy of an electron sitting on that atom is represented by \\(\\alpha\\). We set this as our baseline, so we define \\(\\alpha = 0\\). 2. The Neighbors (Bonding Energy): If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called \\(\\beta\\). Because it’s stabilizing, \\(\\beta\\) is a negative number (usually we just set \\(\\beta = -1\\)). 3. The Distant Atoms: If two carbon atoms are NOT connected, their interaction is zero. 4. The Overlap: We assume orbitals only overlap with themselves. \\(\\mathbf{S}\\) becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!\nOur terrifying calculus equation simply becomes: \\[ \\mathbf{H} \\mathbf{c} = E \\mathbf{c} \\]",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chapter 3: Linear Combinations and Hückel Theory</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Building Molecules: The LCAO Approach</span>"
     ]
   },
   {
     "objectID": "notebooks/week_3_huckel_lcao.html#example-ethylene-c_2h_4",
     "href": "notebooks/week_3_huckel_lcao.html#example-ethylene-c_2h_4",
-    "title": "10  Chapter 3: Linear Combinations and Hückel Theory",
-    "section": "11.3 3. Example: Ethylene (\\(C_2H_4\\))",
-    "text": "11.3 3. Example: Ethylene (\\(C_2H_4\\))\nEthylene has two carbon atoms connected by a double bond (one \\(\\sigma\\) bond, one \\(\\pi\\) bond). We only care about the two \\(p\\)-orbitals making the \\(\\pi\\) bond.\n\nAtom 1 is bonded to Atom 2.\nMatrix size: 2x2.\n\n\\[\n\\mathbf{H} = \\begin{pmatrix}\n0 & -1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\] * Row 1, Col 1 is 0 (\\(\\alpha\\)) * Row 1, Col 2 is -1 (\\(\\beta\\)) because Atom 1 and 2 are bonded.\nIf we use scipy.linalg.eigh on this matrix, it will spit out two energies: \\(E = -1\\) (Bonding) and \\(E = +1\\) (Anti-bonding).",
+    "title": "10  Building Molecules: The LCAO Approach",
+    "section": "10.3 3. Example: Ethylene (\\(C_2H_4\\))",
+    "text": "10.3 3. Example: Ethylene (\\(C_2H_4\\))\nEthylene has two carbon atoms connected by a double bond (one \\(\\sigma\\) bond, one \\(\\pi\\) bond). We only care about the two \\(p\\)-orbitals making the \\(\\pi\\) bond.\n\nAtom 1 is bonded to Atom 2.\nMatrix size: 2x2.\n\n\\[\n\\mathbf{H} = \\begin{pmatrix}\n0 & -1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\] * Row 1, Col 1 is 0 (\\(\\alpha\\)) * Row 1, Col 2 is -1 (\\(\\beta\\)) because Atom 1 and 2 are bonded.\nIf we use scipy.linalg.eigh on this matrix, it will spit out two energies: \\(E = -1\\) (Bonding) and \\(E = +1\\) (Anti-bonding).",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chapter 3: Linear Combinations and Hückel Theory</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Building Molecules: The LCAO Approach</span>"
     ]
   },
   {
     "objectID": "notebooks/week_3_huckel_lcao.html#interactive-sandbox-the-hückel-solver",
     "href": "notebooks/week_3_huckel_lcao.html#interactive-sandbox-the-hückel-solver",
-    "title": "10  Chapter 3: Linear Combinations and Hückel Theory",
-    "section": "11.4 4. Interactive Sandbox: The Hückel Solver",
-    "text": "11.4 4. Interactive Sandbox: The Hückel Solver\nLet’s put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.\nCurrently, the matrix is set up for Linear Butadiene (\\(C_4H_6\\)). It has 4 carbon atoms in a row: \\(C_1 - C_2 - C_3 - C_4\\). Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.\nYour Mission: 1. Run the code to see the energy levels of Butadiene. (Notice there are 4 \\(\\pi\\) electrons, so they fill the bottom two energy levels!). 2. Modify the H matrix to turn this molecule into Cyclobutadiene (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! 3. Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)",
+    "title": "10  Building Molecules: The LCAO Approach",
+    "section": "10.4 4. Interactive Sandbox: The Hückel Solver",
+    "text": "10.4 4. Interactive Sandbox: The Hückel Solver\nLet’s put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.\nCurrently, the matrix is set up for Linear Butadiene (\\(C_4H_6\\)). It has 4 carbon atoms in a row: \\(C_1 - C_2 - C_3 - C_4\\). Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.\nYour Mission: 1. Run the code to see the energy levels of Butadiene. (Notice there are 4 \\(\\pi\\) electrons, so they fill the bottom two energy levels!). 2. Modify the H matrix to turn this molecule into Cyclobutadiene (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! 3. Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)",
     "crumbs": [
       "Module 3: Solving Hard Problems by Guessing",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chapter 3: Linear Combinations and Hückel Theory</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Building Molecules: The LCAO Approach</span>"
     ]
   },
   {
