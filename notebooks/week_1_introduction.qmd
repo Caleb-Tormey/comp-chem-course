@@ -1,4 +1,4 @@
-# Modluel 1: Introduction 
+# Module 1: Introduction 
 
 ## Building the Toolkit
 
