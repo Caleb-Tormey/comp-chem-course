@@ -24,9 +24,9 @@ This introduces a very common theme in computational science: there is rarely on
 
 What We Will Cover in Module 1
 
- - Building the Grid: You will learn how to turn continuous 1D space into an array of discrete points and visualize the step size ($\Delta x$).
- - Two Finite Difference Approaches: You will learn the numerical tricks to calculate derivatives of a wave without doing any calculus, applying different methods to different physical boundaries.
- - The Eigenvalue Problem: We will use SciPy to diagonalize our Hamiltonian matrix. The computer will spit out exactly what we want: the allowed energy levels (eigenvalues, $E$) and the shape of the electron clouds (eigenvectors, $\psi$).
- - Visualizing the Unseen: You will plot these wavefunctions and energy levels over various physical models (like the Particle in a Box and the Harmonic Oscillator) to see quantum tunneling and zero-point energy with your own eyes.
+- Building the Grid: You will learn how to turn continuous 1D space into an array of discrete points and visualize the step size ($\Delta x$).
+- Two Finite Difference Approaches: You will learn the numerical tricks to calculate derivatives of a wave without doing any calculus, applying different methods to different physical boundaries.
+- The Eigenvalue Problem: We will use SciPy to diagonalize our Hamiltonian matrix. The computer will spit out exactly what we want: the allowed energy levels (eigenvalues, $E$) and the shape of the electron clouds (eigenvectors, $\psi$).
+- Visualizing the Unseen: You will plot these wavefunctions and energy levels over various physical models (like the Particle in a Box and the Harmonic Oscillator) to see quantum tunneling and zero-point energy with your own eyes.
 
- By the end of this module, you will have a working quantum engine. You will be able to draw any 1D potential energy well you want, and your code will instantly be able to approximate a reasonably close solution for the  quantum mechanical solution.
+By the end of this module, you will have a working quantum engine. You will be able to draw any 1D potential energy well you want, and your code will instantly be able to approximate a reasonably close solution for the  quantum mechanical solution.
