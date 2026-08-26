@@ -1,0 +1,32 @@
+# Module 2: Introduction
+
+## Exact Solutions on a Numerical Grid
+
+n Module 1, you learned how to translate basic physical concepts into Python code. Now, we are going to use those tools to tackle the most famous differential equation in chemistry: the Schrödinger Equation.
+
+$$\hat{H}\psi = E\psi$$
+
+In traditional quantum chemistry classes, you spend weeks doing agonizing differential equations by hand to solve this for a simple "Particle in a Box." In this class, we are going to make the computer do it.
+
+### The Strategy: The Finite Difference Method
+
+Computers are terrible at abstract calculus. They cannot easily solve continuous differential equations. However, they are incredibly fast at addition, subtraction, and matrix algebra.
+
+To bridge this gap, we use The Finite Difference Method. Instead of dealing with continuous, smooth space, we chop space up into a discrete "Grid" (an array of points). We can approximate the behavior of functions defined by complex differential equations simply by thinking about how adjacent points on that grid relate to one another.
+
+By controlling how close or far apart these points are (our step size in the $x$-direction), we can visually and mathematically simulate the rules of the equation. We transform the terrifying calculus operators (like the second derivative for Kinetic Energy) into simple algebra.
+
+### A Toolkit of Methods
+
+In this module, you won't just learn one way to do this. You will explore two different finite difference methods.
+
+This introduces a very common theme in computational science: there is rarely one "perfect" algorithm. Instead, computational scientists rely on having multiple methods in their toolkit, because different methods are uniquely suited for specific types of problems. Part of your job will be learning how to pick the right tool for the system you are studying.
+
+What We Will Cover in Module 1
+
+ - Building the Grid: You will learn how to turn continuous 1D space into an array of discrete points and visualize the step size ($\Delta x$).
+ - Two Finite Difference Approaches: You will learn the numerical tricks to calculate derivatives of a wave without doing any calculus, applying different methods to different physical boundaries.
+ - The Eigenvalue Problem: We will use SciPy to diagonalize our Hamiltonian matrix. The computer will spit out exactly what we want: the allowed energy levels (eigenvalues, $E$) and the shape of the electron clouds (eigenvectors, $\psi$).
+ - Visualizing the Unseen: You will plot these wavefunctions and energy levels over various physical models (like the Particle in a Box and the Harmonic Oscillator) to see quantum tunneling and zero-point energy with your own eyes.
+
+ By the end of this module, you will have a working quantum engine. You will be able to draw any 1D potential energy well you want, and your code will instantly be able to approximate a reasonably close solution for the  quantum mechanical solution.

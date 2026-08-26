@@ -1,12 +1,4 @@
----
-title: "Module 3: Solving Hard Problems by Guessing"
-format: live-html
-engine: jupyter
----
-
-# Solving Hard Problems by Guessing: A Rigorous Approach to Solving Equations with Computers
-
-Welcome to Module 3! 
+# Module 3 : Introduction
 
 In the previous module, you used the Finite Difference method to solve the Schrödinger equation exactly on a grid. It felt powerful, but there is a catch: **almost nothing in the real universe can be solved analytically or on an exact grid.** 
 
@@ -28,9 +20,9 @@ While "guessing" might sound unscientific, these techniques are grounded in rigo
 
 In this module, you will learn the core toolkit that powers modern computational chemistry, building from abstract algorithms up to professional-grade quantum software:
 
-1. **Numerical Optimization (Chapter 1):** You will first learn how computers explore complex energy landscapes. You will see how algorithms like the Downhill Simplex (Nelder-Mead) "walk downhill" to find a minimum, and you will navigate the challenge of getting trapped in local vs. global minima.
-2. **The Variational Method (Chapter 2):** You will apply optimization directly to quantum mechanics. By guessing wavefunctions that mirror the physical behavior of real electron clouds (such as Gaussians), you will use Python to optimize parameters and extract remarkably accurate energies.
-3. **Linear Combinations & Hückel Theory (Chapter 3):** You will see optimization take a form that might look familiar from Organic Chemistry! Instead of tweaking a single wave, we will optimize the *mixture* (linear combination) of atomic orbitals to build molecular orbitals ($\pi$-systems) using simple matrix algebra.
-4. **The Professional Standard: Hartree-Fock (Chapter 4):** Finally, we will look at how professional software packages handle the ultimate computational nightmare: electron-electron repulsion. We will discuss the **Self-Consistent Field (SCF)** iterative loop—a rigorous, adaptable model applied to multi-electron atoms and molecules. Because coding these integrals from scratch requires thousands of lines of advanced calculus, we won't build this engine ourselves, but we will explore how it works under the hood and run pre-built Python code to see it in action.
+- **Numerical Optimization (Chapter 1):** You will first learn how computers explore complex energy landscapes. You will see how algorithms like the Downhill Simplex (Nelder-Mead) "walk downhill" to find a minimum, and you will navigate the challenge of getting trapped in local vs. global minima.
+- **The Variational Method (Chapter 2):** You will apply optimization directly to quantum mechanics. By guessing wavefunctions that mirror the physical behavior of real electron clouds (such as Gaussians), you will use Python to optimize parameters and extract remarkably accurate energies.
+- **Linear Combinations & Hückel Theory (Chapter 3):** You will see optimization take a form that might look familiar from Organic Chemistry! Instead of tweaking a single wave, we will optimize the *mixture* (linear combination) of atomic orbitals to build molecular orbitals ($\pi$-systems) using simple matrix algebra.
+- **The Professional Standard: Hartree-Fock (Chapter 4):** Finally, we will look at how professional software packages handle the ultimate computational nightmare: electron-electron repulsion. We will discuss the **Self-Consistent Field (SCF)** iterative loop—a rigorous, adaptable model applied to multi-electron atoms and molecules. Because coding these integrals from scratch requires thousands of lines of advanced calculus, we won't build this engine ourselves, but we will explore how it works under the hood and run pre-built Python code to see it in action.
 
 By the end of this module, you will understand how computational chemists take unsolvable physical problems, frame them as mathematical optimization tasks, and use computers to extract meaningful chemical insight from educated guesses. Let's get started!
