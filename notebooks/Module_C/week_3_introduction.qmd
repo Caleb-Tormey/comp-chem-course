@@ -1,4 +1,4 @@
-# Module 3 : Introduction
+# Module C : Introduction
 
 In the previous module, you used the Finite Difference method to solve the Schrödinger equation exactly on a grid. It felt powerful, but there is a catch: **almost nothing in the real universe can be solved analytically or on an exact grid.** 
 

@@ -1,4 +1,4 @@
-# Moduel 3: The Mathematics of Optimization
+# Module C: The Mathematics of Optimization
 
 Whether you are finding the most stable 3D geometry of a drug molecule, locating a transition state for a chemical reaction, or fitting experimental kinetic data to a rate law, you are doing the exact same mathematical task: **Optimization**.
 

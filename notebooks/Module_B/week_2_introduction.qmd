@@ -1,4 +1,4 @@
-# Module 2: Introduction
+# Module B: Introduction
 
 ## Exact Solutions on a Numerical Grid
 
@@ -22,8 +22,7 @@ In this module, you won't just learn one way to do this. You will explore two di
 
 This introduces a very common theme in computational science: there is rarely one "perfect" algorithm. Instead, computational scientists rely on having multiple methods in their toolkit, because different methods are uniquely suited for specific types of problems. Part of your job will be learning how to pick the right tool for the system you are studying.
 
-What We Will Cover in Module 1
-
+What We Will Cover in Module 1:
 - Building the Grid: You will learn how to turn continuous 1D space into an array of discrete points and visualize the step size ($\Delta x$).
 - Two Finite Difference Approaches: You will learn the numerical tricks to calculate derivatives of a wave without doing any calculus, applying different methods to different physical boundaries.
 - The Eigenvalue Problem: We will use SciPy to diagonalize our Hamiltonian matrix. The computer will spit out exactly what we want: the allowed energy levels (eigenvalues, $E$) and the shape of the electron clouds (eigenvectors, $\psi$).

@@ -1,4 +1,4 @@
-# Module 1: A Refresher on Mechanics and Waves
+# Module A: A Refresher on Mechanics and Waves
 
 Before we can simulate how a molecule behaves, we need to agree on the physical rules that govern it. Computational chemistry is essentially applied physics. Whether we are doing classical molecular dynamics or solving the quantum Schrödinger equation, we are almost always just balancing kinetic and potential energy.
 

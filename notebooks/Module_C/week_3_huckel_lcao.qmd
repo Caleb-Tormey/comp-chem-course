@@ -1,4 +1,4 @@
-# Building Molecules: The LCAO Approach
+# Module C: Building Molecules using LCAO 
 
 In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?
 

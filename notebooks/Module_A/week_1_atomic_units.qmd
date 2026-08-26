@@ -1,4 +1,4 @@
-# Module 1: The Computational Secret Weapon: Atomic Units
+# Module A: The Computational Secret Weapon: Atomic Units
 
 If you try to solve the Schrödinger equation using standard SI units, you will immediately run into a computational nightmare. 
 
