@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Building Molecules: The LCAO Approach – Computing Chemistry with Code: A Beginner's Guide </title>
+<title>3&nbsp; Module A: The Computational Secret Weapon: Atomic Units – Computing Chemistry with Code: A Beginner's Guide </title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -64,27 +64,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../notebooks/week_3_HF.html" rel="next">
-<link href="../notebooks/week_3_Optimization_2.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
-<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../notebooks/Module_A/week_1_python_primer.html" rel="next">
+<link href="../../notebooks/Module_A/week_1_physics_chem_review.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,8 +112,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/Module_A/week_1_introduction.html">Module A: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../../notebooks/Module_A/week_1_atomic_units.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module A: The Computational Secret Weapon: Atomic Units</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -171,7 +171,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computing Chemistry with Code: A Beginner’s Guide</a> 
+      <a href="../../">Computing Chemistry with Code: A Beginner’s Guide</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/Caleb-Tormey/comp-chem-course" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -186,14 +186,14 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 1: Introduction to Python and Computational Chemistry</span></a>
+ <span class="menu-text">Module A: Introduction to Python and Computational Chemistry</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -201,26 +201,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_1_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Module 1: Introduction</span></span></a>
+  <a href="../../notebooks/Module_A/week_1_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Module A: Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_1_physics_chem_review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Module 1: A Refresher on Mechanics and Waves</span></span></a>
+  <a href="../../notebooks/Module_A/week_1_physics_chem_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Module A: A Refresher on Mechanics and Waves</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_1_atomic_units.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module 1: The Computational Secret Weapon: Atomic Units</span></span></a>
+  <a href="../../notebooks/Module_A/week_1_atomic_units.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module A: The Computational Secret Weapon: Atomic Units</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_1_python_primer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 1: Python and Math Primer</span></span></a>
+  <a href="../../notebooks/Module_A/week_1_python_primer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module A: Python and Math Primer</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +228,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 2: Finite Difference Methods for Quantum Mechanics</span></a>
+ <span class="menu-text">Module B: Finite Difference Methods for Quantum Mechanics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,14 +236,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module 2: Introduction</span></span></a>
+  <a href="../../notebooks/Module_B/week_2_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module B: Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_2_1D_Quantum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 2: 1D Quantum Models and the Finite Difference Method</span></span></a>
+  <a href="../../notebooks/Module_B/week_2_1D_Quantum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module B: 1D Quantum Models and the Finite Difference Method</span></span></a>
   </div>
 </li>
       </ul>
@@ -251,7 +251,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Module 3: Solving Hard Problems by Guessing</span></a>
+ <span class="menu-text">Module C: Solving Hard Problems by Guessing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -259,32 +259,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 3 : Introduction</span></span></a>
+  <a href="../../notebooks/Module_C/week_3_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module C : Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_Optimization_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Moduel 3: The Mathematics of Optimization</span></span></a>
+  <a href="../../notebooks/Module_C/week_3_Optimization_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module C: The Mathematics of Optimization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_Optimization_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span></a>
+  <a href="../../notebooks/Module_C/week_3_Optimization_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module C : The Curse of Dimensionality &amp; The Ansatz</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_huckel_lcao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></span></a>
+  <a href="../../notebooks/Module_C/week_3_huckel_lcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module C: Building Molecules using LCAO</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/week_3_HF.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span></a>
+  <a href="../../notebooks/Module_C/week_3_HF.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module C: Hartree-Fock Approximation</span></span></a>
   </div>
 </li>
       </ul>
@@ -300,13 +300,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/Appendix/appendix_crash_course.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/Appendix/appendix_linear_algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Appendix: A Chemist’s Crash Course in Linear Algebra</span></span></a>
   </div>
 </li>
@@ -314,7 +314,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -328,19 +328,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-math-becomes-a-matrix" id="toc-the-math-becomes-a-matrix" class="nav-link active" data-scroll-target="#the-math-becomes-a-matrix"><span class="header-section-number">10.1</span> 1. The Math Becomes a Matrix</a></li>
-  <li><a href="#the-hückel-approximation" id="toc-the-hückel-approximation" class="nav-link" data-scroll-target="#the-hückel-approximation"><span class="header-section-number">10.2</span> 2. The Hückel Approximation</a></li>
-  <li><a href="#example-ethylene-c_2h_4" id="toc-example-ethylene-c_2h_4" class="nav-link" data-scroll-target="#example-ethylene-c_2h_4"><span class="header-section-number">10.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</a></li>
-  <li><a href="#interactive-sandbox-the-hückel-solver" id="toc-interactive-sandbox-the-hückel-solver" class="nav-link" data-scroll-target="#interactive-sandbox-the-hückel-solver"><span class="header-section-number">10.4</span> 4. Interactive Sandbox: The Hückel Solver</a></li>
+  <li><a href="#the-core-definitions" id="toc-the-core-definitions" class="nav-link active" data-scroll-target="#the-core-definitions"><span class="header-section-number">3.1</span> 1. The Core Definitions</a></li>
+  <li><a href="#derived-units-the-bohr-and-the-hartree" id="toc-derived-units-the-bohr-and-the-hartree" class="nav-link" data-scroll-target="#derived-units-the-bohr-and-the-hartree"><span class="header-section-number">3.2</span> 2. Derived Units: The Bohr and the Hartree</a></li>
+  <li><a href="#the-tricky-business-of-unit-conversions" id="toc-the-tricky-business-of-unit-conversions" class="nav-link" data-scroll-target="#the-tricky-business-of-unit-conversions"><span class="header-section-number">3.3</span> 3. The Tricky Business of Unit Conversions</a>
+  <ul class="collapse">
+  <li><a href="#interactive-sandbox-building-a-conversion-dictionary" id="toc-interactive-sandbox-building-a-conversion-dictionary" class="nav-link" data-scroll-target="#interactive-sandbox-building-a-conversion-dictionary"><span class="header-section-number">3.3.1</span> Interactive Sandbox: Building a Conversion Dictionary</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/week_3_huckel_lcao.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/Module_A/week_1_atomic_units.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master"><i class="bi bi-file-code"></i>Download Notebook Source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/week_3_introduction.html">Module 3: Solving Hard Problems by Guessing</a></li><li class="breadcrumb-item"><a href="../notebooks/week_3_huckel_lcao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/Module_A/week_1_introduction.html">Module A: Introduction to Python and Computational Chemistry</a></li><li class="breadcrumb-item"><a href="../../notebooks/Module_A/week_1_atomic_units.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module A: The Computational Secret Weapon: Atomic Units</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Building Molecules: The LCAO Approach</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Module A: The Computational Secret Weapon: Atomic Units</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -357,55 +359,103 @@ window.Quarto = {
 </header>
 
 
-<p>In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?</p>
-<p>We use a principle called <strong>Linear Combination of Atomic Orbitals (LCAO)</strong>. The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs).</p>
-<p>If we have two atoms, A and B, the molecular wavefunction <span class="math inline">\(\Psi\)</span> is just a mixture of their atomic wavefunctions <span class="math inline">\(\phi\)</span>: <span class="math display">\[ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B \]</span></p>
-<p>Our optimization problem has completely changed! We are no longer tweaking the <em>width</em> of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the <strong>coefficients</strong> (<span class="math inline">\(c_A\)</span> and <span class="math inline">\(c_B\)</span>). * If <span class="math inline">\(c_A\)</span> and <span class="math inline">\(c_B\)</span> are both positive, the waves add together (Constructive Interference = <strong>Bonding Orbital</strong>). * If <span class="math inline">\(c_A\)</span> is positive and <span class="math inline">\(c_B\)</span> is negative, the waves cancel out (Destructive Interference = <strong>Anti-Bonding Orbital</strong>).</p>
-<section id="the-math-becomes-a-matrix" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="the-math-becomes-a-matrix"><span class="header-section-number">10.1</span> 1. The Math Becomes a Matrix</h2>
-<p>Through the magic of linear algebra, optimizing those <span class="math inline">\(c\)</span> coefficients turns the Schrödinger equation into a matrix eigenvalue problem:</p>
-<p><span class="math display">\[ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} \]</span></p>
-<ul>
-<li><span class="math inline">\(\mathbf{H}\)</span> is the Hamiltonian Matrix (representing energy).</li>
-<li><span class="math inline">\(\mathbf{S}\)</span> is the Overlap Matrix (representing how much the atomic orbitals physically overlap).</li>
-<li><span class="math inline">\(E\)</span> are the eigenvalues (The Energy of the Molecular Orbitals).</li>
-<li><span class="math inline">\(\mathbf{c}\)</span> are the eigenvectors (The coefficients telling us what the orbital looks like).</li>
-</ul>
-<p>Calculating the exact values for <span class="math inline">\(\mathbf{H}\)</span> and <span class="math inline">\(\mathbf{S}\)</span> requires solving those nightmare two-electron integrals we discussed previously. But what if we just… didn’t?</p>
+<p>If you try to solve the Schrödinger equation using standard SI units, you will immediately run into a computational nightmare.</p>
+<p>The mass of an electron is <span class="math inline">\(9.109 \times 10^{-31}\text{ kg}\)</span>. Planck’s constant is <span class="math inline">\(6.626 \times 10^{-34}\text{ J}\cdot\text{s}\)</span>. Computers use floating-point numbers to store decimals, and while modern 64-bit systems are robust, mixing numbers like <span class="math inline">\(10^{-34}\)</span> with distances like <span class="math inline">\(10^{-9}\)</span> inside massive matrix multiplications is a recipe for <strong>numerical instability</strong> (round-off errors and floating-point underflow).</p>
+<p>More importantly, typing those constants over and over is tedious and prone to typos.</p>
+<p>To fix this, computational chemists use <strong>Atomic Units (a.u.)</strong>. We essentially redefine our universe so that the fundamental properties of an electron are exactly equal to 1.</p>
+<section id="the-core-definitions" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-core-definitions"><span class="header-section-number">3.1</span> 1. The Core Definitions</h2>
+<p>In the atomic unit system, we set four fundamental constants to exactly 1:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Physical Quantity</th>
+<th>Symbol</th>
+<th>Atomic Unit Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Electron mass</td>
+<td><span class="math inline">\(m_e\)</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Elementary charge</td>
+<td><span class="math inline">\(e\)</span></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Reduced Planck’s constant</td>
+<td><span class="math inline">\(\hbar\)</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Electrostatic constant</td>
+<td><span class="math inline">\(1 / (4\pi\epsilon_0)\)</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>By setting these to 1, they completely vanish from our equations! The kinetic energy operator <span class="math inline">\(-\frac{\hbar^2}{2m} \nabla^2\)</span> beautifully simplifies to just <span class="math inline">\(-\frac{1}{2} \nabla^2\)</span>.</p>
 </section>
-<section id="the-hückel-approximation" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="the-hückel-approximation"><span class="header-section-number">10.2</span> 2. The Hückel Approximation</h2>
-<p>In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices.</p>
-<p>Hückel theory focuses entirely on the <strong><span class="math inline">\(\pi\)</span> (pi) electrons</strong> moving through the unhybridized <span class="math inline">\(p\)</span>-orbitals of a carbon backbone.</p>
-<p>Here are the famous Hückel Rules for building the <span class="math inline">\(\mathbf{H}\)</span> matrix: 1. <strong>The Diagonal (Self-Energy):</strong> For any carbon atom, the energy of an electron sitting on that atom is represented by <span class="math inline">\(\alpha\)</span>. We set this as our baseline, so we define <span class="math inline">\(\alpha = 0\)</span>. 2. <strong>The Neighbors (Bonding Energy):</strong> If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called <span class="math inline">\(\beta\)</span>. Because it’s stabilizing, <span class="math inline">\(\beta\)</span> is a negative number (usually we just set <span class="math inline">\(\beta = -1\)</span>). 3. <strong>The Distant Atoms:</strong> If two carbon atoms are NOT connected, their interaction is zero. 4. <strong>The Overlap:</strong> We assume orbitals only overlap with themselves. <span class="math inline">\(\mathbf{S}\)</span> becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!</p>
-<p>Our terrifying calculus equation simply becomes: <span class="math display">\[ \mathbf{H} \mathbf{c} = E \mathbf{c} \]</span></p>
+<section id="derived-units-the-bohr-and-the-hartree" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="derived-units-the-bohr-and-the-hartree"><span class="header-section-number">3.2</span> 2. Derived Units: The Bohr and the Hartree</h2>
+<p>Because we redefined mass, charge, and action, our units for Length and Energy naturally change as well. You must memorize these two derived units, as they are the default output of almost every quantum chemistry software (like Gaussian, Orca, or Psi4).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Atomic Unit Name</th>
+<th>Symbol</th>
+<th>SI / Chemical Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Length</strong></td>
+<td>Bohr</td>
+<td><span class="math inline">\(a_0\)</span></td>
+<td><span class="math inline">\(0.529177\text{ \AA}\)</span> (or <span class="math inline">\(52.9\text{ pm}\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong>Energy</strong></td>
+<td>Hartree</td>
+<td><span class="math inline">\(E_h\)</span></td>
+<td><span class="math inline">\(27.211\text{ eV}\)</span> (or <span class="math inline">\(627.5\text{ kcal/mol}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: One Bohr is the radius of the first electron orbit in the hydrogen atom. One Hartree is exactly twice the ionization energy of a hydrogen atom.</em></p>
 </section>
-<section id="example-ethylene-c_2h_4" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="example-ethylene-c_2h_4"><span class="header-section-number">10.3</span> 3. Example: Ethylene (<span class="math inline">\(C_2H_4\)</span>)</h2>
-<p>Ethylene has two carbon atoms connected by a double bond (one <span class="math inline">\(\sigma\)</span> bond, one <span class="math inline">\(\pi\)</span> bond). We only care about the two <span class="math inline">\(p\)</span>-orbitals making the <span class="math inline">\(\pi\)</span> bond.</p>
-<ul>
-<li>Atom 1 is bonded to Atom 2.</li>
-<li>Matrix size: 2x2.</li>
-</ul>
-<p><span class="math display">\[
-\mathbf{H} = \begin{pmatrix}
-0 &amp; -1 \\
--1 &amp; 0
-\end{pmatrix}
-\]</span> * <em>Row 1, Col 1 is 0 (<span class="math inline">\(\alpha\)</span>)</em> * <em>Row 1, Col 2 is -1 (<span class="math inline">\(\beta\)</span>) because Atom 1 and 2 are bonded.</em></p>
-<p>If we use <code>scipy.linalg.eigh</code> on this matrix, it will spit out two energies: <span class="math inline">\(E = -1\)</span> (Bonding) and <span class="math inline">\(E = +1\)</span> (Anti-bonding).</p>
-</section>
-<section id="interactive-sandbox-the-hückel-solver" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="interactive-sandbox-the-hückel-solver"><span class="header-section-number">10.4</span> 4. Interactive Sandbox: The Hückel Solver</h2>
-<p>Let’s put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.</p>
-<p>Currently, the matrix is set up for <strong>Linear Butadiene</strong> (<span class="math inline">\(C_4H_6\)</span>). It has 4 carbon atoms in a row: <span class="math inline">\(C_1 - C_2 - C_3 - C_4\)</span>. Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.</p>
-<p><strong>Your Mission:</strong> 1. Run the code to see the energy levels of Butadiene. (Notice there are 4 <span class="math inline">\(\pi\)</span> electrons, so they fill the bottom two energy levels!). 2. Modify the <code>H</code> matrix to turn this molecule into <strong>Cyclobutadiene</strong> (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! 3. Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)</p>
+<section id="the-tricky-business-of-unit-conversions" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-tricky-business-of-unit-conversions"><span class="header-section-number">3.3</span> 3. The Tricky Business of Unit Conversions</h2>
+<p>Converting standard values into atomic units is usually straightforward division. But things get notoriously tricky when dealing with <strong>reciprocal units</strong> combined with metric prefixes.</p>
+<p><strong>The Trap:</strong> Let’s say you are reading a spectroscopy paper, and a vibrational parameter is given as <span class="math inline">\(\alpha = 1.5\text{ pm}^{-1}\)</span> (inverse picometers). You need to convert this to inverse Bohrs (<span class="math inline">\(\text{a.u.}^{-1}\)</span>) for your code.</p>
+<p>Students often incorrectly divide by the conversion factor. Let’s walk through the dimensional analysis carefully:</p>
+<ol type="1">
+<li>We know that <span class="math inline">\(1\text{ Bohr} = 52.9177\text{ pm}\)</span>.</li>
+<li>Therefore, the conversion ratio is <span class="math inline">\(52.9177\text{ pm} / 1\text{ Bohr}\)</span>.</li>
+<li>Because our starting unit is <span class="math inline">\(\text{pm}^{-1}\)</span> (which means <span class="math inline">\(1 / \text{pm}\)</span>), we actually need to <strong>multiply</strong> by the picometers to cancel them out!</li>
+</ol>
+<p><span class="math display">\[ 1.5 \frac{1}{\text{pm}} \times \left( \frac{52.9177\text{ pm}}{1\text{ Bohr}} \right) = 79.376\text{ Bohr}^{-1} \]</span></p>
+<p>When a unit is inverted, the conversion factor must be applied in reverse.</p>
+<section id="interactive-sandbox-building-a-conversion-dictionary" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="interactive-sandbox-building-a-conversion-dictionary"><span class="header-section-number">3.3.1</span> Interactive Sandbox: Building a Conversion Dictionary</h3>
+<p>In your Python code, it is highly recommended to define a dictionary of conversion factors right at the top of your script. This prevents “magic numbers” (random numbers floating in your math) and makes your code self-documenting.</p>
+<p>Run the code below to see how we handle these conversions programmatically. Try changing the <code>wavenumber</code> variable to see how it converts to Hartrees!</p>
 <div>
 <div id="pyodide-1" class="exercise-cell">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgc2NpcHkubGluYWxnIGFzIGxhXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbiMgMS4gRGVmaW5lIHRoZSBIYW1pbHRvbmlhbiBNYXRyaXggZm9yIExpbmVhciBCdXRhZGllbmVcbiMgNCBjYXJib25zID0gNHg0IG1hdHJpeFxuIyBhbHBoYSA9IDAsIGJldGEgPSAtMVxuXG4jICAgICAgQzEgIEMyICBDMyAgQzRcbkggPSBucC5hcnJheShbXG4gICAgWyAwLCAtMSwgIDAsICAwXSwgIyBDMSBpcyBib25kZWQgdG8gQzJcbiAgICBbLTEsICAwLCAtMSwgIDBdLCAjIEMyIGlzIGJvbmRlZCB0byBDMSBhbmQgQzNcbiAgICBbIDAsIC0xLCAgMCwgLTFdLCAjIEMzIGlzIGJvbmRlZCB0byBDMiBhbmQgQzRcbiAgICBbIDAsICAwLCAtMSwgIDBdICAjIEM0IGlzIGJvbmRlZCB0byBDM1xuXSlcblxuIyAyLiBTb2x2ZSBmb3IgdGhlIEVpZ2VudmFsdWVzIChFbmVyZ2llcylcbmVuZXJnaWVzLCB3YXZlZnVuY3Rpb25zID0gbGEuZWlnaChIKVxuXG4jIFByaW50IHRoZSByYXcgbnVtYmVyc1xucHJpbnQoXCJDYWxjdWxhdGVkIEVuZXJneSBMZXZlbHMgKGluIHVuaXRzIG9mIEJldGEpOlwiKVxuZm9yIGksIEUgaW4gZW51bWVyYXRlKGVuZXJnaWVzKTpcbiAgICBwcmludChmXCJNTyB7aSsxfToge0U6LjNmfVwiKVxuXG4jIDMuIFBsb3QgdGhlIEVuZXJneSBMZXZlbCBEaWFncmFtXG5wbHQuZmlndXJlKGZpZ3NpemU9KDQsIDYpKVxuXG4jIFBsb3QgZWFjaCBlbmVyZ3kgbGV2ZWwgYXMgYSBob3Jpem9udGFsIGxpbmVcbmZvciBFIGluIGVuZXJnaWVzOlxuICAgICMgSWYgZW5lcmd5IGlzIG5lZ2F0aXZlIChib25kaW5nKSwgY29sb3IgaXQgYmx1ZS4gSWYgcG9zaXRpdmUsIHJlZC5cbiAgICBjb2xvciA9ICdibHVlJyBpZiBFIDwgMCBlbHNlICdyZWQnXG4gICAgcGx0LmF4aGxpbmUoRSwgeG1pbj0wLjIsIHhtYXg9MC44LCBjb2xvcj1jb2xvciwgbGluZXdpZHRoPTMpXG4gICAgcGx0LnRleHQoMC44NSwgRSwgZlwie0U6LjNmfSAkXFxcXGJldGEkXCIsIHZhPSdjZW50ZXInLCBmb250c2l6ZT0xMilcblxuIyBGb3JtYXR0aW5nIHRoZSBwbG90XG5wbHQuYXhobGluZSgwLCBjb2xvcj0nYmxhY2snLCBsaW5lc3R5bGU9Jy0tJywgYWxwaGE9MC41KSAjIE5vbi1ib25kaW5nIGxpbmVcbnBsdC55bGFiZWwocidFbmVyZ3kgKCRcXGFscGhhJCArICR4XFxiZXRhJCknKVxucGx0LnRpdGxlKCdIw7xja2VsIE1PIEVuZXJneSBMZXZlbHMnKVxucGx0LnhsaW0oMCwgMSlcbnBsdC54dGlja3MoW10pICMgSGlkZSB4LWF4aXMgdGlja3NcbnBsdC55bGltKC0yLjUsIDIuNSlcblxucGx0LnNob3coKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBBIGRpY3Rpb25hcnkgb2YgY29udmVyc2lvbiBmYWN0b3JzIFRPIEF0b21pYyBVbml0cyAoYS51LilcbnRvX2F1ID0ge1xuICAgICdhbmdzdHJvbSc6IDEuMCAvIDAuNTI5MTc3LCAgICAgICAjIDEgQW5nc3Ryb20gPSAxLjg4OTcgQm9oclxuICAgICdwbSc6IDEuMCAvIDUyLjkxNzcsICAgICAgICAgICAgICAjIDEgcGljb21ldGVyID0gMC4wMTg4OSBCb2hyXG4gICAgJ2VWJzogMS4wIC8gMjcuMjExNCwgICAgICAgICAgICAgICMgMSBlViA9IDAuMDM2NyBIYXJ0cmVlXG4gICAgJ2tjYWxfbW9sJzogMS4wIC8gNjI3LjUwOSwgICAgICAgICMgMSBrY2FsL21vbCA9IDAuMDAxNTkgSGFydHJlZVxuICAgICd3YXZlbnVtYmVyX2NtJzogMS4wIC8gMjE5NDc0LjYgICAjIDEgY21eLTEgPSA0LjU1NmUtNiBIYXJ0cmVlXG59XG5cbiMgMS4gU3RhbmRhcmQgQ29udmVyc2lvbjogQm9uZCBsZW5ndGggb2Ygd2F0ZXIgKDAuOTU3IEFuZ3N0cm9tcylcbmJvbmRfbGVuZ3RoX0EgPSAwLjk1N1xuYm9uZF9sZW5ndGhfYXUgPSBib25kX2xlbmd0aF9BICogdG9fYXVbJ2FuZ3N0cm9tJ11cbnByaW50KGZcIk8tSCBCb25kIExlbmd0aDoge2JvbmRfbGVuZ3RoX0F9IMOFID0ge2JvbmRfbGVuZ3RoX2F1Oi40Zn0gQm9oclwiKVxuXG4jIDIuIFJlY2lwcm9jYWwgQ29udmVyc2lvbjogVGhlIDEuNSBwbV4tMSBleGFtcGxlXG5hbHBoYV9wbV9pbnYgPSAxLjVcbiMgQmVjYXVzZSBpdCBpcyBhbiBJTlZFUlNFIHVuaXQsIHdlIERJVklERSBieSB0aGUgdG9fYXUgZmFjdG9yICh3aGljaCBtdWx0aXBsaWVzIGJ5IHRoZSByYXcgbnVtYmVyKVxuYWxwaGFfYXVfaW52ID0gYWxwaGFfcG1faW52IC8gdG9fYXVbJ3BtJ10gXG5wcmludChmXCJBbHBoYSBwYXJhbWV0ZXI6IHthbHBoYV9wbV9pbnZ9IHBtXi0xID0ge2FscGhhX2F1X2ludjouNGZ9IEJvaHJeLTFcIilcblxuIyAzLiBTcGVjdHJvc2NvcHkgQ29udmVyc2lvbjogMzAwMCBjbV4tMSAoQy1IIHN0cmV0Y2gpXG53YXZlbnVtYmVyID0gMzAwMFxuZW5lcmd5X2F1ID0gd2F2ZW51bWJlciAqIHRvX2F1Wyd3YXZlbnVtYmVyX2NtJ11cbnByaW50KGZcIklSIFN0cmV0Y2ggRW5lcmd5OiB7d2F2ZW51bWJlcn0gY21eLTEgPSB7ZW5lcmd5X2F1Oi42Zn0gSGFydHJlZVwiKSJ9
 </script>
 </div>
 
@@ -430,6 +480,7 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 W10=
 </script>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -437,9 +488,9 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../notebooks";
+window._ojs.paths.runtimeToDoc = "../../notebooks/Module_A";
 window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "..";
+window._ojs.paths.docToRoot = "../..";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script>
@@ -896,134 +947,98 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/week_3_Optimization_2.html" class="pagination-link" aria-label="Chapter 2: The Curse of Dimensionality &amp; The Ansatz">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 2: The Curse of Dimensionality &amp; The Ansatz</span></span>
+      <a href="../../notebooks/Module_A/week_1_physics_chem_review.html" class="pagination-link" aria-label="Module A: A Refresher on Mechanics and Waves">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Module A: A Refresher on Mechanics and Waves</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/week_3_HF.html" class="pagination-link" aria-label="The Hartree-Fock Approximation: A Conceptual Overview">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">The Hartree-Fock Approximation: A Conceptual Overview</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/Module_A/week_1_python_primer.html" class="pagination-link" aria-label="Module A: Python and Math Primer">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module A: Python and Math Primer</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Building Molecules: The LCAO Approach</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Module A: The Computational Secret Weapon: Atomic Units</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In the previous chapters, we used the Variational Method to guess the shape of a single orbital by tweaking a single Gaussian function. But a real molecule has complex, sprawling electron clouds. How do we guess the wavefunction of an entire molecule?</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>If you try to solve the Schrödinger equation using standard SI units, you will immediately run into a computational nightmare. </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>We use a principle called **Linear Combination of Atomic Orbitals (LCAO)**. </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>The idea is beautifully simple: Molecules are made of atoms. Therefore, Molecular Orbitals (MOs) should just be sums of Atomic Orbitals (AOs). </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>If we have two atoms, A and B, the molecular wavefunction $\Psi$ is just a mixture of their atomic wavefunctions $\phi$:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>$$ \Psi_{\text{molecule}} = c_A \phi_A + c_B \phi_B $$</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>The mass of an electron is $9.109 \times 10^{-31}\text{ kg}$. Planck's constant is $6.626 \times 10^{-34}\text{ J}\cdot\text{s}$. Computers use floating-point numbers to store decimals, and while modern 64-bit systems are robust, mixing numbers like $10^{-34}$ with distances like $10^{-9}$ inside massive matrix multiplications is a recipe for **numerical instability** (round-off errors and floating-point underflow).</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>More importantly, typing those constants over and over is tedious and prone to typos.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>To fix this, computational chemists use **Atomic Units (a.u.)**. We essentially redefine our universe so that the fundamental properties of an electron are exactly equal to 1.</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Our optimization problem has completely changed! We are no longer tweaking the *width* of a Gaussian. We assume the atomic orbitals are fixed, and we are optimizing the **coefficients** ($c_A$ and $c_B$). </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ and $c_B$ are both positive, the waves add together (Constructive Interference = **Bonding Orbital**).</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If $c_A$ is positive and $c_B$ is negative, the waves cancel out (Destructive Interference = **Anti-Bonding Orbital**).</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. The Core Definitions</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>In the atomic unit system, we set four fundamental constants to exactly 1:</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. The Math Becomes a Matrix</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Through the magic of linear algebra, optimizing those $c$ coefficients turns the Schrödinger equation into a matrix eigenvalue problem:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{S} \mathbf{c} $$</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{H}$ is the Hamiltonian Matrix (representing energy).</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{S}$ is the Overlap Matrix (representing how much the atomic orbitals physically overlap).</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$E$ are the eigenvalues (The Energy of the Molecular Orbitals).</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\mathbf{c}$ are the eigenvectors (The coefficients telling us what the orbital looks like).</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Physical Quantity <span class="pp">|</span> Symbol <span class="pp">|</span> Atomic Unit Value <span class="pp">|</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Electron mass <span class="pp">|</span> $m_e$ <span class="pp">|</span> 1 <span class="pp">|</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Elementary charge <span class="pp">|</span> $e$ <span class="pp">|</span> 1 <span class="pp">|</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Reduced Planck's constant <span class="pp">|</span> $\hbar$ <span class="pp">|</span> 1 <span class="pp">|</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Electrostatic constant <span class="pp">|</span> $1 / (4\pi\epsilon_0)$ <span class="pp">|</span> 1 <span class="pp">|</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>By setting these to 1, they completely vanish from our equations! The kinetic energy operator $-\frac{\hbar^2}{2m} \nabla^2$ beautifully simplifies to just $-\frac{1}{2} \nabla^2$. </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Derived Units: The Bohr and the Hartree</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Calculating the exact values for $\mathbf{H}$ and $\mathbf{S}$ requires solving those nightmare two-electron integrals we discussed previously. But what if we just... didn't?</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Because we redefined mass, charge, and action, our units for Length and Energy naturally change as well. You must memorize these two derived units, as they are the default output of almost every quantum chemistry software (like Gaussian, Orca, or Psi4).</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. The Hückel Approximation</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>In the 1930s, Erich Hückel realized that for conjugated carbon systems (like benzene or ethylene), you could predict the chemistry perfectly by ignoring the calculus entirely and just using simple rules to build the matrices. </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Hückel theory focuses entirely on the **$\pi$ (pi) electrons** moving through the unhybridized $p$-orbitals of a carbon backbone.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Here are the famous Hückel Rules for building the $\mathbf{H}$ matrix:</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Diagonal (Self-Energy):** For any carbon atom, the energy of an electron sitting on that atom is represented by $\alpha$. We set this as our baseline, so we define $\alpha = 0$.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Neighbors (Bonding Energy):** If two carbon atoms are directly connected by a bond, they can share an electron. This stabilizing energy is called $\beta$. Because it's stabilizing, $\beta$ is a negative number (usually we just set $\beta = -1$).</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**The Distant Atoms:** If two carbon atoms are NOT connected, their interaction is zero.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**The Overlap:** We assume orbitals only overlap with themselves. $\mathbf{S}$ becomes the Identity Matrix (1s on the diagonal, 0s everywhere else), which completely removes it from our equation!</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Our terrifying calculus equation simply becomes:</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{H} \mathbf{c} = E \mathbf{c} $$</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Quantity <span class="pp">|</span> Atomic Unit Name <span class="pp">|</span> Symbol <span class="pp">|</span> SI / Chemical Equivalent <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Length** <span class="pp">|</span> Bohr <span class="pp">|</span> $a_0$ <span class="pp">|</span> $0.529177\text{ \AA}$ (or $52.9\text{ pm}$) <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Energy** <span class="pp">|</span> Hartree <span class="pp">|</span> $E_h$ <span class="pp">|</span> $27.211\text{ eV}$ (or $627.5\text{ kcal/mol}$) <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>*Note: One Bohr is the radius of the first electron orbit in the hydrogen atom. One Hartree is exactly twice the ionization energy of a hydrogen atom.*</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. The Tricky Business of Unit Conversions</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Converting standard values into atomic units is usually straightforward division. But things get notoriously tricky when dealing with **reciprocal units** combined with metric prefixes.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>**The Trap:** Let's say you are reading a spectroscopy paper, and a vibrational parameter is given as $\alpha = 1.5\text{ pm}^{-1}$ (inverse picometers). You need to convert this to inverse Bohrs ($\text{a.u.}^{-1}$) for your code.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Students often incorrectly divide by the conversion factor. Let's walk through the dimensional analysis carefully:</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Example: Ethylene ($C_2H_4$)</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>Ethylene has two carbon atoms connected by a double bond (one $\sigma$ bond, one $\pi$ bond). We only care about the two $p$-orbitals making the $\pi$ bond.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>We know that $1\text{ Bohr} = 52.9177\text{ pm}$.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Therefore, the conversion ratio is $52.9177\text{ pm} / 1\text{ Bohr}$.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Because our starting unit is $\text{pm}^{-1}$ (which means $1 / \text{pm}$), we actually need to **multiply** by the picometers to cancel them out!</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Atom 1 is bonded to Atom 2.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Matrix size: 2x2.</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>\mathbf{H} = \begin{pmatrix} </span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>0 &amp; -1 <span class="sc">\\</span> </span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>-1 &amp; 0 </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>\end{pmatrix}</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 1 is 0 ($\alpha$)*</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>*Row 1, Col 2 is -1 ($\beta$) because Atom 1 and 2 are bonded.*</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>If we use <span class="in">`scipy.linalg.eigh`</span> on this matrix, it will spit out two energies: $E = -1$ (Bonding) and $E = +1$ (Anti-bonding). </span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Interactive Sandbox: The Hückel Solver</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>Let's put this into practice. Below is an interactive Python solver that takes a Hückel matrix, calculates the eigenvalues, and plots the Molecular Orbital Energy Level diagram.</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Currently, the matrix is set up for **Linear Butadiene** ($C_4H_6$). </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>It has 4 carbon atoms in a row: $C_1 - C_2 - C_3 - C_4$.</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Notice how Atom 1 is bonded to 2, but NOT bonded to 3 or 4.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>$$ 1.5 \frac{1}{\text{pm}} \times \left( \frac{52.9177\text{ pm}}{1\text{ Bohr}} \right) = 79.376\text{ Bohr}^{-1} $$</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>When a unit is inverted, the conversion factor must be applied in reverse. </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interactive Sandbox: Building a Conversion Dictionary</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>In your Python code, it is highly recommended to define a dictionary of conversion factors right at the top of your script. This prevents "magic numbers" (random numbers floating in your math) and makes your code self-documenting.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>Run the code below to see how we handle these conversions programmatically. Try changing the <span class="in">`wavenumber`</span> variable to see how it converts to Hartrees!</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co"># A dictionary of conversion factors TO Atomic Units (a.u.)</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>to_au <span class="op">=</span> {</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="st">'angstrom'</span>: <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">0.529177</span>,       <span class="co"># 1 Angstrom = 1.8897 Bohr</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pm'</span>: <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">52.9177</span>,              <span class="co"># 1 picometer = 0.01889 Bohr</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">'eV'</span>: <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">27.2114</span>,              <span class="co"># 1 eV = 0.0367 Hartree</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">'kcal_mol'</span>: <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">627.509</span>,        <span class="co"># 1 kcal/mol = 0.00159 Hartree</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">'wavenumber_cm'</span>: <span class="fl">1.0</span> <span class="op">/</span> <span class="fl">219474.6</span>   <span class="co"># 1 cm^-1 = 4.556e-6 Hartree</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>**Your Mission:** </span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run the code to see the energy levels of Butadiene. (Notice there are 4 $\pi$ electrons, so they fill the bottom two energy levels!).</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Modify the <span class="in">`H`</span> matrix to turn this molecule into **Cyclobutadiene** (a square ring). To do this, you just need to add a bond between Carbon 1 and Carbon 4! </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the code again. What happens to the energy levels? (Hint: You should see two orbitals degenerate at the exact same energy!)</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Standard Conversion: Bond length of water (0.957 Angstroms)</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>bond_length_A <span class="op">=</span> <span class="fl">0.957</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>bond_length_au <span class="op">=</span> bond_length_A <span class="op">*</span> to_au[<span class="st">'angstrom'</span>]</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"O-H Bond Length: </span><span class="sc">{</span>bond_length_A<span class="sc">}</span><span class="ss"> Å = </span><span class="sc">{</span>bond_length_au<span class="sc">:.4f}</span><span class="ss"> Bohr"</span>)</span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define the Hamiltonian Matrix for Linear Butadiene</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 carbons = 4x4 matrix</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha = 0, beta = -1</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">#      C1  C2  C3  C4</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.array([</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>], <span class="co"># C1 is bonded to C2</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>], <span class="co"># C2 is bonded to C1 and C3</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], <span class="co"># C3 is bonded to C2 and C4</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    [ <span class="dv">0</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>]  <span class="co"># C4 is bonded to C3</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Solve for the Eigenvalues (Energies)</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>energies, wavefunctions <span class="op">=</span> la.eigh(H)</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the raw numbers</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Calculated Energy Levels (in units of Beta):"</span>)</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, E <span class="kw">in</span> <span class="bu">enumerate</span>(energies):</span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plot the Energy Level Diagram</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">6</span>))</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each energy level as a horizontal line</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> E <span class="kw">in</span> energies:</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If energy is negative (bonding), color it blue. If positive, red.</span></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="st">'blue'</span> <span class="cf">if</span> E <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">'red'</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    plt.axhline(E, xmin<span class="op">=</span><span class="fl">0.2</span>, xmax<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>color, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="fl">0.85</span>, E, <span class="ss">f"</span><span class="sc">{</span>E<span class="sc">:.3f}</span><span class="ss"> $</span><span class="ch">\\</span><span class="ss">beta$"</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatting the plot</span></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># Non-bonding line</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Energy </span><span class="kw">(</span><span class="dv">$</span><span class="ch">\a</span><span class="vs">lpha</span><span class="dv">$</span><span class="vs"> </span><span class="op">+</span><span class="vs"> </span><span class="dv">$</span><span class="vs">x</span><span class="dv">\b</span><span class="vs">eta</span><span class="dv">$</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hückel MO Energy Levels'</span>)</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>plt.xticks([]) <span class="co"># Hide x-axis ticks</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>)</span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Reciprocal Conversion: The 1.5 pm^-1 example</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>alpha_pm_inv <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Because it is an INVERSE unit, we DIVIDE by the to_au factor (which multiplies by the raw number)</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>alpha_au_inv <span class="op">=</span> alpha_pm_inv <span class="op">/</span> to_au[<span class="st">'pm'</span>] </span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Alpha parameter: </span><span class="sc">{</span>alpha_pm_inv<span class="sc">}</span><span class="ss"> pm^-1 = </span><span class="sc">{</span>alpha_au_inv<span class="sc">:.4f}</span><span class="ss"> Bohr^-1"</span>)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Spectroscopy Conversion: 3000 cm^-1 (C-H stretch)</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>wavenumber <span class="op">=</span> <span class="dv">3000</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>energy_au <span class="op">=</span> wavenumber <span class="op">*</span> to_au[<span class="st">'wavenumber_cm'</span>]</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IR Stretch Energy: </span><span class="sc">{</span>wavenumber<span class="sc">}</span><span class="ss"> cm^-1 = </span><span class="sc">{</span>energy_au<span class="sc">:.6f}</span><span class="ss"> Hartree"</span>)</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
@@ -1031,4 +1046,4 @@ window._ojs.runtime.interpretFromScriptTags();
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/week_3_huckel_lcao.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/blob/master/notebooks/Module_A/week_1_atomic_units.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/Caleb-Tormey/comp-chem-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
