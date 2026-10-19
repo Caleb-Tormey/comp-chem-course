@@ -582,47 +582,267 @@
     ]
   },
   {
+    "objectID": "notebooks/Module_D/week_4_introduction.html",
+    "href": "notebooks/Module_D/week_4_introduction.html",
+    "title": "12  Module D: Into the Weeds with Hartree-Fock (Optional)",
+    "section": "",
+    "text": "In the previous module, we ended with a high-level overview of Hartree-Fock and the Self-Consistent Field (SCF) method. In this optional, advanced module, we are going to open the black box and build this technique from the ground up.\nWe will transition from the abstract, continuous calculus of quantum mechanics into the discrete matrix linear algebra that actually powers professional computational chemistry software. By the end of this module, you will have programmed your own working quantum chemistry engine!\n\n12.0.1 What We Will Cover in Module D:\n\nThe Many-Electron Problem & The Mean-Field: You will learn how to bypass the impossible three-body problem using the Mean-Field approximation, Slater Determinants, and the purely quantum-mechanical Exchange integral.\nThe Matrix Formulation (Roothaan-Hall): You will translate the continuous Schrödinger equation into a discrete matrix eigenvalue problem (\\(\\mathbf{FC} = \\mathbf{SCE}\\)) using a Linear Combination of Atomic Orbitals (LCAO).\nBuilding the SCF Engine: You will implement the 9-step SCF iterative algorithm in Python, guessing a Density Matrix, building the Fock matrix, and looping until the electronic energy converges.\nDiatomics and the PES: You will upgrade your atomic engine to handle molecules like \\(H_2\\), introducing multi-center integrals and classical nuclear repulsion (\\(V_{NN}\\)) to map out a complete Potential Energy Surface.\nAdvanced Topics (Unrestricted Hartree-Fock): You will explore open-shell systems (like radicals or the Lithium atom), splitting your engine into the Pople-Nesbet equations to account for spin polarization and spin contamination.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Module D: Into the Weeds with Hartree-Fock (Optional)</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_HF_basics.html",
+    "href": "notebooks/Module_D/week_4_HF_basics.html",
+    "title": "13  Hartree-Fock: The Basics",
+    "section": "",
+    "text": "13.1 The Strategy: The Mean-Field Hack\nThe exact solution to the Schrödinger equation for the Hydrogen atom is one of the greatest triumphs of modern physics. We can calculate the exact shape and energy of its single electron. But as soon as we add just one more electron to create a Helium atom, our exact mathematics hits a brick wall.\nWe encounter a quantum version of the classic Three-Body Problem.\nLet’s look at the minimal model Hamiltonian for Helium. We have a central nucleus and two electrons (ignoring constants for simplicity):\n\\[\n\\hat{H} = \\hat{h}_1 + \\hat{h}_2 + \\frac{1}{r_{12}}\n\\]\nThe Mathematical Catastrophe: The repulsion term creates a fatal problem. The position of Electron 1 depends on the position of Electron 2, and vice versa. Because they constantly push on each other, their motions are instantaneously correlated. The differential equations are inextricably coupled.\nThere is no exact analytical solution for Helium or any atom larger than it.\nHow do we solve a problem that is mathematically unsolvable? We must change the problem.\nIf we cannot calculate the exact, instantaneous repulsion between the electrons, we must approximate it. To do this, we deploy the Mean-Field Approximation.\nInstead of treating Electron 2 as a fast-moving point particle that constantly darts around and pushes on Electron 1, we “smear” Electron 2 out into a static, average cloud of negative charge. We assume that Electron 1 feels an average repulsive field created by all the other electrons in the system.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Hartree-Fock: The Basics</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_HF_basics.html#the-strategy-the-mean-field-hack",
+    "href": "notebooks/Module_D/week_4_HF_basics.html#the-strategy-the-mean-field-hack",
+    "title": "13  Hartree-Fock: The Basics",
+    "section": "",
+    "text": "13.1.1 Bootstrapping Helium (The SCF Concept)\nLet’s look at exactly how this works for Helium. If we ignore quantum spin for a moment, we can guess that the total spatial wavefunction is just the product of two individual electron clouds: \\(\\Psi(\\mathbf{r}_1, \\mathbf{r}_2) = \\phi(\\mathbf{r}_1)\\phi(\\mathbf{r}_2)\\).\nWe can calculate the “Effective Potential” (\\(V_1^{eff}\\)) that Electron 1 feels by integrating over the entire continuous cloud of Electron 2:\n\\[\nV_1^{eff}(\\mathbf{r}_1) = \\int |\\phi(\\mathbf{r}_2)|^2 \\frac{1}{r_{12}} \\, d\\mathbf{r}_2\n\\]\nBy doing this integral, the \\(\\mathbf{r}_2\\) coordinate is completely averaged out. We are left with a brand new, decoupled Hamiltonian for just Electron 1:\n\\[\n\\hat{H}_1^{eff}(\\mathbf{r}_1) = -\\frac{1}{2}\\nabla_1^2 - \\frac{2}{r_1} + V_1^{eff}(\\mathbf{r}_1)\n\\]\nThis allows us to write a solvable, one-electron Schrödinger equation:\n\\[\n\\hat{H}_1^{eff}(\\mathbf{r}_1) \\phi(\\mathbf{r}_1) = \\epsilon_1 \\phi(\\mathbf{r}_1)\n\\]\nBut there is a glaring logical Catch-22: to build the potential field \\(V_1^{eff}\\), we must know the exact shape of Electron 2 (\\(\\phi(\\mathbf{r}_2)\\)). But we don’t know it!\nTo solve this, we use an iterative loop: 1. Guess a shape for \\(\\phi(\\mathbf{r}_2)\\). 2. Use that guess to calculate \\(V_1^{eff}\\). 3. Solve the Schrödinger equation to find a mathematically optimized \\(\\phi(\\mathbf{r}_1)\\). 4. Because the electrons in Helium occupy the same spatial orbital, we set our new \\(\\phi(\\mathbf{r}_2) = \\phi(\\mathbf{r}_1)\\). 5. Loop back to Step 2 and build a new potential field.\nWe repeat this loop until the shapes stop changing. At that point, the field generated by the electrons is perfectly consistent with the field required to keep them in those shapes. We call this the Self-Consistent Field (SCF).",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Hartree-Fock: The Basics</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_HF_basics.html#the-architecture-of-a-guess-bookkeeping-and-spin",
+    "href": "notebooks/Module_D/week_4_HF_basics.html#the-architecture-of-a-guess-bookkeeping-and-spin",
+    "title": "13  Hartree-Fock: The Basics",
+    "section": "13.2 The Architecture of a Guess: Bookkeeping and Spin",
+    "text": "13.2 The Architecture of a Guess: Bookkeeping and Spin\nThe conceptual loop above is beautiful, but to write the exact equations for chemistry, our notation will become massive. We need strict architectural rules.\nThe Survival Guide to Notation: To survive quantum chemistry, you must immediately separate physical particles from the mathematical spaces they occupy: * Numbers (\\(1, 2, 3...\\)): Always represent physical electrons (their \\(x,y,z\\) coordinates). * Letters (\\(a, b, i, j...\\)): Always represent mathematical orbitals (the functions the electrons live inside).\n\n13.2.1 Building the Spin-Orbital\nTo properly describe our system, a spatial 3D cloud is not enough. Electrons have quantum spin, and the Pauli Exclusion Principle strictly limits how spin interacts. We must mathematically bind the spatial location with the spin state into a single function called a Spin-Orbital, denoted by \\(\\chi\\) (chi):\n\\[\n\\chi_a(1) = \\psi_a(\\mathbf{r}_1) \\alpha(\\omega_1)\n\\]\nThis equation explicitly reads: “Electron 1 is sitting in spatial orbital \\(a\\) with a spin-up state (\\(\\alpha\\)).”\n\n\n13.2.2 Enforcing Physics: The Slater Determinant\nWe have another fundamental problem to solve: electrons are indistinguishable fermions. Physics dictates the Antisymmetry Principle: if you mathematically swap two electrons, the total wavefunction must change sign (\\(\\Psi(1, 2) = -\\Psi(2, 1)\\)).\nA naive guess for our Helium wavefunction, like \\(\\chi_a(1)\\chi_b(2)\\), fails this test. If we swap Electron 1 and Electron 2, the function doesn’t turn negative. To fix this, we use a mathematical trick called a Slater Determinant. For a 2-electron system like Helium:\n\\[\n\\Psi(1, 2) = \\frac{1}{\\sqrt{2}} \\left| \\begin{matrix} \\chi_a(1) & \\chi_b(1) \\\\ \\chi_a(2) & \\chi_b(2) \\end{matrix} \\right| = \\frac{1}{\\sqrt{2}} \\left[ \\chi_a(1)\\chi_b(2) - \\chi_b(1)\\chi_a(2) \\right]\n\\]\nBy subtracting the swapped version from the original, we guarantee that the math obeys the physical rules of fermions. This structure mathematically forces the probability of two electrons with the exact same spin occupying the exact same space to be strictly zero (enforcing the Pauli Exclusion Principle).\nThis is not just for Helium. For a system with \\(N\\) electrons, we construct an \\(N \\times N\\) determinant containing \\(N!\\) terms:\n\\[\n\\Psi(1, 2, ..., N) = \\frac{1}{\\sqrt{N!}} \\left| \\begin{matrix}\n\\chi_1(1) & \\chi_2(1) & \\cdots & \\chi_N(1) \\\\\n\\chi_1(2) & \\chi_2(2) & \\cdots & \\chi_N(2) \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\chi_1(N) & \\chi_2(N) & \\cdots & \\chi_N(N)\n\\end{matrix} \\right|\n\\]",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Hartree-Fock: The Basics</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_HF_basics.html#breaking-down-the-math-the-integrals",
+    "href": "notebooks/Module_D/week_4_HF_basics.html#breaking-down-the-math-the-integrals",
+    "title": "13  Hartree-Fock: The Basics",
+    "section": "13.3 Breaking Down the Math: The Integrals",
+    "text": "13.3 Breaking Down the Math: The Integrals\nNow we must test our guess. To find the total energy of our system, we calculate the Expectation Value: \\(E = \\langle \\Psi \\vert{} \\hat{H} \\vert{} \\Psi \\rangle\\).\nWhen we sandwich our total Hamiltonian between two massive Slater Determinants, the math explodes into dozens of terms. However, because of the strict rules of orthogonality, almost everything cancels out. We are left with exactly three types of spatial interactions that we must solve using continuous calculus.\n\n13.3.1 1. The One-Electron Integral (The Core)\nThis solves for the energy of a single electron interacting solely with the nucleus, ignoring all other electrons in the universe.\n\\[\nh_{aa} = \\int \\chi_a^*(1) \\hat{h}_1 \\chi_a(1) \\, d\\tau_1\n\\]\n\n\n13.3.2 2. The Coulomb Integral (\\(J_{ab}\\)): Classical Repulsion\nBecause we expanded the \\(1/r_{12}\\) term across our Mean-Field, we must integrate the repulsion between the clouds.\n\\[\nJ_{ab} = \\iint |\\chi_a(1)|^2 \\frac{1}{r_{12}} |\\chi_b(2)|^2 \\, d\\tau_1 d\\tau_2\n\\]\nThis solves standard classical physics: it is the repulsive energy between the electron cloud in orbital \\(a\\) and the electron cloud in orbital \\(b\\).\n\n\n13.3.3 3. The Exchange Integral (\\(K_{ab}\\)): The Quantum Glue\nThis final term is the most surprising result of our problem-solving.\n\\[\nK_{ab} = \\iint \\chi_a^*(1) \\chi_b(1) \\frac{1}{r_{12}} \\chi_b^*(2) \\chi_a(2) \\, d\\tau_1 d\\tau_2\n\\]\nThere is absolutely no classical equivalent for this. It arises entirely from the cross-terms of the Slater Determinant (that minus sign we introduced to fix the antisymmetry problem). It represents a purely quantum-mechanical stabilization that lowers the energy of the system when two electrons have parallel spins.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Hartree-Fock: The Basics</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_HF_basics.html#the-chemists-shorthand",
+    "href": "notebooks/Module_D/week_4_HF_basics.html#the-chemists-shorthand",
+    "title": "13  Hartree-Fock: The Basics",
+    "section": "13.4 The Chemist’s Shorthand",
+    "text": "13.4 The Chemist’s Shorthand\nWriting out full integrals with fractions, \\(\\chi\\)’s, and \\(d\\tau\\)’s every time is a recipe for a typo. Computational chemists invented the Square Bracket Notation \\([ab\\vert{}cd]\\) to summarize these two-electron integrals.\nThe rule is strictly positional: Electron 1 is on the left of the bar, Electron 2 is on the right of the bar.\n\\[\n[ab\\vert{}cd] = \\iint \\chi_a^*(1) \\chi_b(1) \\frac{1}{r_{12}} \\chi_c^*(2) \\chi_d(2) \\, d\\tau_1 d\\tau_2\n\\]\nWith this shorthand, we can elegantly encode our two massive repulsion integrals: * Coulomb (\\(J_{ab}\\)): \\([aa\\vert{}bb]\\) (Electron 1 is entirely on \\(a\\), Electron 2 is entirely on \\(b\\)). * Exchange (\\(K_{ab}\\)): \\([ab\\vert{}ab]\\) (Electron 1 and Electron 2 have “exchanged” identities across the bar).\nWe have successfully defined the mathematical machinery required to bypass the many-body problem. But right now, these are just abstract variables and continuous integrals. In the next section, we will translate this continuous calculus into a discrete matrix algebra problem that a computer can actually solve.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Hartree-Fock: The Basics</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html",
+    "href": "notebooks/Module_D/week_4_RH_basics.html",
+    "title": "14  The Translation Problem",
+    "section": "",
+    "text": "14.1 The Bridge: Linear Combination of Atomic Orbitals (LCAO)\nIn Section 1, we developed a beautiful physical narrative. We created an Effective Potential (\\(V^{eff}\\)) to act as a mean-field, and we designed an iterative loop: guess an electron cloud, build the field, solve the Schrödinger equation for a new cloud, and repeat until self-consistent.\nBut there is a major practical problem: Computers are terrible at abstract continuous calculus.\nIf you tell Python to “guess a 3D cloud” and “take the second derivative,” it doesn’t know what to do. Computers deal in discrete arrays, matrices, and linear algebra. To simulate chemistry, we must translate our continuous differential equations into a discrete matrix problem.\nTo stop the computer from having to invent a 3D shape from scratch, we provide it with a “kit” of pre-defined, fixed mathematical functions. This is our Basis Set. We typically use Gaussian functions because their integrals are computationally fast to evaluate.\nWe tell the algorithm: Do not try to find the exact continuous function for the molecular orbital (\\(\\psi_i\\)). Instead, just figure out the best way to mix these fixed basis functions (\\(\\phi_r\\)) together.\nMathematically, our unknown orbital becomes a simple weighted sum: \\[\n\\psi_i = \\sum_{r=1}^{N_{basis}} c_{ri} \\phi_r\n\\]",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html#the-bridge-linear-combination-of-atomic-orbitals-lcao",
+    "href": "notebooks/Module_D/week_4_RH_basics.html#the-bridge-linear-combination-of-atomic-orbitals-lcao",
+    "title": "14  The Translation Problem",
+    "section": "",
+    "text": "\\(\\psi_i\\) is the molecular orbital we want to find.\n\\(\\phi_r\\) are the fixed basis functions we provided.\n\\(c_{ri}\\) are the Coefficients. This is the only thing the computer actually has to find! Changing the coefficients changes the shape of the electron cloud.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html#the-roothaan-hall-equations",
+    "href": "notebooks/Module_D/week_4_RH_basics.html#the-roothaan-hall-equations",
+    "title": "14  The Translation Problem",
+    "section": "14.2 The Roothaan-Hall Equations",
+    "text": "14.2 The Roothaan-Hall Equations\nWhen we plug this LCAO expansion into our continuous Hartree-Fock differential equations, all the agonizing calculus collapses into a massive, elegant linear algebra problem known as the Roothaan-Hall Equations:\n\\[\n\\mathbf{F}\\mathbf{C} = \\mathbf{S}\\mathbf{C}\\mathbf{E}\n\\]\nLet’s dissect the architecture of this equation: * \\(\\mathbf{C}\\) is the Coefficient Matrix. It contains the \\(c_{ri}\\) weights. This is our answer! * \\(\\mathbf{E}\\) is the diagonal matrix of Orbital Energies (the eigenvalues). * \\(\\mathbf{S}\\) is the Overlap Matrix. Because our basis functions spread out across space, they physically bleed into each other. \\(\\mathbf{S}\\) measures how much basis function \\(r\\) overlaps with basis function \\(s\\). * \\(\\mathbf{F}\\) is the Fock Matrix. This is our Total Energy Operator, the matrix equivalent of \\(\\hat{H}^{eff}\\).\nWe have successfully turned a differential equation into a generalized matrix eigenvalue problem.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html#pre-calculating-the-universe-the-integrals",
+    "href": "notebooks/Module_D/week_4_RH_basics.html#pre-calculating-the-universe-the-integrals",
+    "title": "14  The Translation Problem",
+    "section": "14.3 Pre-Calculating the Universe (The Integrals)",
+    "text": "14.3 Pre-Calculating the Universe (The Integrals)\nLook closely at our LCAO guess. The basis functions (\\(\\phi_r\\)) are fixed. Their positions are fixed. Their shapes are fixed.\nThis means that the spatial interactions between them never change during our simulation! Before the SCF loop even starts, the computer can evaluate the calculus for all those 1-electron and 2-electron integrals we defined in Section 1 and store them as arrays.\n\nThe Overlap Matrix (\\(\\mathbf{S}\\)): \\(S_{rs} = \\int \\phi_r^* \\phi_s \\, d\\tau\\)\nThe Core Hamiltonian (\\(\\mathbf{h}_{core}\\)): The kinetic energy and nuclear attraction. \\(h_{rs} = \\int \\phi_r^* \\hat{h} \\phi_s \\, d\\tau\\)\nThe Two-Electron Repulsion Tensor: The massive 4D grid storing the repulsive cost between every possible combination of 4 basis functions: \\((rs\\vert{}tu)\\).\n\nIn Python, this pre-calculation step looks something like this:\n# Assuming we have N basis functions\nimport numpy as np\n\nS = np.zeros((N, N))\nh_core = np.zeros((N, N))\nV_ee = np.zeros((N, N, N, N)) # The 4D Repulsion Tensor\n\n# Pre-calculate all fixed spatial interactions\nfor r in range(N):\n    for s in range(N):\n        S[r, s] = calculate_overlap(basis[r], basis[s])\n        h_core[r, s] = calculate_kinetic_and_nuclear(basis[r], basis[s])\n        \n        for t in range(N):\n            for u in range(N):\n                V_ee[r, s, t, u] = calculate_repulsion(basis[r], basis[s], basis[t], basis[u])",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html#building-the-mean-field-the-density-matrix-mathbfp",
+    "href": "notebooks/Module_D/week_4_RH_basics.html#building-the-mean-field-the-density-matrix-mathbfp",
+    "title": "14  The Translation Problem",
+    "section": "14.4 Building the Mean-Field: The Density Matrix (\\(\\mathbf{P}\\))",
+    "text": "14.4 Building the Mean-Field: The Density Matrix (\\(\\mathbf{P}\\))\nWe pre-calculated the raw repulsion between the basis functions, but how do we build the Effective Potential (\\(V^{eff}\\))? We need a way to represent the total “smeared out” electron cloud in matrix form.\nWe do this using the Density Matrix (\\(\\mathbf{P}\\)). It is built directly from our Coefficient matrix (\\(\\mathbf{C}\\)). If we have \\(N_{occ}\\) occupied spatial orbitals, and each holds 2 electrons:\n\\[\nP_{tu} = 2 \\sum_{i=1}^{N_{occ}} C_{ti} C_{ui}\n\\]\nNow, we can mathematically construct the Fock Matrix (\\(\\mathbf{F}\\)). The energy of an electron in basis function \\(r\\) interacting with basis function \\(s\\) is:\n\\[\nF_{rs} = h_{rs} + \\sum_{t} \\sum_{u} P_{tu} \\left[ (rs\\vert{}tu) - \\frac{1}{2}(ru\\vert{}ts) \\right]\n\\]\n\n\\(h_{rs}\\) is the bare pull of the nucleus.\nThe sum over \\(P_{tu}\\) is our Mean-Field! We are multiplying the raw repulsion integrals by the current Density Matrix. It calculates exactly how much our current guessed cloud is pushing back on the electron.\n\nNotice how the Exchange integral \\((ru\\vert{}ts)\\) is subtracted with a factor of \\(\\frac{1}{2}\\) to account for the stabilization of same-spin electrons (which we proved using the Slater Determinant in Section 1!).",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_RH_basics.html#the-matrix-scf-loop",
+    "href": "notebooks/Module_D/week_4_RH_basics.html#the-matrix-scf-loop",
+    "title": "14  The Translation Problem",
+    "section": "14.5 The Matrix SCF Loop",
+    "text": "14.5 The Matrix SCF Loop\nWe now have all the pieces to execute the SCF loop computationally.\n\nThe Initial Guess: We need to build our first Fock matrix, but we don’t have a Density Matrix yet. The smartest trick is to guess \\(\\mathbf{P} = \\mathbf{0}\\) (assume the electrons don’t repel each other at all). This makes our first cycle \\(\\mathbf{F} = \\mathbf{h}_{core}\\).\nThe Orthogonalization Trick: Standard solvers can easily solve \\(\\mathbf{Ax} = \\lambda\\mathbf{x}\\), but we have \\(\\mathbf{FC} = \\mathbf{SCE}\\). To untangle the Overlap matrix, we calculate a transformation filter: \\(\\mathbf{X} = \\mathbf{S}^{-1/2}\\).\nTransform: We warp the Fock matrix into an orthogonal space: \\(\\mathbf{F}' = \\mathbf{X}^\\dagger \\mathbf{F} \\mathbf{X}\\).\nSolve: We hand \\(\\mathbf{F}'\\) to a highly optimized library like scipy.linalg.eigh to find the eigenvectors (\\(\\mathbf{C}'\\)) and eigenvalues (\\(\\mathbf{E}\\)).\nBack-Transform: We map the coefficients back to physical space: \\(\\mathbf{C} = \\mathbf{X}\\mathbf{C}'\\).\nRebuild and Check: We use our shiny new \\(\\mathbf{C}\\) matrix to build a new Density Matrix (\\(\\mathbf{P}_{new}\\)). If the total energy of this new cloud is different from our previous guess, the field is not consistent! We take \\(\\mathbf{P}_{new}\\), loop back to Step 1, and build a brand new Fock matrix.\n\nWe repeat this matrix algebra dance until the energy stops changing. When the loop breaks, we have computationally solved the many-electron problem!",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>The Translation Problem</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_diatomics.html",
+    "href": "notebooks/Module_D/week_4_diatomics.html",
+    "title": "15  Building a Bond",
+    "section": "",
+    "text": "15.1 1. The Matrix Setup: Multi-Center Integrals\nIn Section 2, we built a beautiful, robust Self-Consistent Field (SCF) engine. It can take a set of basis functions, guess an electron cloud, and iteratively solve the Roothaan-Hall equations (\\(\\mathbf{FC} = \\mathbf{SCE}\\)) to find the exact orbital shapes and energies.\nBut so far, we have only looked at a single atom sitting perfectly at the origin \\((0,0,0)\\).\nChemistry is about making and breaking bonds. How do we upgrade our atomic engine to simulate a molecule like Hydrogen gas (\\(H_2\\))?\nThe good news: The SCF algorithm itself—the 9-step loop, the Density Matrix (\\(\\mathbf{P}\\)), and the diagonalization math—does not change at all. The computer does exactly the same matrix algebra.\nThe bad news: The physical setup before the loop begins becomes significantly more complicated. When we move to a molecule, we introduce a distance vector between nuclei, which we will call \\(R\\). This changes two major physical interactions.\nIn our Helium atom, every single Gaussian basis function was centered on the exact same nucleus.\nIn an \\(H_2\\) molecule, we have Nucleus A and Nucleus B separated by distance \\(R\\). If we place one basis function (\\(\\phi_A\\)) on Nucleus A, and another (\\(\\phi_B\\)) on Nucleus B, the integrals we must pre-calculate change dramatically.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Building a Bond</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_diatomics.html#the-matrix-setup-multi-center-integrals",
+    "href": "notebooks/Module_D/week_4_diatomics.html#the-matrix-setup-multi-center-integrals",
+    "title": "15  Building a Bond",
+    "section": "",
+    "text": "15.1.1 The Overlap Matrix (\\(\\mathbf{S}\\))\nFor a single atom, if we used an orthogonal basis set, the Overlap Matrix was often just the Identity matrix (1s on the diagonal, 0s everywhere else).\nBut in a molecule, the atomic orbitals physically spread out across the empty space and bleed into one another. The overlap between an orbital on Atom A and an orbital on Atom B is heavily dependent on how close they are:\n\\[\nS_{AB} = \\int \\phi_A(\\mathbf{r} - \\mathbf{R}_A) \\phi_B(\\mathbf{r} - \\mathbf{R}_B) \\, d\\tau\n\\]\nAs \\(R \\to \\infty\\), \\(S_{AB} \\to 0\\) (no overlap). As \\(R \\to 0\\), \\(S_{AB} \\to 1\\) (perfect overlap). The Overlap Matrix is no longer simple, which makes our orthogonalization trick (\\(\\mathbf{X} = \\mathbf{S}^{-1/2}\\)) absolutely critical for molecules!\n\n\n15.1.2 The Core Hamiltonian (\\(\\mathbf{h}_{core}\\))\nFor an atom, the 1-electron energy was just kinetic energy plus the pull of one nucleus. In a molecule, an electron zipping around feels the attractive pull of both Nucleus A and Nucleus B simultaneously!\n\\[\nh_{rs} = \\int \\phi_r^* \\left[ -\\frac{1}{2}\\nabla^2 - \\frac{Z_A}{|\\mathbf{r} - \\mathbf{R}_A|} - \\frac{Z_B}{|\\mathbf{r} - \\mathbf{R}_B|} \\right] \\phi_s \\, d\\tau\n\\]\n\n\n15.1.3 The Two-Electron Repulsion Tensor (\\((rs|tu)\\))\nThis becomes a true computational nightmare. The four basis functions involved in a repulsion integral could potentially sit on up to four different atomic centers. Calculating these “four-center integrals” analytically is what makes professional quantum chemistry software so incredibly complex.\n(Note: In your Python assignments, you will be provided with helper functions that instantly calculate these multi-center integrals for you, so you can focus entirely on the SCF algorithm!)",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Building a Bond</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_diatomics.html#nuclear-nuclear-repulsion-v_nn",
+    "href": "notebooks/Module_D/week_4_diatomics.html#nuclear-nuclear-repulsion-v_nn",
+    "title": "15  Building a Bond",
+    "section": "15.2 2. Nuclear-Nuclear Repulsion (\\(V_{NN}\\))",
+    "text": "15.2 2. Nuclear-Nuclear Repulsion (\\(V_{NN}\\))\nThere is one more massive physical interaction we are missing.\nOur SCF loop only calculates the Electronic Energy (\\(E_{elec}\\)). It accounts for electrons moving, electrons attracted to nuclei, and electrons repelling other electrons.\nBut what about the nuclei themselves? Protons repel protons!\nBecause we use the Born-Oppenheimer Approximation, we assume the heavy nuclei are completely frozen in place while the fast, lightweight electrons zip around them. Because the nuclei are stationary, they do not have quantum kinetic energy. We can calculate their repulsive push using standard, classical electrostatics:\n\\[\nV_{NN} = \\frac{Z_A Z_B}{R}\n\\]\n\n\\(Z_A\\) and \\(Z_B\\) are the atomic numbers (charges) of the two nuclei.\n\\(R\\) is the physical distance between them.\n\nThis interaction has absolutely no effect on the shape of the electron clouds, so it is not included in the SCF loop. Instead, we let the SCF loop converge to find \\(E_{elec}\\), and then we simply add \\(V_{NN}\\) at the very end to get the Total Energy of the molecule:\n\\[\nE_{total} = E_{elec} + V_{NN}\n\\]",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Building a Bond</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_diatomics.html#mapping-the-potential-energy-surface-pes",
+    "href": "notebooks/Module_D/week_4_diatomics.html#mapping-the-potential-energy-surface-pes",
+    "title": "15  Building a Bond",
+    "section": "15.3 Mapping the Potential Energy Surface (PES)",
+    "text": "15.3 Mapping the Potential Energy Surface (PES)\nNow that we have the Total Energy, we can do real chemistry.\nIf we want to know the equilibrium bond length of \\(H_2\\), the computer cannot simply guess it. Instead, we use our SCF engine to map out a Potential Energy Surface (PES).\nThe workflow looks like this: 1. Pick a bond distance, say \\(R = 0.5\\) Bohrs. 2. Calculate the integrals, run the SCF loop to convergence, and find \\(E_{elec}\\). 3. Add \\(V_{NN}\\) to get \\(E_{total}\\). 4. Save that point on a graph. 5. Move the atoms slightly further apart (say, \\(R = 0.6\\) Bohrs) and repeat the entire process.\nIf we plot \\(E_{total}\\) against \\(R\\), we will see a classic potential energy well.\n\nAt very small \\(R\\), the nuclei are too close together. The \\(V_{NN}\\) term explodes to infinity, pushing the total energy massively up (the repulsive wall).\nAt very large \\(R\\), the atoms are completely broken apart. \\(V_{NN}\\) drops to zero, and the overlap vanishes.\nSomewhere in the middle, the attractive pull of the shared electron cloud perfectly balances the nuclear repulsion. The lowest point in that energy well is our Equilibrium Bond Length (\\(R_{eq}\\)).\n\nBy linking our SCF matrix engine inside a simple distance loop, we have successfully modeled the breaking and making of a chemical bond!",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Building a Bond</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_UHF.html",
+    "href": "notebooks/Module_D/week_4_UHF.html",
+    "title": "16  The Limit of Restricted Hartree-Fock",
+    "section": "",
+    "text": "16.1 The Physics of Spin Polarization\nSo far, our entire mathematical architecture has relied on Restricted Hartree-Fock (RHF). RHF makes a massive, simplifying assumption: it forces every spatial orbital to hold exactly two electrons (one spin-up \\(\\alpha\\), and one spin-down \\(\\beta\\)).\nBecause the \\(\\alpha\\) and \\(\\beta\\) electrons are forced to share the exact same spatial cloud, we only needed to build a single Density Matrix (\\(\\mathbf{P}\\)) and solve a single Fock Matrix (\\(\\mathbf{F}\\)).\nBut what happens if we want to model a radical? Consider a Lithium atom (\\(Z=3\\)). It has 3 electrons: two \\(\\alpha\\) electrons and one \\(\\beta\\) electron. Or consider stretching an \\(H_2\\) bond until it breaks into two neutral hydrogen atoms (\\(H^\\bullet + H^\\bullet\\)), each with a single, unpaired electron.\nRHF completely fails here. We cannot force an odd number of electrons into neat pairs. To solve open-shell systems, we must upgrade our engine to Unrestricted Hartree-Fock (UHF).\nIn Section 1, we proved a fascinating rule using the Slater Determinant: the Exchange Integral (\\(K\\))—the purely quantum mechanical glue that stabilizes electrons—only exists between electrons of the same spin.\nLet’s look at Lithium. It has two \\(\\alpha\\) electrons and only one \\(\\beta\\) electron. Because there are more \\(\\alpha\\) electrons, the “Mean-Field” they generate is fundamentally asymmetric! An \\(\\alpha\\) electron zooming around feels a lot of exchange stabilization from the other \\(\\alpha\\) electron. The lone \\(\\beta\\) electron feels zero exchange stabilization because there are no other \\(\\beta\\) electrons to interact with.\nBecause the \\(\\alpha\\) and \\(\\beta\\) electrons experience completely different physical forces, they will relax into different spatial shapes. The \\(1s^\\alpha\\) cloud will slightly expand or contract compared to the \\(1s^\\beta\\) cloud. This physical separation is called Spin Polarization.",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>The Limit of Restricted Hartree-Fock</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_UHF.html#the-pople-nesbet-equations",
+    "href": "notebooks/Module_D/week_4_UHF.html#the-pople-nesbet-equations",
+    "title": "16  The Limit of Restricted Hartree-Fock",
+    "section": "16.2 The Pople-Nesbet Equations",
+    "text": "16.2 The Pople-Nesbet Equations\nTo allow the \\(\\alpha\\) and \\(\\beta\\) electrons to exist in different shapes, we must split our computer algorithm into two parallel tracks. Instead of the Roothaan-Hall equations, we use the Pople-Nesbet Equations.\nWe now have two separate Density Matrices (\\(\\mathbf{P}^\\alpha\\) and \\(\\mathbf{P}^\\beta\\)) and two separate Fock Matrices (\\(\\mathbf{F}^\\alpha\\) and \\(\\mathbf{F}^\\beta\\)).\nThe One-Electron terms (\\(\\mathbf{h}_{core}\\)) are exactly the same for both. But the Mean-Field repulsion must be handled very carefully:\n\n16.2.1 1. The Coulomb Term (Classical Repulsion)\nClassical electrostatics does not care about quantum spin. An electron feels the repulsive push from all other electrons in the universe, regardless of whether they are spin-up or spin-down. Therefore, to calculate the Coulomb repulsion, we must use the Total Density Matrix:\n\\[\n\\mathbf{P}^{tot} = \\mathbf{P}^\\alpha + \\mathbf{P}^\\beta\n\\]\n\n\n16.2.2 2. The Exchange Term (Quantum Glue)\nBecause exchange only happens between same-spin electrons, the exchange subtraction must only use the specific spin-density of the electron we are calculating.\nWhen we put this together, our single Fock equation splits into two:\n\\[\nF^\\alpha_{rs} = h_{rs} + \\sum_{t} \\sum_{u} \\left[ P^{tot}_{tu} (rs\\vert{}tu) - P^\\alpha_{tu} (ru\\vert{}ts) \\right]\n\\]\n\\[\nF^\\beta_{rs} = h_{rs} + \\sum_{t} \\sum_{u} \\left[ P^{tot}_{tu} (rs\\vert{}tu) - P^\\beta_{tu} (ru\\vert{}ts) \\right]\n\\]",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>The Limit of Restricted Hartree-Fock</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_UHF.html#the-uhf-scf-loop",
+    "href": "notebooks/Module_D/week_4_UHF.html#the-uhf-scf-loop",
+    "title": "16  The Limit of Restricted Hartree-Fock",
+    "section": "16.3 The UHF SCF Loop",
+    "text": "16.3 The UHF SCF Loop\nThe 9-step algorithm is nearly identical, but we have to do the heavy lifting twice per cycle:\n\nGuess \\(\\mathbf{P}^\\alpha\\) and \\(\\mathbf{P}^\\beta\\).\nCalculate \\(\\mathbf{P}^{tot}\\).\nBuild \\(\\mathbf{F}^\\alpha\\) and \\(\\mathbf{F}^\\beta\\).\nDiagonalize \\(\\mathbf{F}^\\alpha\\) to find the \\(\\alpha\\) orbitals, and diagonalize \\(\\mathbf{F}^\\beta\\) to find the \\(\\beta\\) orbitals.\nRebuild \\(\\mathbf{P}^\\alpha\\) and \\(\\mathbf{P}^\\beta\\) using their respective occupation numbers (\\(N_{occ}^\\alpha\\) and \\(N_{occ}^\\beta\\)). Note: Because each spatial orbital now only holds one specific spin, we do not multiply by 2 when building the density matrices!\nCalculate the total energy and loop until converged.\n\nThe total electronic energy equation is beautifully symmetric: \\[\nE_{elec} = \\frac{1}{2} \\sum_{r} \\sum_{s} \\left[ P^\\alpha_{rs}(h_{rs} + F^\\alpha_{rs}) + P^\\beta_{rs}(h_{rs} + F^\\beta_{rs}) \\right]\n\\]",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>The Limit of Restricted Hartree-Fock</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Module_D/week_4_UHF.html#the-danger-spin-contamination",
+    "href": "notebooks/Module_D/week_4_UHF.html#the-danger-spin-contamination",
+    "title": "16  The Limit of Restricted Hartree-Fock",
+    "section": "16.4 The Danger: Spin Contamination",
+    "text": "16.4 The Danger: Spin Contamination\nUHF is an incredibly powerful tool. It allows us to calculate the energies of radicals and properly break chemical bonds. However, it introduces a dangerous mathematical artifact.\nIn quantum mechanics, a true atom or molecule must be a pure “spin eigenstate.” For example, a radical with one unpaired electron has a Total Spin \\(S = \\frac{1}{2}\\) (a “Doublet”).\nBut in UHF, we gave the \\(\\alpha\\) and \\(\\beta\\) electrons complete freedom to occupy different spatial shapes. Because their spatial clouds no longer perfectly match, the total mathematical wavefunction is no longer a pure Doublet. The math accidentally mixes in higher-energy spin states (like Quartets, where \\(S = \\frac{3}{2}\\)).\nThis mathematical pollution is called Spin Contamination.\nWhen running professional quantum chemistry software (like Gaussian or Orca), the output file will always print the expectation value of the total spin operator, \\(\\langle S^2 \\rangle\\). * For a pure Doublet, \\(\\langle S^2 \\rangle = 0.75\\). * If your output file says \\(\\langle S^2 \\rangle = 0.90\\), your wavefunction is heavily contaminated by Quartets!\nIf spin contamination is high, your calculated energy, optimized geometry, and vibrational frequencies are physically meaningless because they describe a phantom hybrid state that doesn’t exist in nature. In those cases, computational chemists must abandon standard UHF and use more advanced techniques to “purify” the spin state!",
+    "crumbs": [
+      "Module D: Hartree-Fock Theory(Optional)",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>The Limit of Restricted Hartree-Fock</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/Appendix/appendix_crash_course.html",
     "href": "notebooks/Appendix/appendix_crash_course.html",
-    "title": "12  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
+    "title": "17  Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course",
     "section": "",
-    "text": "13 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
+    "text": "18 Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course\nIf you can balance a complex chemical equation or solve a differential equation, you absolutely have the logic skills required to program. Programming is just learning a new, highly specific notation to tell the computer how to do the math for you.\nThis appendix covers the five pillars you need to survive this course:\n\nVariables: Storing your numbers.\nLists: Grouping your numbers.\nLoops: Repeating your calculations.\nFunctions: Building your own formulas.\nBuilt-in Functions & Libraries: Using tools that already exist so you don’t have to reinvent the wheel.\n\nYour Task: Define the parameters for a Hydrogen molecule (\\(H_2\\)): \\(D_e = 4.75\\) eV, \\(r_e = 0.741\\) Å, and \\(a = 1.93\\) Å\\(^{-1}\\), and plot the potential from 0.4 to 4.0 Å.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Crash Course in Writing Programs for People Who Are Good at Math and Science But Never Bothered to Take a CS Course</span>"
     ]
   },
   {
     "objectID": "notebooks/Appendix/appendix_linear_algebra.html",
     "href": "notebooks/Appendix/appendix_linear_algebra.html",
-    "title": "13  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "title": "18  Appendix: A Chemist’s Crash Course in Linear Algebra",
     "section": "",
-    "text": "14 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
+    "text": "19 Appendix: A Chemist’s Crash Course in Linear Algebra\nIf you have ever felt like quantum mechanics is just an excuse for physicists to invent confusing new math, you are not entirely wrong. However, under the hood, almost all of quantum chemistry is driven by a single, incredibly powerful engine: Linear Algebra.\nThis appendix is a rapid-fire refresher on the mechanics and physical meaning of vectors and matrices. We won’t prove any theorems here; we are just going to look at how to run the machinery and what the outputs actually mean for a chemist. Also, don’t show your math professor this appendix. They will be horrified by the lack of rigor and the hand-waving. But if you are a chemist, this is exactly what you need to survive quantum mechanics and computational chemistry.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/Appendix/appendix_linear_algebra.html#vectors-the-states",
     "href": "notebooks/Appendix/appendix_linear_algebra.html#vectors-the-states",
-    "title": "13  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "14.1 1. Vectors (The States)",
-    "text": "14.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n14.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n14.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
+    "title": "18  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "19.1 1. Vectors (The States)",
+    "text": "19.1 1. Vectors (The States)\nIn computational chemistry, a vector is simply a list of numbers that describes the state of a system. If you digitize a wavefunction onto a grid of 100 points, that wavefunction is now a 100-dimensional vector.\n\n19.1.1 The Vector Norm (Length)\nThe norm (or magnitude) of a vector tells you its total length. You calculate it using the multi-dimensional version of the Pythagorean theorem: square all the terms, add them up, and take the square root.\nThe Math: \\[||\\vec{v}|| = \\sqrt{v_1^2 + v_2^2 + \\dots + v_n^2}\\]\nThe Example: If \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix}\\): \\[||\\vec{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\]\nThe Physical Meaning: In quantum mechanics, the total probability of finding a particle somewhere in the universe must be exactly 100% (or 1.0). When we normalize a wavefunction, we are simply dividing the vector by its norm so that its total length equals exactly 1.0.\n\n\n19.1.2 The Inner Product (The Overlap)\nThe inner product (or dot product) takes two vectors and crunches them down into a single number. You multiply the corresponding pieces together and add up the results.\nThe Math: \\[\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n\\]\nThe Example: If \\(\\vec{u} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\) and \\(\\vec{v} = \\begin{bmatrix} 3 \\\\ -2 \\end{bmatrix}\\): \\[\\vec{u} \\cdot \\vec{v} = (2)(3) + (1)(-2) = 6 - 2 = 4\\]\nThe Physical Meaning: The inner product measures overlap (or similarity). It tells you how much of Vector A points in the same direction as Vector B. * If the inner product is a large positive number, the states overlap significantly. * If the inner product is exactly zero, the vectors are perfectly perpendicular (orthogonal). In quantum mechanics, orthogonal wavefunctions are completely independent states that share absolutely zero overlap (like a \\(p_x\\) and a \\(p_y\\) orbital).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   },
   {
     "objectID": "notebooks/Appendix/appendix_linear_algebra.html#matrices-the-operators",
     "href": "notebooks/Appendix/appendix_linear_algebra.html#matrices-the-operators",
-    "title": "13  Appendix: A Chemist’s Crash Course in Linear Algebra",
-    "section": "14.2 2. Matrices (The Operators)",
-    "text": "14.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n14.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n14.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
+    "title": "18  Appendix: A Chemist’s Crash Course in Linear Algebra",
+    "section": "19.2 2. Matrices (The Operators)",
+    "text": "19.2 2. Matrices (The Operators)\nIf vectors are the “nouns” of linear algebra (the states), matrices are the “verbs” (the operators). A matrix does something to a vector—it rotates it, stretches it, or flips it. In quantum mechanics, the Hamiltonian (\\(\\mathbf{H}\\)) is just a giant matrix that operates on our wavefunction.\n\n19.2.1 Matrix-Vector Multiplication\nTo multiply a matrix by a vector, you take the dot product of each row of the matrix with the column of the vector.\nThe Math: \\[\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\\]\nThe Example: Let’s see what happens when an operator acts on a state vector: \\[\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} (2)(4) + (1)(2) \\\\ (0)(4) + (3)(2) \\end{bmatrix} = \\begin{bmatrix} 8 + 2 \\\\ 0 + 6 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\]\nThe Physical Meaning: The matrix grabbed the original state \\(\\begin{bmatrix} 4 \\\\ 2 \\end{bmatrix}\\) and transformed it into an entirely new state \\(\\begin{bmatrix} 10 \\\\ 6 \\end{bmatrix}\\). The only time the matrix doesn’t change the fundamental direction of the vector is if that vector happens to be an eigenvector!\n\n\n19.2.2 The Determinant\nThe determinant is a single number that summarizes the overall “scaling power” of a square matrix.\nThe Math (\\(2 \\times 2\\) example): To find the determinant of a \\(2 \\times 2\\) matrix, you cross-multiply the diagonals and subtract them. \\[\\text{det}\\left(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\right) = ad - bc\\]\nThe Example: \\[\\text{det}\\left(\\begin{bmatrix} 5 & 2 \\\\ 1 & 3 \\end{bmatrix}\\right) = (5)(3) - (2)(1) = 15 - 2 = 13\\]\nThe Physical Meaning: Think of a matrix as stretching or shrinking the fabric of space. The determinant tells you the exact factor by which areas (or volumes) are scaled during that transformation. * A determinant of \\(13\\) means the matrix stretches 2D space to be 13 times larger. * A determinant of \\(1\\) means the volume stays exactly the same (like a simple rotation). * If the determinant is exactly zero, it means the matrix is a trash compactor. It crushes 2D space down into a flat 1D line (or 3D space into a 2D plane). All volume is destroyed, information is lost, and the transformation cannot be reversed (the matrix is non-invertible).",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Appendix: A Chemist's Crash Course in Linear Algebra</span>"
     ]
   }
 ]
