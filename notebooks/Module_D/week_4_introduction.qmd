@@ -1,0 +1,12 @@
+# Module D: Introduction (Optional)
+
+## Into the weeds with Hartree-Fock and Self Consistent Field (SCF) Theory
+
+In the previous module we eneded with an overview of Hartree-Fock and the Self Consistent Field (SCF) method. In this optional module we are going to develop this technique from the ground up, starting with the basic principles and building up to the full SCF procedure.
+
+### What We Will Cover in Module D:
+
+- The Hartree-Fock Method: You will learn the fundamental principles of the Hartree-Fock approximation and how it simplifies the many-electron problem.
+- The Self Consistent Field (SCF) Procedure: You will understand how the SCF method iteratively solves for the electronic structure, ensuring that the wavefunction and potential are consistent with each other.
+- Building the SCF Algorithm: You will implement the SCF procedure step by step, starting from the initial guess and iterating until convergence.
+- Visualizing the Results: You will analyze and visualize the converged wavefunctions and energy levels to gain insight into the electronic structure of molecules.
