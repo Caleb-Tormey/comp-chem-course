@@ -1,5 +1,3 @@
----
-
 # The Translation Problem
 
 In Section 1, we developed a beautiful physical narrative. We created an Effective Potential ($V^{eff}$) to act as a mean-field, and we designed an iterative loop: guess an electron cloud, build the field, solve the Schrödinger equation for a new cloud, and repeat until self-consistent. 
