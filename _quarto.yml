@@ -35,6 +35,13 @@ book:
         - notebooks/Module_C/week_3_huckel_lcao.qmd
         - notebooks/Module_C/week_3_HF.ipynb
 
+    - part: "Module D: Hartree-Fock Theory(Optional)"
+      chapters:
+        - notebooks/Module_D/week_4_introduction.qmd
+        - notebooks/Module_D/week_4_HF_basics.qmd
+        - notebooks/Module_D/week_4_RH_basics.qmd
+        - notebooks/Module_D/week_4_diatomics.qmd
+        - notebooks/Module_D/week_4_UHF.qmd
 
 
     

@@ -1,12 +1,13 @@
-# Module D: Introduction (Optional)
+# Module D: Into the Weeds with Hartree-Fock (Optional)
 
-## Into the weeds with Hartree-Fock and Self Consistent Field (SCF) Theory
+In the previous module, we ended with a high-level overview of Hartree-Fock and the Self-Consistent Field (SCF) method. In this optional, advanced module, we are going to open the black box and build this technique from the ground up.
 
-In the previous module we eneded with an overview of Hartree-Fock and the Self Consistent Field (SCF) method. In this optional module we are going to develop this technique from the ground up, starting with the basic principles and building up to the full SCF procedure.
+We will transition from the abstract, continuous calculus of quantum mechanics into the discrete matrix linear algebra that actually powers professional computational chemistry software. By the end of this module, you will have programmed your own working quantum chemistry engine!
 
 ### What We Will Cover in Module D:
 
-- The Hartree-Fock Method: You will learn the fundamental principles of the Hartree-Fock approximation and how it simplifies the many-electron problem.
-- The Self Consistent Field (SCF) Procedure: You will understand how the SCF method iteratively solves for the electronic structure, ensuring that the wavefunction and potential are consistent with each other.
-- Building the SCF Algorithm: You will implement the SCF procedure step by step, starting from the initial guess and iterating until convergence.
-- Visualizing the Results: You will analyze and visualize the converged wavefunctions and energy levels to gain insight into the electronic structure of molecules.
+* **The Many-Electron Problem & The Mean-Field:** You will learn how to bypass the impossible three-body problem using the Mean-Field approximation, Slater Determinants, and the purely quantum-mechanical Exchange integral.
+* **The Matrix Formulation (Roothaan-Hall):** You will translate the continuous Schrödinger equation into a discrete matrix eigenvalue problem ($\mathbf{FC} = \mathbf{SCE}$) using a Linear Combination of Atomic Orbitals (LCAO).
+* **Building the SCF Engine:** You will implement the 9-step SCF iterative algorithm in Python, guessing a Density Matrix, building the Fock matrix, and looping until the electronic energy converges.
+* **Diatomics and the PES:** You will upgrade your atomic engine to handle molecules like $H_2$, introducing multi-center integrals and classical nuclear repulsion ($V_{NN}$) to map out a complete Potential Energy Surface.
+* **Advanced Topics (Unrestricted Hartree-Fock):** You will explore open-shell systems (like radicals or the Lithium atom), splitting your engine into the Pople-Nesbet equations to account for spin polarization and spin contamination.

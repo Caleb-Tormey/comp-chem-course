@@ -1,0 +1,84 @@
+# Building a Bond
+
+In Section 2, we built a beautiful, robust Self-Consistent Field (SCF) engine. It can take a set of basis functions, guess an electron cloud, and iteratively solve the Roothaan-Hall equations ($\mathbf{FC} = \mathbf{SCE}$) to find the exact orbital shapes and energies.
+
+But so far, we have only looked at a single atom sitting perfectly at the origin $(0,0,0)$. 
+
+Chemistry is about making and breaking bonds. How do we upgrade our atomic engine to simulate a molecule like Hydrogen gas ($H_2$)?
+
+**The good news:** The SCF algorithm itself—the 9-step loop, the Density Matrix ($\mathbf{P}$), and the diagonalization math—**does not change at all.** The computer does exactly the same matrix algebra.
+
+**The bad news:** The physical setup before the loop begins becomes significantly more complicated. When we move to a molecule, we introduce a distance vector between nuclei, which we will call $R$. This changes two major physical interactions.
+
+## 1. The Matrix Setup: Multi-Center Integrals
+
+In our Helium atom, every single Gaussian basis function was centered on the exact same nucleus. 
+
+In an $H_2$ molecule, we have Nucleus A and Nucleus B separated by distance $R$. If we place one basis function ($\phi_A$) on Nucleus A, and another ($\phi_B$) on Nucleus B, the integrals we must pre-calculate change dramatically.
+
+### The Overlap Matrix ($\mathbf{S}$)
+For a single atom, if we used an orthogonal basis set, the Overlap Matrix was often just the Identity matrix (1s on the diagonal, 0s everywhere else). 
+
+But in a molecule, the atomic orbitals physically spread out across the empty space and bleed into one another. The overlap between an orbital on Atom A and an orbital on Atom B is heavily dependent on how close they are:
+
+$$
+S_{AB} = \int \phi_A(\mathbf{r} - \mathbf{R}_A) \phi_B(\mathbf{r} - \mathbf{R}_B) \, d\tau
+$$
+
+As $R \to \infty$, $S_{AB} \to 0$ (no overlap). As $R \to 0$, $S_{AB} \to 1$ (perfect overlap). The Overlap Matrix is no longer simple, which makes our orthogonalization trick ($\mathbf{X} = \mathbf{S}^{-1/2}$) absolutely critical for molecules!
+
+### The Core Hamiltonian ($\mathbf{h}_{core}$)
+For an atom, the 1-electron energy was just kinetic energy plus the pull of one nucleus. In a molecule, an electron zipping around feels the attractive pull of **both** Nucleus A and Nucleus B simultaneously! 
+
+$$
+h_{rs} = \int \phi_r^* \left[ -\frac{1}{2}\nabla^2 - \frac{Z_A}{|\mathbf{r} - \mathbf{R}_A|} - \frac{Z_B}{|\mathbf{r} - \mathbf{R}_B|} \right] \phi_s \, d\tau
+$$
+
+### The Two-Electron Repulsion Tensor ($(rs|tu)$)
+This becomes a true computational nightmare. The four basis functions involved in a repulsion integral could potentially sit on up to four different atomic centers. Calculating these "four-center integrals" analytically is what makes professional quantum chemistry software so incredibly complex. 
+
+*(Note: In your Python assignments, you will be provided with helper functions that instantly calculate these multi-center integrals for you, so you can focus entirely on the SCF algorithm!)*
+
+## 2. Nuclear-Nuclear Repulsion ($V_{NN}$)
+
+There is one more massive physical interaction we are missing. 
+
+Our SCF loop only calculates the **Electronic Energy** ($E_{elec}$). It accounts for electrons moving, electrons attracted to nuclei, and electrons repelling other electrons. 
+
+But what about the nuclei themselves? Protons repel protons! 
+
+Because we use the **Born-Oppenheimer Approximation**, we assume the heavy nuclei are completely frozen in place while the fast, lightweight electrons zip around them. Because the nuclei are stationary, they do not have quantum kinetic energy. We can calculate their repulsive push using standard, classical electrostatics:
+
+$$
+V_{NN} = \frac{Z_A Z_B}{R}
+$$
+
+* $Z_A$ and $Z_B$ are the atomic numbers (charges) of the two nuclei.
+* $R$ is the physical distance between them.
+
+This interaction has absolutely no effect on the shape of the electron clouds, so it **is not included in the SCF loop**. Instead, we let the SCF loop converge to find $E_{elec}$, and then we simply add $V_{NN}$ at the very end to get the **Total Energy** of the molecule:
+
+$$
+E_{total} = E_{elec} + V_{NN}
+$$
+
+## Mapping the Potential Energy Surface (PES)
+
+Now that we have the Total Energy, we can do real chemistry. 
+
+If we want to know the equilibrium bond length of $H_2$, the computer cannot simply guess it. Instead, we use our SCF engine to map out a **Potential Energy Surface (PES)**.
+
+The workflow looks like this:
+1. Pick a bond distance, say $R = 0.5$ Bohrs.
+2. Calculate the integrals, run the SCF loop to convergence, and find $E_{elec}$.
+3. Add $V_{NN}$ to get $E_{total}$.
+4. Save that point on a graph.
+5. Move the atoms slightly further apart (say, $R = 0.6$ Bohrs) and repeat the entire process.
+
+If we plot $E_{total}$ against $R$, we will see a classic potential energy well. 
+
+* At very small $R$, the nuclei are too close together. The $V_{NN}$ term explodes to infinity, pushing the total energy massively up (the repulsive wall).
+* At very large $R$, the atoms are completely broken apart. $V_{NN}$ drops to zero, and the overlap vanishes.
+* Somewhere in the middle, the attractive pull of the shared electron cloud perfectly balances the nuclear repulsion. The lowest point in that energy well is our **Equilibrium Bond Length ($R_{eq}$)**.
+
+By linking our SCF matrix engine inside a simple distance loop, we have successfully modeled the breaking and making of a chemical bond!
